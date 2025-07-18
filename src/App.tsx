@@ -7,11 +7,11 @@ function App() {
 
   useEffect(() => {
     setIsLoaded(true);
-    
+
     const handleScroll = () => {
       const sections = ['hero', 'about', 'skills', 'experience', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
-      
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -50,7 +50,7 @@ function App() {
                 Portfolio
               </span>
             </div>
-            
+
             <div className={`hidden md:flex space-x-8 transition-all duration-700 delay-300 ${
               isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-5 opacity-0'
             }`}>
@@ -97,16 +97,15 @@ function App() {
             isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-gradient">
-              John Doe
+              Debi Prasad Das
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-              Full Stack Developer & AI Enthusiast
+              Full-stack Developer & Cloud Enthusiast
             </p>
             <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
-              Passionate about creating innovative solutions with modern technologies. 
-              Specializing in React, Node.js, and Machine Learning.
+              Full-stack developer and cloud enthusiast with experience building real-world apps in logistics, citizen services, and education. Skilled in Java, JavaScript, React.js, Spring Boot, and Android with Firebase. Comfortable designing RESTful APIs and integrating cloud tools like GitHub Actions, Docker, and Kubernetes. Passionate about clean code, usability, and solving real-world problems through tech.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
               <button
                 onClick={() => scrollToSection('projects')}
@@ -142,27 +141,24 @@ function App() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="text-lg text-gray-300 leading-relaxed">
-                I'm a passionate full-stack developer with over 5 years of experience building 
-                scalable web applications and AI-powered solutions. I love turning complex problems 
-                into simple, beautiful, and intuitive solutions.
+                Full-stack developer and cloud enthusiast with experience building real-world apps in logistics, citizen services, and education. Skilled in Java, JavaScript, React.js, Spring Boot, and Android with Firebase. Comfortable designing RESTful APIs and integrating cloud tools like GitHub Actions, Docker, and Kubernetes. Passionate about clean code, usability, and solving real-world problems through tech.
               </p>
               <p className="text-lg text-gray-300 leading-relaxed">
-                When I'm not coding, you can find me exploring the latest in machine learning, 
-                contributing to open-source projects, or sharing knowledge with the developer community.
+                When I'm not coding, you can find me exploring the latest in cloud and mobile development, contributing to open-source projects, or sharing knowledge with the developer community.
               </p>
-              
+
               <div className="flex flex-wrap gap-4 pt-4">
                 <div className="flex items-center gap-2 text-purple-400">
                   <Mail className="w-5 h-5" />
-                  <span>john.doe@email.com</span>
+                  <span>dddebiprasaddas2004@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-2 text-purple-400">
                   <Phone className="w-5 h-5" />
-                  <span>+1 (555) 123-4567</span>
+                  <span>+91-8260057716</span>
                 </div>
                 <div className="flex items-center gap-2 text-purple-400">
                   <MapPin className="w-5 h-5" />
-                  <span>San Francisco, CA</span>
+                  <span>Bhubaneswar, India</span>
                 </div>
               </div>
             </div>
@@ -194,17 +190,17 @@ function App() {
               {
                 icon: <Code className="w-8 h-8" />,
                 title: "Frontend Development",
-                skills: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Vue.js"]
+                skills: ["React.js", "JavaScript (ES6+)", "HTML5", "CSS3", "Material UI (Basics)"]
               },
               {
                 icon: <Server className="w-8 h-8" />,
                 title: "Backend Development",
-                skills: ["Node.js", "Python", "Express", "FastAPI", "GraphQL"]
+                skills: ["Java (Spring Boot)", "Node.js (Learning)", "RESTful APIs", "JWT", "MVC Architecture"]
               },
               {
                 icon: <Database className="w-8 h-8" />,
                 title: "Database & Cloud",
-                skills: ["PostgreSQL", "MongoDB", "AWS", "Docker", "Kubernetes"]
+                skills: ["Firebase Firestore", "Realtime Database", "MySQL", "MongoDB (Learning)", "AWS (EC2, S3, Lambda, IAM)", "GitHub Actions", "Docker", "Kubernetes (Basics)", "Firebase Hosting"]
               }
             ].map((category, index) => (
               <div
@@ -247,42 +243,7 @@ function App() {
           </div>
 
           <div className="space-y-8">
-            {[
-              {
-                title: "Senior Full Stack Developer",
-                company: "Tech Innovations Inc.",
-                period: "2022 - Present",
-                description: "Led development of scalable web applications serving 100K+ users. Implemented microservices architecture and improved system performance by 40%."
-              },
-              {
-                title: "Full Stack Developer",
-                company: "Digital Solutions Co.",
-                period: "2020 - 2022",
-                description: "Developed and maintained multiple client projects using React, Node.js, and AWS. Collaborated with cross-functional teams to deliver high-quality solutions."
-              },
-              {
-                title: "Frontend Developer",
-                company: "StartupXYZ",
-                period: "2019 - 2020",
-                description: "Built responsive web applications and improved user experience. Worked closely with designers to implement pixel-perfect interfaces."
-              }
-            ].map((job, index) => (
-              <div
-                key={job.title}
-                className="bg-slate-900/30 p-8 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 transform hover:translate-x-2"
-              >
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                  <div>
-                    <h3 className="text-xl font-semibold text-purple-400">{job.title}</h3>
-                    <p className="text-lg text-gray-300">{job.company}</p>
-                  </div>
-                  <span className="text-sm text-gray-400 bg-slate-800 px-3 py-1 rounded-full mt-2 md:mt-0">
-                    {job.period}
-                  </span>
-                </div>
-                <p className="text-gray-300 leading-relaxed">{job.description}</p>
-              </div>
-            ))}
+            {/* You can add experience here if you want, or keep it focused on projects */}
           </div>
         </div>
       </section>
@@ -300,21 +261,27 @@ function App() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "AI-Powered Analytics Dashboard",
-                description: "Real-time analytics platform with machine learning insights and predictive modeling.",
-                tech: ["React", "Python", "TensorFlow", "AWS"],
-                image: "🤖"
+                title: "Fill It – Ride-Sharing for Tanker Fulfillment",
+                description: "Engineered a scalable backend for real-time trip lifecycle: creation, matching, and completion using Spring Boot. Implemented geolocation-based trip matching with Haversine formula and real-time status tracking. Integrated Firebase Authentication for secure role-based access (customer and driver).",
+                tech: ["Java", "Spring Boot", "Firebase", "Realtime Database"],
+                image: "🚚"
               },
               {
-                title: "E-Commerce Platform",
-                description: "Full-stack e-commerce solution with payment integration and inventory management.",
-                tech: ["Next.js", "Node.js", "PostgreSQL", "Stripe"],
-                image: "🛒"
+                title: "Institution Student Management System (ISMS)",
+                description: "Built 50+ RESTful APIs to manage academics, attendance, and fee records with robust validation and async processing. Integrated Google Drive API for dynamic document upload and OpenCV for student image preprocessing. Secured platform with Firebase Authentication and custom access control mapped to user roles.",
+                tech: ["Java", "Spring Boot", "Firebase", "Google Drive API", "OpenCV"],
+                image: "🏫"
               },
               {
-                title: "Social Media App",
-                description: "Real-time social platform with chat functionality and content sharing.",
-                tech: ["React Native", "Firebase", "Socket.io"],
+                title: "SuchnaSangam – Government Grievance & Alert Portal",
+                description: "Built a real-time grievance and alert portal for citizens and officials using Firebase Realtime Database. Implemented district-wise alert broadcasting and grievance tracking with role-based access controls. Enabled secure document sharing and status updates for grievances across citizens, officials, and admins.",
+                tech: ["Java", "Spring Boot", "Firebase", "Realtime Database"],
+                image: "📢"
+              },
+              {
+                title: "Quiz System – Android Quiz Application",
+                description: "Built an Android quiz app with Firebase Authentication supporting separate admin and user experiences. Managed dynamic quiz content, scores, and subjects using Firebase Realtime Database. Designed interactive UI using Material Design, ViewBinding, and Lottie animations for smooth UX.",
+                tech: ["Java", "Android SDK", "Firebase", "Material Design"],
                 image: "📱"
               }
             ].map((project, index) => (
@@ -378,7 +345,7 @@ function App() {
                 </div>
                 <div>
                   <h3 className="font-semibold">Email</h3>
-                  <p className="text-gray-300">john.doe@email.com</p>
+                  <p className="text-gray-300">dddebiprasaddas2004@gmail.com</p>
                 </div>
               </div>
 
@@ -388,17 +355,17 @@ function App() {
                 </div>
                 <div>
                   <h3 className="font-semibold">Phone</h3>
-                  <p className="text-gray-300">+1 (555) 123-4567</p>
+                  <p className="text-gray-300">+91-8260057716</p>
                 </div>
               </div>
 
               <div className="flex gap-4 pt-4">
-                <button className="w-12 h-12 bg-slate-900/50 rounded-full flex items-center justify-center border border-purple-500/20 hover:border-purple-500/40 hover:bg-purple-500/10 transition-all duration-300">
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-slate-900/50 rounded-full flex items-center justify-center border border-purple-500/20 hover:border-purple-500/40 hover:bg-purple-500/10 transition-all duration-300">
                   <Github className="w-6 h-6" />
-                </button>
-                <button className="w-12 h-12 bg-slate-900/50 rounded-full flex items-center justify-center border border-purple-500/20 hover:border-purple-500/40 hover:bg-purple-500/10 transition-all duration-300">
+                </a>
+                <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-slate-900/50 rounded-full flex items-center justify-center border border-purple-500/20 hover:border-purple-500/40 hover:bg-purple-500/10 transition-all duration-300">
                   <Linkedin className="w-6 h-6" />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -439,7 +406,7 @@ function App() {
       <footer className="py-8 border-t border-purple-500/20">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <p className="text-gray-400">
-            © 2024 John Doe. Built with React & Tailwind CSS.
+            © 2024 Debi Prasad Das. Built with React & Tailwind CSS.
           </p>
         </div>
       </footer>

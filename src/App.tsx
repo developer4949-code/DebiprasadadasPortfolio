@@ -163,13 +163,16 @@ function App() {
               </div>
             </div>
 
+            // ... existing code ...
             <div className="relative">
               <div className="w-80 h-80 mx-auto relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-spin-slow opacity-75"></div>
-                <div className="absolute inset-2 bg-slate-800 rounded-full flex items-center justify-center">
-                  <div className="text-6xl">👨‍💻</div>
+                <div className="absolute inset-2 bg-slate-800 rounded-full flex items-center justify-center overflow-hidden">
+                  <img src={require('./B123048_profile.png')} alt="Debi Prasad Das" className="w-full h-full object-cover rounded-full" />
                 </div>
               </div>
+            </div>
+// ... existing code ...
             </div>
           </div>
         </div>

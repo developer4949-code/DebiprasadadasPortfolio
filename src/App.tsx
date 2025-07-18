@@ -163,7 +163,6 @@ function App() {
               </div>
             </div>
 
-            // ... existing code ...
             <div className="relative">
               <div className="w-80 h-80 mx-auto relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-spin-slow opacity-75"></div>
@@ -172,10 +171,8 @@ function App() {
                 </div>
               </div>
             </div>
-// ... existing code ...
             </div>
           </div>
-        </div>
       </section>
 
       {/* Skills Section */}

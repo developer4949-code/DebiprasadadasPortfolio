@@ -264,7 +264,7 @@ function App() {
                 title: "Fill It – Ride-Sharing for Tanker Fulfillment",
                 description: "Engineered a scalable backend for real-time trip lifecycle: creation, matching, and completion using Spring Boot. Implemented geolocation-based trip matching with Haversine formula and real-time status tracking. Integrated Firebase Authentication for secure role-based access (customer and driver).",
                 tech: ["Java", "Spring Boot", "Firebase", "Realtime Database"],
-                image: "🚚"
+                image: "/B123048_profile.png"
               },
               {
                 title: "Institution Student Management System (ISMS)",

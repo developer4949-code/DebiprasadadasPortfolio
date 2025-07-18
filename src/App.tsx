@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronDown, Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Code, Brain, Database, Server } from 'lucide-react';
+import { ChevronDown, Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Code, Database, Server } from 'lucide-react';
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -161,18 +161,31 @@ function App() {
                   <span>Bhubaneswar, India</span>
                 </div>
               </div>
+              <div className="pt-6">
+                <h3 className="text-xl font-semibold text-purple-400 mb-2">Education</h3>
+                <p className="text-gray-300 mb-1">
+                  <span className="font-semibold">International Institute of Information Technology, Bhubaneswar</span><br />
+                  B.Tech in Computer Science and Engineering (2024)
+                </p>
+                <h3 className="text-xl font-semibold text-purple-400 mt-4 mb-2">Certifications & Courses</h3>
+                <ul className="list-disc list-inside text-gray-300">
+                  <li>Android Development: The Complete Android Oreo Developer Course – Udemy (2023)</li>
+                  <li>Spring Boot: Spring Framework Essentials, REST API Development – Spring Academy (2024)</li>
+                  <li>Cloud Computing: AWS Cloud Practitioner Essentials – AWS Skill Builder (2025)</li>
+                </ul>
+              </div>
             </div>
 
             <div className="relative">
               <div className="w-80 h-80 mx-auto relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-spin-slow opacity-75"></div>
-                <div className="absolute inset-2 bg-slate-800 rounded-full flex items-center justify-center overflow-hidden">
-                  <img src={require('./B123048_profile.png')} alt="Debi Prasad Das" className="w-full h-full object-cover rounded-full" />
+                <div className="absolute inset-2 bg-slate-800 rounded-full flex items-center justify-center">
+                  <div className="text-6xl">👨‍💻</div>
                 </div>
               </div>
             </div>
-            </div>
           </div>
+        </div>
       </section>
 
       {/* Skills Section */}
@@ -241,9 +254,8 @@ function App() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto rounded-full"></div>
           </div>
-
           <div className="space-y-8">
-            {/* You can add experience here if you want, or keep it focused on projects */}
+            {/* You can add work experience here if you want, or keep it focused on projects */}
           </div>
         </div>
       </section>
@@ -264,7 +276,7 @@ function App() {
                 title: "Fill It – Ride-Sharing for Tanker Fulfillment",
                 description: "Engineered a scalable backend for real-time trip lifecycle: creation, matching, and completion using Spring Boot. Implemented geolocation-based trip matching with Haversine formula and real-time status tracking. Integrated Firebase Authentication for secure role-based access (customer and driver).",
                 tech: ["Java", "Spring Boot", "Firebase", "Realtime Database"],
-                image: "/B123048_profile.png"
+                image: "🚚"
               },
               {
                 title: "Institution Student Management System (ISMS)",
@@ -360,10 +372,10 @@ function App() {
               </div>
 
               <div className="flex gap-4 pt-4">
-                <a href="https://github.com/developer4949-code" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-slate-900/50 rounded-full flex items-center justify-center border border-purple-500/20 hover:border-purple-500/40 hover:bg-purple-500/10 transition-all duration-300">
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-slate-900/50 rounded-full flex items-center justify-center border border-purple-500/20 hover:border-purple-500/40 hover:bg-purple-500/10 transition-all duration-300">
                   <Github className="w-6 h-6" />
                 </a>
-                <a href="https://www.linkedin.com/in/debi-prasad-das-458878292/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-slate-900/50 rounded-full flex items-center justify-center border border-purple-500/20 hover:border-purple-500/40 hover:bg-purple-500/10 transition-all duration-300">
+                <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-slate-900/50 rounded-full flex items-center justify-center border border-purple-500/20 hover:border-purple-500/40 hover:bg-purple-500/10 transition-all duration-300">
                   <Linkedin className="w-6 h-6" />
                 </a>
               </div>

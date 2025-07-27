@@ -551,13 +551,10 @@ function App() {
                     <p className="text-lg text-gray-300 mb-2">
                       B.Tech in Computer Science and Engineering
                     </p>
-                    <p className="text-gray-400 mb-4">2020 - 2024</p>
+                    <p className="text-gray-400 mb-4">2023 - 2027</p>
                     
                     <div className="space-y-3">
-                      <div className="flex items-center gap-2 text-[#8847FD]">
-                        <span className="text-sm font-medium">CGPA:</span>
-                        <span className="text-gray-300">8.5/10</span>
-                      </div>
+                     
                       <div className="flex items-center gap-2 text-[#8847FD]">
                         <span className="text-sm font-medium">Key Courses:</span>
                         <span className="text-gray-300">Data Structures, Algorithms, Database Systems, Web Development, Cloud Computing</span>

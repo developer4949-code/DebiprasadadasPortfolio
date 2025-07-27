@@ -349,22 +349,7 @@
   }
 }
 
-@keyframes cosmic-drift {
-  0% {
-    transform: translateX(-100px) translateY(0px) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.8;
-  }
-  90% {
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateX(calc(100vw + 100px)) translateY(-100px) rotate(360deg);
-    opacity: 0;
-  }
-}
+
 
 @keyframes cosmic-pulse {
   0%, 100% {
@@ -378,33 +363,13 @@
 }
 
 .particle {
-  animation: particle-float 6s ease-in-out infinite;
-}
-
-.cosmic-drift {
-  animation: cosmic-drift 20s linear infinite;
-}
-
-.cosmic-pulse {
-  animation: cosmic-pulse 4s ease-in-out infinite;
-}
-
-->
-
-.particle {
   animation: particle-float 12s ease-in-out infinite; /* SLOWER: Changed from 6s to 12s */
 }
 
-.cosmic-drift {
-  animation: cosmic-drift 40s linear infinite; /* SLOWER: Changed from 20s to 40s */
-}
+
 
 .cosmic-pulse {
   animation: cosmic-pulse 8s ease-in-out infinite; /* SLOWER: Changed from 4s to 8s */
-}
-
-.cosmic-pulse {
-  animation: cosmic-pulse 4s ease-in-out infinite;
 }
 
 /* Text shimmer effect */

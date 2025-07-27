@@ -187,9 +187,19 @@ function App() {
 
             <div className="relative">
               <div className="w-80 h-80 mx-auto relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full animate-spin-slow opacity-75"></div>
-                <div className="absolute inset-2 bg-slate-800 rounded-full flex items-center justify-center">
-                  <div className="text-6xl">👨‍💻</div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] rounded-full animate-spin-slow opacity-75"></div>
+                <div className="absolute inset-2 bg-slate-800 rounded-full flex items-center justify-center overflow-hidden">
+                  <img 
+                    src="/src/images/profile.jpg" 
+                    alt="Debi Prasad Das" 
+                    className="w-full h-full object-cover rounded-full"
+                    onError={(e) => {
+                      // Fallback to emoji if image fails to load
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="text-6xl hidden">👨‍💻</div>
                 </div>
               </div>
             </div>

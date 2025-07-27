@@ -9,12 +9,17 @@
   
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    cursor: none; /* Hide default cursor */
+    cursor: none !important; /* Hide default cursor */
   }
   
-  /* Show default cursor on interactive elements for accessibility */
-  button, a, input, textarea, select {
-    cursor: none;
+  /* Hide cursor on all elements */
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+  
+  /* Hide cursor on interactive elements */
+  button, a, input, textarea, select, [role="button"], [tabindex] {
+    cursor: none !important;
   }
 }
 

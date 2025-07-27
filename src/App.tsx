@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ChevronDown, Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Code, Database, Server, FileText } from 'lucide-react';
 import profileImage from './B123048_profile.png';
-import log0 from './logo-p.jpg';
+import logo from './logo-p.jpg';
 import 
 
 function App() {

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ChevronDown, Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Code, Database, Server, FileText } from 'lucide-react';
 import profileImage from './B123048_profile.png';
+import log0 from './logo-p.jpg';
+import 
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -71,7 +73,9 @@ function App() {
               isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'
             }`}>
               <span className="bg-gradient-to-r from-[#8847FD] to-[#FE45CB] bg-clip-text text-transparent">
-                <img src="/src/logo-p.jpg" alt="Portfolio Logo" style={{ height: '40px', width: 'auto', display: 'inline-block', verticalAlign: 'middle', background: 'transparent' }} />
+                <img 
+                  src={logo} 
+                  alt="Portfolio Logo" style={{ height: '40px', width: 'auto', display: 'inline-block', verticalAlign: 'middle', background: 'transparent' }} />
               </span>
             </div>
 

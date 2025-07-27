@@ -406,7 +406,7 @@ function App() {
               {
                 title: "Fill It – Ride-Sharing for Tanker Fulfillment",
                 description: "Engineered a scalable backend for real-time trip lifecycle management using Spring Boot. Implemented geolocation-based trip matching with Haversine formula and real-time status tracking. Integrated Firebase Authentication for secure role-based access (customer and driver).",
-                tech: ["Java ", "Spring Boot", "Gradle", "Firebase", "Google Groups", "Docker"],
+                tech: ["Java ", "Spring Boot", "Gradle", "Firebase", "Docker"],
                 image: "🚚",
                 githubUrl: "https://github.com/developer4949-code/FILL-IT-App",
                 highlights: [
@@ -436,7 +436,7 @@ function App() {
               {
                 title: "SuchnaSangam – Government Grievance & Alert Portal",
                 description: "Built a real-time grievance and alert portal for citizens and officials using Firebase Realtime Database. Implemented district-wise alert broadcasting and grievance tracking with role-based access controls. Enabled secure document sharing and status updates for grievances across citizens, officials, and admins.",
-                tech: ["Java ", "Spring Boot ", "Firebase", "Gradle", "Google Cloud APIs", "Docker", "Lombok"],
+                tech: ["Java ", "Spring Boot ", "Firebase", "Gradle", "Docker", "Lombok"],
                 image: "📢",
                 githubUrl: "https://github.com/developer4949-code/Suchna-Sangam-Fullstack",
                 highlights: [

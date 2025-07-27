@@ -200,7 +200,7 @@ function App() {
                 <h3 className="text-xl font-semibold text-cyan-400 mb-2">Education</h3>
                 <p className="text-gray-300 mb-1">
                   <span className="font-semibold">International Institute of Information Technology, Bhubaneswar</span><br />
-                  B.Tech in Computer Science and Engineering (2024)
+                  B.Tech in Computer Science and Engineering (2027)
                 </p>
                 <h3 className="text-xl font-semibold text-cyan-400 mt-4 mb-2">Certifications & Courses</h3>
                 <ul className="list-disc list-inside text-gray-300">

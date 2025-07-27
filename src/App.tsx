@@ -512,28 +512,33 @@ function App() {
               </div>
             </div>
 
-            <form className="space-y-6">
-              <div>
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full px-4 py-3 bg-slate-900/50 border border-cyan-500/20 rounded-xl focus:border-cyan-500/40 focus:outline-none transition-all duration-300"
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  className="w-full px-4 py-3 bg-slate-900/50 border border-cyan-500/20 rounded-xl focus:border-cyan-500/40 focus:outline-none transition-all duration-300"
-                />
-              </div>
-              <div>
-                <textarea
-                  rows={5}
-                  placeholder="Your Message"
-                  className="w-full px-4 py-3 bg-slate-900/50 border border-cyan-500/20 rounded-xl focus:border-cyan-500/40 focus:outline-none transition-all duration-300 resize-none"
-                ></textarea>
-              </div>
+             <form
+              action="https://formspree.io/f/xovlwakw"
+              method="POST"
+              className="space-y-6"
+            >
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                className="w-full px-4 py-3 bg-slate-900/50 border border-cyan-500/20 rounded-xl focus:border-cyan-500/40 focus:outline-none transition-all duration-300"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                className="w-full px-4 py-3 bg-slate-900/50 border border-cyan-500/20 rounded-xl focus:border-cyan-500/40 focus:outline-none transition-all duration-300"
+                required
+              />
+              <textarea
+                name="message"
+                rows={5}
+                placeholder="Your Message"
+                className="w-full px-4 py-3 bg-slate-900/50 border border-cyan-500/20 rounded-xl focus:border-cyan-500/40 focus:outline-none transition-all duration-300 resize-none"
+                required
+              ></textarea>
+              <input type="hidden" name="_subject" value="New message from portfolio site" />
               <button
                 type="submit"
                 className="w-full px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl font-semibold hover:shadow-lg hover:shadow-cyan-500/25 transform hover:scale-105 transition-all duration-300"

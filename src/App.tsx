@@ -388,16 +388,16 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-slate-800/30">
+      <section id="projects" className="py-20 bg-slate-800/20 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] bg-clip-text text-transparent">
               Featured Projects
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 mx-auto rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="space-y-8">
             {[
               {
                 title: "Fill It – Ride-Sharing for Tanker Fulfillment",
@@ -426,33 +426,33 @@ function App() {
             ].map((project, index) => (
               <div
                 key={project.title}
-                className="bg-slate-900/50 rounded-xl overflow-hidden backdrop-blur-sm border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/10 group"
+                className="bg-slate-900/30 rounded-xl overflow-hidden backdrop-blur-md border border-[#8847FD]/20 hover:border-[#8847FD]/40 transition-all duration-300 transform hover:scale-102 hover:shadow-xl hover:shadow-[#8847FD]/10 group w-full"
               >
-                <div className="h-48 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-300">
+                <div className="h-48 bg-gradient-to-br from-[#8847FD]/20 to-[#FE45CB]/20 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-300">
                   {project.image}
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-cyan-400 transition-colors duration-300">
+                <div className="p-8">
+                  <h3 className="text-2xl font-semibold mb-4 group-hover:text-[#8847FD] transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="text-gray-300 mb-4 leading-relaxed">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <p className="text-gray-300 mb-6 leading-relaxed text-lg">{project.description}</p>
+                  <div className="flex flex-wrap gap-3 mb-6">
                     {project.tech.map((tech) => (
-                                          <span
-                      key={tech}
-                      className="px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-sm"
-                    >
+                      <span
+                        key={tech}
+                        className="px-4 py-2 bg-[#8847FD]/20 text-[#8847FD] rounded-full text-sm font-medium"
+                      >
                         {tech}
                       </span>
                     ))}
                   </div>
-                  <div className="flex gap-3">
-                    <button className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors duration-300">
-                      <Github className="w-4 h-4" />
+                  <div className="flex gap-4">
+                    <button className="flex items-center gap-2 text-[#8847FD] hover:text-[#FE45CB] transition-colors duration-300 font-medium">
+                      <Github className="w-5 h-5" />
                       Code
                     </button>
-                    <button className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors duration-300">
-                      <ExternalLink className="w-4 h-4" />
+                    <button className="flex items-center gap-2 text-[#8847FD] hover:text-[#FE45CB] transition-colors duration-300 font-medium">
+                      <ExternalLink className="w-5 h-5" />
                       Demo
                     </button>
                   </div>

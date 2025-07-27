@@ -408,6 +408,7 @@ function App() {
                 description: "Engineered a scalable backend for real-time trip lifecycle management using Spring Boot. Implemented geolocation-based trip matching with Haversine formula and real-time status tracking. Integrated Firebase Authentication for secure role-based access (customer and driver).",
                 tech: ["Java 8+", "Spring Boot", "Gradle", "Firebase", "Google Groups", "Docker"],
                 image: "🚚",
+                githubUrl: "https://github.com/developer4949-code/FILL-IT-App",
                 highlights: [
                   "Real-time trip lifecycle: creation, matching, and completion",
                   "Geolocation-based trip matching with Haversine formula",
@@ -422,6 +423,7 @@ function App() {
                 description: "Built 50+ RESTful APIs to manage academics, attendance, and fee records with robust validation and async processing. Integrated Google Drive API for dynamic document upload and OpenCV for student image preprocessing. Secured platform with Firebase Authentication and custom access control mapped to user roles.",
                 tech: ["Java 21", "Spring Boot 3.4", "Firebase", "Gradle", "Google Drive API", "OpenCV"],
                 image: "🏫",
+                githubUrl: "https://github.com/developer4949-code/ISMS-Fullstack",
                 highlights: [
                   "50+ RESTful APIs for comprehensive academic management",
                   "Role-based access with secure Firebase authentication",
@@ -436,6 +438,7 @@ function App() {
                 description: "Built a real-time grievance and alert portal for citizens and officials using Firebase Realtime Database. Implemented district-wise alert broadcasting and grievance tracking with role-based access controls. Enabled secure document sharing and status updates for grievances across citizens, officials, and admins.",
                 tech: ["Java 17", "Spring Boot 3.5.0", "Firebase", "Gradle", "Google Cloud APIs", "Docker", "Lombok"],
                 image: "📢",
+                githubUrl: "https://github.com/developer4949-code/Suchna-Sangam-Fullstack",
                 highlights: [
                   "Real-time grievance and alert portal for citizens and officials",
                   "District-wise alert broadcasting and grievance tracking",
@@ -450,6 +453,7 @@ function App() {
                 description: "Built an Android quiz app with Firebase Authentication supporting separate admin and user experiences. Managed dynamic quiz content, scores, and subjects using Firebase Realtime Database. Designed interactive UI using Material Design, ViewBinding, and Lottie animations for smooth UX.",
                 tech: ["Java", "Android SDK", "Firebase", "Material Design", "ViewBinding", "Lottie"],
                 image: "📱",
+                githubUrl: "https://github.com/developer4949-code/quizoo",
                 highlights: [
                   "Separate admin and user experiences with Firebase Authentication",
                   "Dynamic quiz content management with real-time updates",
@@ -503,14 +507,15 @@ function App() {
                     ))}
                   </div>
                   <div className="flex gap-4">
-                    <button className="flex items-center gap-2 text-[#8847FD] hover:text-[#FE45CB] transition-colors duration-300 font-medium">
+                    <a 
+                      href={project.githubUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-[#8847FD] hover:text-[#FE45CB] transition-colors duration-300 font-medium"
+                    >
                       <Github className="w-5 h-5" />
                       Code
-                    </button>
-                    <button className="flex items-center gap-2 text-[#8847FD] hover:text-[#FE45CB] transition-colors duration-300 font-medium">
-                      <ExternalLink className="w-5 h-5" />
-                      Demo
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

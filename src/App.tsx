@@ -493,29 +493,14 @@ function App() {
               width: `${Math.random() * 25 + 8}px`,
               height: `${Math.random() * 25 + 8}px`,
               background: `radial-gradient(circle, ${['#8847FD', '#A334BC', '#FE45CB', '#EA53F8', '#E79CA7'][Math.floor(Math.random() * 5)]}40, transparent)`,
-              animationDelay: `${Math.random() * 10}s`,
-              animationDuration: `${Math.random() * 8 + 8}s`,
+              animationDelay: `${Math.random() * 20}s`,
+              animationDuration: `${Math.random() * 16 + 16}s`,
               filter: 'blur(1px)'
             }}
           />
         ))}
         
-        {/* Drifting cosmic elements */}
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={`drift-${i}`}
-            className="absolute cosmic-drift opacity-40"
-            style={{
-              top: `${Math.random() * 100}%`,
-              width: `${Math.random() * 15 + 5}px`,
-              height: `${Math.random() * 15 + 5}px`,
-              background: `radial-gradient(circle, ${['#8847FD', '#A334BC', '#FE45CB'][Math.floor(Math.random() * 3)]}60, transparent)`,
-              animationDelay: `${Math.random() * 20}s`,
-              animationDuration: `${Math.random() * 15 + 15}s`,
-              filter: 'blur(0.5px)'
-            }}
-          />
-        ))}
+
         
         {/* Pulsing cosmic orbs */}
         {[...Array(8)].map((_, i) => (
@@ -528,7 +513,7 @@ function App() {
               width: `${Math.random() * 40 + 20}px`,
               height: `${Math.random() * 40 + 20}px`,
               background: `radial-gradient(circle, ${['#8847FD', '#A334BC', '#FE45CB', '#EA53F8'][Math.floor(Math.random() * 4)]}30, transparent)`,
-              animationDelay: `${Math.random() * 5}s`,
+              animationDelay: `${Math.random() * 10}s`,
               filter: 'blur(2px)'
             }}
           />
@@ -935,5 +920,4 @@ function App() {
 }
 
 export default App;
-
 

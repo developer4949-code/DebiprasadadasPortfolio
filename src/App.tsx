@@ -246,8 +246,113 @@ function App() {
                 <div className="space-y-4">
                   {category.skills.map((skill, skillIndex) => (
                     <div key={skill} className="flex items-center gap-3 p-3 rounded-lg bg-slate-800/50 hover:bg-slate-800/70 transition-all duration-200">
-                      <div className="w-8 h-8 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] rounded-lg flex items-center justify-center">
-                        <span className="text-white text-xs font-bold">{skill.charAt(0)}</span>
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden">
+                        {skill.toLowerCase().includes('react') && (
+                          <div className="w-full h-full bg-blue-500 flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">⚛️</span>
+                          </div>
+                        )}
+                        {skill.toLowerCase().includes('javascript') && (
+                          <div className="w-full h-full bg-yellow-400 flex items-center justify-center">
+                            <span className="text-black text-xs font-bold">JS</span>
+                          </div>
+                        )}
+                        {skill.toLowerCase().includes('html') && (
+                          <div className="w-full h-full bg-orange-500 flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">5</span>
+                          </div>
+                        )}
+                        {skill.toLowerCase().includes('css') && (
+                          <div className="w-full h-full bg-blue-600 flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">3</span>
+                          </div>
+                        )}
+                        {skill.toLowerCase().includes('java') && (
+                          <div className="w-full h-full bg-red-600 flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">☕</span>
+                          </div>
+                        )}
+                        {skill.toLowerCase().includes('node') && (
+                          <div className="w-full h-full bg-green-600 flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">⬢</span>
+                          </div>
+                        )}
+                        {skill.toLowerCase().includes('firebase') && (
+                          <div className="w-full h-full bg-orange-400 flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">🔥</span>
+                          </div>
+                        )}
+                        {skill.toLowerCase().includes('mysql') && (
+                          <div className="w-full h-full bg-blue-700 flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">🐬</span>
+                          </div>
+                        )}
+                        {skill.toLowerCase().includes('mongodb') && (
+                          <div className="w-full h-full bg-green-500 flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">🍃</span>
+                          </div>
+                        )}
+                        {skill.toLowerCase().includes('aws') && (
+                          <div className="w-full h-full bg-orange-600 flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">☁️</span>
+                          </div>
+                        )}
+                        {skill.toLowerCase().includes('docker') && (
+                          <div className="w-full h-full bg-blue-500 flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">🐳</span>
+                          </div>
+                        )}
+                        {skill.toLowerCase().includes('kubernetes') && (
+                          <div className="w-full h-full bg-blue-600 flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">⚓</span>
+                          </div>
+                        )}
+                        {skill.toLowerCase().includes('github') && (
+                          <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">🐙</span>
+                          </div>
+                        )}
+                        {skill.toLowerCase().includes('material') && (
+                          <div className="w-full h-full bg-blue-500 flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">🎨</span>
+                          </div>
+                        )}
+                        {skill.toLowerCase().includes('rest') && (
+                          <div className="w-full h-full bg-purple-600 flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">🔗</span>
+                          </div>
+                        )}
+                        {skill.toLowerCase().includes('jwt') && (
+                          <div className="w-full h-full bg-purple-500 flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">🔐</span>
+                          </div>
+                        )}
+                        {skill.toLowerCase().includes('mvc') && (
+                          <div className="w-full h-full bg-gray-600 flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">🏗️</span>
+                          </div>
+                        )}
+                        {!skill.toLowerCase().includes('react') && 
+                         !skill.toLowerCase().includes('javascript') && 
+                         !skill.toLowerCase().includes('html') && 
+                         !skill.toLowerCase().includes('css') && 
+                         !skill.toLowerCase().includes('java') && 
+                         !skill.toLowerCase().includes('node') && 
+                         !skill.toLowerCase().includes('firebase') && 
+                         !skill.toLowerCase().includes('mysql') && 
+                         !skill.toLowerCase().includes('mongodb') && 
+                         !skill.toLowerCase().includes('aws') && 
+                         !skill.toLowerCase().includes('docker') && 
+                         !skill.toLowerCase().includes('kubernetes') && 
+                         !skill.toLowerCase().includes('github') && 
+                         !skill.toLowerCase().includes('material') && 
+                         !skill.toLowerCase().includes('rest') && 
+                         !skill.toLowerCase().includes('jwt') && 
+                         !skill.toLowerCase().includes('mvc') && (
+                          <div className="w-full h-full bg-gradient-to-r from-[#8847FD] to-[#FE45CB] flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">{skill.charAt(0)}</span>
+                          </div>
+                        )}
                       </div>
                       <span className="text-gray-300 font-medium">{skill}</span>
                     </div>

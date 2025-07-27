@@ -486,7 +486,7 @@ function App() {
         {[...Array(40)].map((_, i) => (
           <div
             key={`particle-${i}`}
-            className="absolute rounded-full animate-float opacity-60"
+            className="absolute rounded-full particle opacity-60"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,

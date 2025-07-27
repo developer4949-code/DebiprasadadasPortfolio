@@ -480,45 +480,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#120945] via-[#371A5A] to-[#7A1378] text-white overflow-x-hidden relative">
-      {/* Cosmic Background Animation */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {/* Floating particles */}
-        {[...Array(40)].map((_, i) => (
-          <div
-            key={`particle-${i}`}
-            className="absolute rounded-full particle opacity-60"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              width: `${Math.random() * 25 + 8}px`,
-              height: `${Math.random() * 25 + 8}px`,
-              background: `radial-gradient(circle, ${['#8847FD', '#A334BC', '#FE45CB', '#EA53F8', '#E79CA7'][Math.floor(Math.random() * 5)]}40, transparent)`,
-              animationDelay: `${Math.random() * 20}s`,
-              animationDuration: `${Math.random() * 16 + 16}s`,
-              filter: 'blur(1px)'
-            }}
-          />
-        ))}
-        
 
-        
-        {/* Pulsing cosmic orbs */}
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={`pulse-${i}`}
-            className="absolute cosmic-pulse opacity-30"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              width: `${Math.random() * 40 + 20}px`,
-              height: `${Math.random() * 40 + 20}px`,
-              background: `radial-gradient(circle, ${['#8847FD', '#A334BC', '#FE45CB', '#EA53F8'][Math.floor(Math.random() * 4)]}30, transparent)`,
-              animationDelay: `${Math.random() * 10}s`,
-              filter: 'blur(2px)'
-            }}
-          />
-        ))}
-      </div>
       
       {/* Custom Cursor */}
       <div 
@@ -906,5 +868,3 @@ function App() {
 }
 
 export default App;
-
-

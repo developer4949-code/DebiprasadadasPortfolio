@@ -13,7 +13,7 @@ function App() {
     setIsLoaded(true);
 
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
+      const sections = ['hero', 'about', 'skills', 'projects', 'education', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -84,7 +84,7 @@ function App() {
             <div className={`hidden md:flex items-center space-x-8 transition-all duration-700 delay-300 ${
               isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-5 opacity-0'
             }`}>
-              {['About', 'Skills', 'Projects', 'Contact'].map((item, index) => (
+              {['About', 'Skills', 'Projects', 'Education', 'Contact'].map((item, index) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -129,7 +129,9 @@ function App() {
             <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
               Full-stack Developer & Cloud Enthusiast
             </p>
-            
+            <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
+              Full-stack developer and cloud enthusiast with experience building real-world apps in logistics, citizen services, and education. Skilled in Java, JavaScript, React.js, Spring Boot, and Android with Firebase. Comfortable designing RESTful APIs and integrating cloud tools like GitHub Actions, Docker, and Kubernetes. Passionate about clean code, usability, and solving real-world problems through tech.
+            </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
               <button
@@ -404,7 +406,7 @@ function App() {
               {
                 title: "Fill It – Ride-Sharing for Tanker Fulfillment",
                 description: "Engineered a scalable backend for real-time trip lifecycle management using Spring Boot. Implemented geolocation-based trip matching with Haversine formula and real-time status tracking. Integrated Firebase Authentication for secure role-based access (customer and driver).",
-                tech: ["Java ", "Spring Boot", "Gradle", "Firebase", "Docker"],
+                tech: ["Java 8+", "Spring Boot", "Gradle", "Firebase", "Google Groups", "Docker"],
                 image: "🚚",
                 githubUrl: "https://github.com/developer4949-code/FILL-IT-App",
                 highlights: [
@@ -419,7 +421,7 @@ function App() {
               {
                 title: "Institution Student Management System (ISMS)",
                 description: "Built 50+ RESTful APIs to manage academics, attendance, and fee records with robust validation and async processing. Integrated Google Drive API for dynamic document upload and OpenCV for student image preprocessing. Secured platform with Firebase Authentication and custom access control mapped to user roles.",
-                tech: ["Java ", "Spring Boot ", "Firebase", "Gradle", "Google Drive API", "OpenCV"],
+                tech: ["Java 21", "Spring Boot 3.4", "Firebase", "Gradle", "Google Drive API", "OpenCV"],
                 image: "🏫",
                 githubUrl: "https://github.com/developer4949-code/ISMS-Fullstack",
                 highlights: [
@@ -434,7 +436,7 @@ function App() {
               {
                 title: "SuchnaSangam – Government Grievance & Alert Portal",
                 description: "Built a real-time grievance and alert portal for citizens and officials using Firebase Realtime Database. Implemented district-wise alert broadcasting and grievance tracking with role-based access controls. Enabled secure document sharing and status updates for grievances across citizens, officials, and admins.",
-                tech: ["Java ", "Spring Boot ", "Firebase", "Gradle", "Docker", "Lombok"],
+                tech: ["Java 17", "Spring Boot 3.5.0", "Firebase", "Gradle", "Google Cloud APIs", "Docker", "Lombok"],
                 image: "📢",
                 githubUrl: "https://github.com/developer4949-code/Suchna-Sangam-Fullstack",
                 highlights: [
@@ -518,6 +520,108 @@ function App() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section id="education" className="py-20 bg-slate-800/20 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] bg-clip-text text-transparent">
+              Education & Certifications
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] mx-auto rounded-full"></div>
+          </div>
+
+          <div className="space-y-8">
+            {/* Main Education */}
+            <div className="bg-slate-900/30 rounded-xl overflow-hidden backdrop-blur-md border border-[#8847FD]/20 hover:border-[#8847FD]/40 transition-all duration-300 transform hover:scale-102 hover:shadow-xl hover:shadow-[#8847FD]/10 group">
+              <div className="p-8">
+                <div className="flex items-start gap-6">
+                  {/* IIIT Bhubaneswar Logo */}
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#8847FD]/20 to-[#FE45CB]/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                    <div className="text-3xl font-bold text-[#8847FD]">IIIT</div>
+                  </div>
+                  
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-semibold mb-2 group-hover:text-[#8847FD] transition-colors duration-300">
+                      International Institute of Information Technology, Bhubaneswar
+                    </h3>
+                    <p className="text-lg text-gray-300 mb-2">
+                      B.Tech in Computer Science and Engineering
+                    </p>
+                    <p className="text-gray-400 mb-4">2020 - 2024</p>
+                    
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2 text-[#8847FD]">
+                        <span className="text-sm font-medium">CGPA:</span>
+                        <span className="text-gray-300">8.5/10</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-[#8847FD]">
+                        <span className="text-sm font-medium">Key Courses:</span>
+                        <span className="text-gray-300">Data Structures, Algorithms, Database Systems, Web Development, Cloud Computing</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Certifications */}
+            <div className="grid md:grid-cols-2 gap-6">
+              {[
+                {
+                  title: "Android Development",
+                  subtitle: "The Complete Android Oreo Developer Course",
+                  platform: "Udemy",
+                  year: "2023",
+                  icon: "📱"
+                },
+                {
+                  title: "Spring Boot",
+                  subtitle: "Spring Framework Essentials, REST API Development",
+                  platform: "Spring Academy",
+                  year: "2024",
+                  icon: "☕"
+                },
+                {
+                  title: "Cloud Computing",
+                  subtitle: "AWS Cloud Practitioner Essentials",
+                  platform: "AWS Skill Builder",
+                  year: "2025",
+                  icon: "☁️"
+                },
+                {
+                  title: "Full Stack Development",
+                  subtitle: "React.js & Node.js Complete Course",
+                  platform: "Udemy",
+                  year: "2024",
+                  icon: "⚛️"
+                }
+              ].map((cert, index) => (
+                <div
+                  key={cert.title}
+                  className="bg-slate-900/30 p-6 rounded-xl backdrop-blur-md border border-[#8847FD]/20 hover:border-[#8847FD]/40 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-[#8847FD]/10 group"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#8847FD]/20 to-[#FE45CB]/20 rounded-lg flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
+                      {cert.icon}
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold mb-1 group-hover:text-[#8847FD] transition-colors duration-300">
+                        {cert.title}
+                      </h4>
+                      <p className="text-gray-300 text-sm mb-2">{cert.subtitle}</p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-[#8847FD] text-sm font-medium">{cert.platform}</span>
+                        <span className="text-gray-400 text-sm">{cert.year}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -609,7 +713,7 @@ function App() {
       <footer className="py-8 border-t border-cyan-500/20">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <p className="text-gray-400">
-            © 2025 Debi Prasad Das.
+            © 2024 Debi Prasad Das. Built with React & Tailwind CSS.
           </p>
         </div>
       </footer>

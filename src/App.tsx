@@ -436,6 +436,7 @@ import { ChevronDown, Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Code,
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     setIsLoaded(true);
@@ -457,7 +458,17 @@ function App() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    const handleMouseMove = (e: MouseEvent) => {
+      setCursorPosition({ x: e.clientX, y: e.clientY });
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   const scrollToSection = (sectionId: string) => {
@@ -468,7 +479,72 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-cyan-900 text-white overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-[#120945] via-[#371A5A] to-[#7A1378] text-white overflow-x-hidden relative">
+      {/* Cosmic Background Animation */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        {/* Floating particles */}
+        {[...Array(40)].map((_, i) => (
+          <div
+            key={`particle-${i}`}
+            className="absolute rounded-full animate-float opacity-60"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 25 + 8}px`,
+              height: `${Math.random() * 25 + 8}px`,
+              background: `radial-gradient(circle, ${['#8847FD', '#A334BC', '#FE45CB', '#EA53F8', '#E79CA7'][Math.floor(Math.random() * 5)]}40, transparent)`,
+              animationDelay: `${Math.random() * 10}s`,
+              animationDuration: `${Math.random() * 8 + 8}s`,
+              filter: 'blur(1px)'
+            }}
+          />
+        ))}
+        
+        {/* Drifting cosmic elements */}
+        {[...Array(15)].map((_, i) => (
+          <div
+            key={`drift-${i}`}
+            className="absolute cosmic-drift opacity-40"
+            style={{
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 15 + 5}px`,
+              height: `${Math.random() * 15 + 5}px`,
+              background: `radial-gradient(circle, ${['#8847FD', '#A334BC', '#FE45CB'][Math.floor(Math.random() * 3)]}60, transparent)`,
+              animationDelay: `${Math.random() * 20}s`,
+              animationDuration: `${Math.random() * 15 + 15}s`,
+              filter: 'blur(0.5px)'
+            }}
+          />
+        ))}
+        
+        {/* Pulsing cosmic orbs */}
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={`pulse-${i}`}
+            className="absolute cosmic-pulse opacity-30"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 40 + 20}px`,
+              height: `${Math.random() * 40 + 20}px`,
+              background: `radial-gradient(circle, ${['#8847FD', '#A334BC', '#FE45CB', '#EA53F8'][Math.floor(Math.random() * 4)]}30, transparent)`,
+              animationDelay: `${Math.random() * 5}s`,
+              filter: 'blur(2px)'
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Custom Cursor */}
+      <div 
+        className="fixed w-8 h-8 rounded-full bg-gradient-to-r from-[#8847FD] to-[#FE45CB] opacity-80 pointer-events-none z-[9999] mix-blend-difference transition-transform duration-100 ease-out"
+        style={{
+          left: cursorPosition.x - 16,
+          top: cursorPosition.y - 16,
+          transform: 'scale(1)',
+        }}
+      />
+      
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         activeSection !== 'hero' ? 'bg-slate-900/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
@@ -478,7 +554,7 @@ function App() {
             <div className={`text-2xl font-bold transition-all duration-500 ${
               isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'
             }`}>
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#8847FD] to-[#FE45CB] bg-clip-text text-transparent">
                 Portfolio
               </span>
             </div>
@@ -490,13 +566,13 @@ function App() {
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 hover:text-cyan-400 ${
-                    activeSection === item.toLowerCase() ? 'text-cyan-400' : 'text-gray-300'
+                  className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 hover:text-[#8847FD] ${
+                    activeSection === item.toLowerCase() ? 'text-[#8847FD]' : 'text-gray-300'
                   }`}
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   {item}
-                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-cyan-400 to-blue-400 transform transition-transform duration-300 ${
+                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] transform transition-transform duration-300 ${
                     activeSection === item.toLowerCase() ? 'scale-x-100' : 'scale-x-0'
                   }`}></span>
                 </button>
@@ -528,7 +604,7 @@ function App() {
           <div className={`transition-all duration-1000 ${
             isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent animate-gradient">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#8847FD] via-[#FE45CB] to-[#EA53F8] bg-clip-text text-transparent animate-gradient">
               Debi Prasad Das
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
@@ -541,13 +617,13 @@ function App() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
               <button
                 onClick={() => scrollToSection('projects')}
-                className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/25 transform hover:scale-105 transition-all duration-300"
+                className="px-8 py-3 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] rounded-full font-semibold hover:shadow-lg hover:shadow-[#8847FD]/25 transform hover:scale-105 transition-all duration-300"
               >
                 View My Work
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="px-8 py-3 border border-cyan-400 rounded-full font-semibold hover:bg-cyan-400/10 transform hover:scale-105 transition-all duration-300"
+                className="px-8 py-3 border border-[#8847FD] rounded-full font-semibold hover:bg-[#8847FD]/10 transform hover:scale-105 transition-all duration-300"
               >
                 Get In Touch
               </button>
@@ -556,7 +632,7 @@ function App() {
         </div>
 
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown className="w-6 h-6 text-cyan-400" />
+          <ChevronDown className="w-6 h-6 text-[#8847FD]" />
         </div>
       </section>
 
@@ -859,4 +935,5 @@ function App() {
 }
 
 export default App;
+
 

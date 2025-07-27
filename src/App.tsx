@@ -76,7 +76,7 @@ function App() {
                 <img 
   src={logo} 
   alt="Portfolio Logo" 
-  style={{ height: '40px', width: 'auto', display: 'inline-block', verticalAlign: 'middle', background: 'transparent' }} 
+  style={{ height: '60px', width: 'auto', display: 'inline-block', verticalAlign: 'middle', background: 'transparent' }} 
 />
               </span>
             </div>

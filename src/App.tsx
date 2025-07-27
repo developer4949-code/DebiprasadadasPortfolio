@@ -169,6 +169,14 @@ function App() {
                 <div className="flex items-center gap-2 text-cyan-400">
                   <MapPin className="w-5 h-5" />
                   <span>Bhubaneswar, India</span>
+                  <div className="flex gap-3 ml-4">
+                    <a href="https://github.com/developer4949-code" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-slate-900/50 rounded-full flex items-center justify-center border border-[#8847FD]/20 hover:border-[#8847FD]/40 hover:bg-[#8847FD]/10 transition-all duration-300">
+                      <Github className="w-6 h-6 text-[#8847FD]" />
+                    </a>
+                    <a href="https://www.linkedin.com/in/debi-prasad-das-458878292/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-slate-900/50 rounded-full flex items-center justify-center border border-[#8847FD]/20 hover:border-[#8847FD]/40 hover:bg-[#8847FD]/10 transition-all duration-300">
+                      <Linkedin className="w-6 h-6 text-[#8847FD]" />
+                    </a>
+                  </div>
                 </div>
               </div>
               <div className="pt-6">
@@ -177,16 +185,6 @@ function App() {
                   <span className="font-semibold">International Institute of Information Technology, Bhubaneswar</span><br />
                   B.Tech in Computer Science and Engineering (2024)
                 </p>
-                
-                {/* Social Links */}
-                <div className="flex gap-4 mt-4">
-                  <a href="https://github.com/developer4949-code" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-900/50 rounded-full flex items-center justify-center border border-[#8847FD]/20 hover:border-[#8847FD]/40 hover:bg-[#8847FD]/10 transition-all duration-300">
-                    <Github className="w-5 h-5 text-[#8847FD]" />
-                  </a>
-                  <a href="https://www.linkedin.com/in/debi-prasad-das-458878292/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-900/50 rounded-full flex items-center justify-center border border-[#8847FD]/20 hover:border-[#8847FD]/40 hover:bg-[#8847FD]/10 transition-all duration-300">
-                    <Linkedin className="w-5 h-5 text-[#8847FD]" />
-                  </a>
-                </div>
                 <h3 className="text-xl font-semibold text-cyan-400 mt-4 mb-2">Certifications & Courses</h3>
                 <ul className="list-disc list-inside text-gray-300">
                   <li>Android Development: The Complete Android Oreo Developer Course – Udemy (2023)</li>

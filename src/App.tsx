@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronDown, Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Code, Database, Server } from 'lucide-react';
+import { ChevronDown, Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Code, Database, Server, FileText } from 'lucide-react';
 import profileImage from './B123048_profile.png';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     setIsLoaded(true);
 
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'skills', 'experience', 'projects', 'contact'];
+      const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -75,10 +75,10 @@ function App() {
               </span>
             </div>
 
-            <div className={`hidden md:flex space-x-8 transition-all duration-700 delay-300 ${
+            <div className={`hidden md:flex items-center space-x-8 transition-all duration-700 delay-300 ${
               isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-5 opacity-0'
             }`}>
-              {['About', 'Skills', 'Experience', 'Projects', 'Contact'].map((item, index) => (
+              {['About', 'Skills', 'Projects', 'Contact'].map((item, index) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -93,6 +93,17 @@ function App() {
                   }`}></span>
                 </button>
               ))}
+              
+              {/* View Resume Button */}
+              <a
+                href="https://your-resume-url-here.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] rounded-full text-white font-medium hover:shadow-lg hover:shadow-[#8847FD]/25 transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
+              >
+                <FileText className="w-4 h-4" />
+                View Resume
+              </a>
             </div>
           </div>
         </div>
@@ -372,20 +383,7 @@ function App() {
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section id="experience" className="py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-              Experience
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 mx-auto rounded-full"></div>
-          </div>
-          <div className="space-y-8">
-            {/* You can add work experience here if you want, or keep it focused on projects */}
-          </div>
-        </div>
-      </section>
+
 
       {/* Projects Section */}
       <section id="projects" className="py-20 bg-slate-800/20 backdrop-blur-sm">

@@ -209,13 +209,13 @@ function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 bg-slate-800/30">
+      <section id="skills" className="py-20 bg-slate-800/20 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] bg-clip-text text-transparent">
               Skills & Technologies
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 mx-auto rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] mx-auto rounded-full"></div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -238,24 +238,18 @@ function App() {
             ].map((category, index) => (
               <div
                 key={category.title}
-                className="bg-slate-900/50 p-8 rounded-xl backdrop-blur-sm border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/10"
+                className="bg-slate-900/30 p-8 rounded-xl backdrop-blur-md border border-[#8847FD]/20 hover:border-[#8847FD]/40 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-[#8847FD]/10"
                 style={{ animationDelay: `${index * 200}ms` }}
               >
-                <div className="text-cyan-400 mb-4">{category.icon}</div>
-                <h3 className="text-xl font-semibold mb-4">{category.title}</h3>
-                <div className="space-y-3">
+                <div className="text-[#8847FD] mb-4">{category.icon}</div>
+                <h3 className="text-xl font-semibold mb-6 text-white">{category.title}</h3>
+                <div className="space-y-4">
                   {category.skills.map((skill, skillIndex) => (
-                    <div key={skill} className="flex items-center justify-between">
-                      <span className="text-gray-300">{skill}</span>
-                      <div className="w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full animate-fill-bar"
-                          style={{
-                            animationDelay: `${(index * 200) + (skillIndex * 100)}ms`,
-                            width: `${85 + Math.random() * 15}%`
-                          }}
-                        ></div>
+                    <div key={skill} className="flex items-center gap-3 p-3 rounded-lg bg-slate-800/50 hover:bg-slate-800/70 transition-all duration-200">
+                      <div className="w-8 h-8 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] rounded-lg flex items-center justify-center">
+                        <span className="text-white text-xs font-bold">{skill.charAt(0)}</span>
                       </div>
+                      <span className="text-gray-300 font-medium">{skill}</span>
                     </div>
                   ))}
                 </div>

@@ -405,27 +405,59 @@ function App() {
             {[
               {
                 title: "Fill It – Ride-Sharing for Tanker Fulfillment",
-                description: "Engineered a scalable backend for real-time trip lifecycle: creation, matching, and completion using Spring Boot. Implemented geolocation-based trip matching with Haversine formula and real-time status tracking. Integrated Firebase Authentication for secure role-based access (customer and driver).",
-                tech: ["Java", "Spring Boot", "Firebase", "Realtime Database"],
-                image: "🚚"
+                description: "Engineered a scalable backend for real-time trip lifecycle management using Spring Boot. Implemented geolocation-based trip matching with Haversine formula and real-time status tracking. Integrated Firebase Authentication for secure role-based access (customer and driver).",
+                tech: ["Java 8+", "Spring Boot", "Gradle", "Firebase", "Google Groups", "Docker"],
+                image: "🚚",
+                highlights: [
+                  "Real-time trip lifecycle: creation, matching, and completion",
+                  "Geolocation-based trip matching with Haversine formula",
+                  "Secure OAuth and Firebase-based authentication",
+                  "Cloud-native architecture with Docker deployment",
+                  "Scalable microservices with monitoring capabilities"
+                ],
+                impact: "Enables reliable ride-sharing infrastructure, protects user data, promotes economic flexibility for gig workers, and eases traffic congestion through shared mobility."
               },
               {
                 title: "Institution Student Management System (ISMS)",
                 description: "Built 50+ RESTful APIs to manage academics, attendance, and fee records with robust validation and async processing. Integrated Google Drive API for dynamic document upload and OpenCV for student image preprocessing. Secured platform with Firebase Authentication and custom access control mapped to user roles.",
-                tech: ["Java", "Spring Boot", "Firebase", "Google Drive API", "OpenCV"],
-                image: "🏫"
+                tech: ["Java 21", "Spring Boot 3.4", "Firebase", "Gradle", "Google Drive API", "OpenCV"],
+                image: "🏫",
+                highlights: [
+                  "50+ RESTful APIs for comprehensive academic management",
+                  "Role-based access with secure Firebase authentication",
+                  "Async operations for grievance and policy workflows",
+                  "Email notifications and Google Drive integration",
+                  "Modular architecture: controllers, services, models, configs"
+                ],
+                impact: "Streamlined data management, secure handling of sensitive academic data, integration with cloud tools for better availability, and automation reduces manual errors and bottlenecks."
               },
               {
                 title: "SuchnaSangam – Government Grievance & Alert Portal",
                 description: "Built a real-time grievance and alert portal for citizens and officials using Firebase Realtime Database. Implemented district-wise alert broadcasting and grievance tracking with role-based access controls. Enabled secure document sharing and status updates for grievances across citizens, officials, and admins.",
-                tech: ["Java", "Spring Boot", "Firebase", "Realtime Database"],
-                image: "📢"
+                tech: ["Java 17", "Spring Boot 3.5.0", "Firebase", "Gradle", "Google Cloud APIs", "Docker", "Lombok"],
+                image: "📢",
+                highlights: [
+                  "Real-time grievance and alert portal for citizens and officials",
+                  "District-wise alert broadcasting and grievance tracking",
+                  "Role-based access controls and secure document sharing",
+                  "Highly modular and service-oriented backend",
+                  "Cloud-native with Docker deployment capabilities"
+                ],
+                impact: "Bridges digital gaps, enables real-time grievance redressal, promotes accountability and transparency, and drives community empowerment."
               },
               {
                 title: "Quiz System – Android Quiz Application",
                 description: "Built an Android quiz app with Firebase Authentication supporting separate admin and user experiences. Managed dynamic quiz content, scores, and subjects using Firebase Realtime Database. Designed interactive UI using Material Design, ViewBinding, and Lottie animations for smooth UX.",
-                tech: ["Java", "Android SDK", "Firebase", "Material Design"],
-                image: "📱"
+                tech: ["Java", "Android SDK", "Firebase", "Material Design", "ViewBinding", "Lottie"],
+                image: "📱",
+                highlights: [
+                  "Separate admin and user experiences with Firebase Authentication",
+                  "Dynamic quiz content management with real-time updates",
+                  "Interactive UI with Material Design and Lottie animations",
+                  "Score tracking and subject-based quiz organization",
+                  "Offline-capable with Firebase Realtime Database sync"
+                ],
+                impact: "Enhances learning experiences through interactive assessments, provides educators with powerful quiz management tools, and creates engaging educational content delivery."
               }
             ].map((project, index) => (
               <div
@@ -440,6 +472,26 @@ function App() {
                     {project.title}
                   </h3>
                   <p className="text-gray-300 mb-6 leading-relaxed text-lg">{project.description}</p>
+                  
+                  {/* Key Highlights */}
+                  <div className="mb-6">
+                    <h4 className="text-lg font-semibold text-[#8847FD] mb-3">Key Highlights</h4>
+                    <ul className="space-y-2">
+                      {project.highlights.map((highlight, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-gray-300">
+                          <span className="text-[#8847FD] mt-1">•</span>
+                          <span className="text-sm">{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Societal Impact */}
+                  <div className="mb-6 p-4 bg-slate-800/30 rounded-lg border border-[#8847FD]/20">
+                    <h4 className="text-lg font-semibold text-[#8847FD] mb-2">Societal Impact</h4>
+                    <p className="text-gray-300 text-sm leading-relaxed">{project.impact}</p>
+                  </div>
+
                   <div className="flex flex-wrap gap-3 mb-6">
                     {project.tech.map((tech) => (
                       <span

@@ -611,7 +611,7 @@ function App() {
       <footer className="py-8 border-t border-cyan-500/20">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <p className="text-gray-400">
-            © 2024 Debi Prasad Das. Built with React & Tailwind CSS.
+            © 2025 Debi Prasad Das.
           </p>
         </div>
       </footer>

@@ -406,7 +406,7 @@ function App() {
               {
                 title: "Fill It – Ride-Sharing for Tanker Fulfillment",
                 description: "Engineered a scalable backend for real-time trip lifecycle management using Spring Boot. Implemented geolocation-based trip matching with Haversine formula and real-time status tracking. Integrated Firebase Authentication for secure role-based access (customer and driver).",
-                tech: ["Java 8+", "Spring Boot", "Gradle", "Firebase", "Google Groups", "Docker"],
+                tech: ["Java ", "Spring Boot", "Gradle", "Firebase", "Google Groups", "Docker"],
                 image: "🚚",
                 githubUrl: "https://github.com/developer4949-code/FILL-IT-App",
                 highlights: [
@@ -421,7 +421,7 @@ function App() {
               {
                 title: "Institution Student Management System (ISMS)",
                 description: "Built 50+ RESTful APIs to manage academics, attendance, and fee records with robust validation and async processing. Integrated Google Drive API for dynamic document upload and OpenCV for student image preprocessing. Secured platform with Firebase Authentication and custom access control mapped to user roles.",
-                tech: ["Java 21", "Spring Boot 3.4", "Firebase", "Gradle", "Google Drive API", "OpenCV"],
+                tech: ["Java ", "Spring Boot ", "Firebase", "Gradle", "Google Drive API", "OpenCV"],
                 image: "🏫",
                 githubUrl: "https://github.com/developer4949-code/ISMS-Fullstack",
                 highlights: [
@@ -436,7 +436,7 @@ function App() {
               {
                 title: "SuchnaSangam – Government Grievance & Alert Portal",
                 description: "Built a real-time grievance and alert portal for citizens and officials using Firebase Realtime Database. Implemented district-wise alert broadcasting and grievance tracking with role-based access controls. Enabled secure document sharing and status updates for grievances across citizens, officials, and admins.",
-                tech: ["Java 17", "Spring Boot 3.5.0", "Firebase", "Gradle", "Google Cloud APIs", "Docker", "Lombok"],
+                tech: ["Java ", "Spring Boot ", "Firebase", "Gradle", "Google Cloud APIs", "Docker", "Lombok"],
                 image: "📢",
                 githubUrl: "https://github.com/developer4949-code/Suchna-Sangam-Fullstack",
                 highlights: [

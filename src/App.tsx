@@ -74,8 +74,10 @@ function App() {
             }`}>
               <span className="bg-gradient-to-r from-[#8847FD] to-[#FE45CB] bg-clip-text text-transparent">
                 <img 
-                  src={logo} 
-                  alt="Portfolio Logo" style={{ height: '40px', width: 'auto', display: 'inline-block', verticalAlign: 'middle', background: 'transparent' }} />
+  src={logo} 
+  alt="Portfolio Logo" 
+  style={{ height: '40px', width: 'auto', display: 'inline-block', verticalAlign: 'middle', background: 'transparent' }} 
+/>
               </span>
             </div>
 

@@ -71,7 +71,7 @@ function App() {
               isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'
             }`}>
               <span className="bg-gradient-to-r from-[#8847FD] to-[#FE45CB] bg-clip-text text-transparent">
-                DP
+                <img src="/src/logo-p.jpg" alt="Portfolio Logo" style={{ height: '40px', width: 'auto', display: 'inline-block', verticalAlign: 'middle', background: 'transparent' }} />
               </span>
             </div>
 

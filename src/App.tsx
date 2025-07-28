@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronDown, Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Code, Database, Server, FileText } from 'lucide-react';
+import { ChevronDown, Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Code, Database, Server, FileText, Menu, X } from 'lucide-react';
 import profileImage from './B123048_profile.png';
-import logo from './logo-p.png';
  
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -47,6 +47,7 @@ function App() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsMobileMenuOpen(false); // Close mobile menu when clicking a link
   };
 
   return (
@@ -73,14 +74,11 @@ function App() {
               isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'
             }`}>
               <span className="bg-gradient-to-r from-[#8847FD] to-[#FE45CB] bg-clip-text text-transparent">
-                <img 
-  src={logo} 
-  alt="Portfolio Logo" 
-  style={{ height: '60px', width: 'auto', display: 'inline-block', verticalAlign: 'middle', background: 'transparent' }} 
-/>
+                Debi Prasad Das
               </span>
             </div>
 
+            {/* Desktop Navigation */}
             <div className={`hidden md:flex items-center space-x-8 transition-all duration-700 delay-300 ${
               isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-5 opacity-0'
             }`}>
@@ -111,6 +109,48 @@ function App() {
                 View Resume
               </a>
             </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 text-gray-300 hover:text-[#8847FD] transition-colors duration-300"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
+
+          {/* Mobile Menu */}
+          <div className={`md:hidden transition-all duration-300 ease-in-out ${
+            isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+          }`}>
+            <div className="py-4 space-y-4 border-t border-gray-700 mt-4">
+              {['About', 'Skills', 'Projects', 'Education', 'Contact'].map((item, index) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item.toLowerCase())}
+                  className={`block w-full text-left px-4 py-3 text-sm font-medium transition-all duration-300 hover:text-[#8847FD] hover:bg-[#8847FD]/10 rounded-lg ${
+                    activeSection === item.toLowerCase() ? 'text-[#8847FD] bg-[#8847FD]/10' : 'text-gray-300'
+                  }`}
+                >
+                  {item}
+                </button>
+              ))}
+              
+              {/* Mobile View Resume Button */}
+              <a
+                href="https://your-resume-url-here.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full px-4 py-3 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] rounded-lg text-white font-medium hover:shadow-lg hover:shadow-[#8847FD]/25 transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
+              >
+                <FileText className="w-4 h-4" />
+                View Resume
+              </a>
+            </div>
           </div>
         </div>
       </nav>
@@ -129,7 +169,9 @@ function App() {
             <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
               Full-stack Developer & Cloud Enthusiast
             </p>
-         
+            <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
+              Full-stack developer and cloud enthusiast with experience building real-world apps in logistics, citizen services, and education. Skilled in Java, JavaScript, React.js, Spring Boot, and Android with Firebase. Comfortable designing RESTful APIs and integrating cloud tools like GitHub Actions, Docker, and Kubernetes. Passionate about clean code, usability, and solving real-world problems through tech.
+            </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
               <button
@@ -198,7 +240,7 @@ function App() {
                 <h3 className="text-xl font-semibold text-cyan-400 mb-2">Education</h3>
                 <p className="text-gray-300 mb-1">
                   <span className="font-semibold">International Institute of Information Technology, Bhubaneswar</span><br />
-                  B.Tech in Computer Science and Engineering (2027)
+                  B.Tech in Computer Science and Engineering (2024)
                 </p>
                 <h3 className="text-xl font-semibold text-cyan-400 mt-4 mb-2">Certifications & Courses</h3>
                 <ul className="list-disc list-inside text-gray-300">
@@ -549,9 +591,18 @@ function App() {
                     <p className="text-lg text-gray-300 mb-2">
                       B.Tech in Computer Science and Engineering
                     </p>
-                    <p className="text-gray-400 mb-4">2023 - 2027</p>
+                    <p className="text-gray-400 mb-4">2020 - 2024</p>
                     
-                    
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2 text-[#8847FD]">
+                        <span className="text-sm font-medium">CGPA:</span>
+                        <span className="text-gray-300">8.5/10</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-[#8847FD]">
+                        <span className="text-sm font-medium">Key Courses:</span>
+                        <span className="text-gray-300">Data Structures, Algorithms, Database Systems, Web Development, Cloud Computing</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

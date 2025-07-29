@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ChevronDown, Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Code, Database, Server, FileText, Menu, X } from 'lucide-react';
 import profileImage from './B123048_profile.png';
+// You can add your logo file here, for example:
+import logo from './logo.png';
  
 
 function App() {
@@ -70,10 +72,15 @@ function App() {
       }`}>
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <div className={`text-2xl font-bold transition-all duration-500 ${
+            <div className={`flex items-center gap-3 transition-all duration-500 ${
               isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'
             }`}>
-              <span className="bg-gradient-to-r from-[#8847FD] to-[#FE45CB] bg-clip-text text-transparent">
+              {/* Logo */}
+              <div className="w-10 h-10 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] rounded-lg flex items-center justify-center text-white font-bold text-lg">
+                DP
+              </div>
+              {/* Name */}
+              <span className="text-2xl font-bold bg-gradient-to-r from-[#8847FD] to-[#FE45CB] bg-clip-text text-transparent">
                 Debi Prasad Das
               </span>
             </div>
@@ -256,15 +263,15 @@ function App() {
                 <div className="absolute inset-0 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] rounded-full animate-spin-slow opacity-75"></div>
                 <div className="absolute inset-2 bg-slate-800 rounded-full flex items-center justify-center overflow-hidden">
                   <img 
-                    src={profileImage} 
-                    alt="Debi Prasad Das" 
-                    className="w-full h-full object-cover rounded-full"
-                    onError={(e) => {
-                      // Fallback to emoji if image fails to load
-                      e.currentTarget.style.display = 'none';
-                      e.currentTarget.nextElementSibling.style.display = 'flex';
-                    }}
-                  />
+  src={logo} 
+  alt="Debi Prasad Das Portfolio Logo" 
+  className="h-10 w-auto object-contain"
+  onError={(e) => {
+    // Fallback to text if logo fails to load
+    e.currentTarget.style.display = 'none';
+    e.currentTarget.nextElementSibling.style.display = 'flex';
+  }}
+/>
                   <div className="text-6xl hidden">👨‍💻</div>
                 </div>
               </div>

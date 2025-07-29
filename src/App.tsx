@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ChevronDown, Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Code, Database, Server, FileText, Menu, X } from 'lucide-react';
 import profileImage from './B123048_profile.png';
-// You can add your logo file here, for example:
-import logo from './logo-p.png';
+import logo from './logo.svg';
  
 
 function App() {
@@ -76,13 +75,24 @@ function App() {
               isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'
             }`}>
               {/* Logo */}
-              <div className="w-10 h-10 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] rounded-lg flex items-center justify-center text-white font-bold text-lg">
-                DP
+              <img 
+                src={logo} 
+                alt="Debi Prasad Das Portfolio Logo" 
+                className="h-10 w-auto object-contain"
+                onError={(e) => {
+                  // Fallback to text if logo fails to load
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling.style.display = 'flex';
+                }}
+              />
+              <div className="h-10 flex items-center gap-2 hidden">
+                <div className="w-8 h-8 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                  DP
+                </div>
+                <span className="text-xl font-bold bg-gradient-to-r from-[#8847FD] to-[#FE45CB] bg-clip-text text-transparent">
+                  Portfolio
+                </span>
               </div>
-              {/* Name */}
-              <span className="text-2xl font-bold bg-gradient-to-r from-[#8847FD] to-[#FE45CB] bg-clip-text text-transparent">
-                Debi Prasad Das
-              </span>
             </div>
 
             {/* Desktop Navigation */}
@@ -263,15 +273,15 @@ function App() {
                 <div className="absolute inset-0 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] rounded-full animate-spin-slow opacity-75"></div>
                 <div className="absolute inset-2 bg-slate-800 rounded-full flex items-center justify-center overflow-hidden">
                   <img 
-  src={logo} 
-  alt="Debi Prasad Das Portfolio Logo" 
-  className="h-10 w-auto object-contain"
-  onError={(e) => {
-    // Fallback to text if logo fails to load
-    e.currentTarget.style.display = 'none';
-    e.currentTarget.nextElementSibling.style.display = 'flex';
-  }}
-/>
+                    src={profileImage} 
+                    alt="Debi Prasad Das" 
+                    className="w-full h-full object-cover rounded-full"
+                    onError={(e) => {
+                      // Fallback to emoji if image fails to load
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                    }}
+                  />
                   <div className="text-6xl hidden">👨‍💻</div>
                 </div>
               </div>

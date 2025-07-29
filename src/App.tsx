@@ -117,7 +117,7 @@ function App() {
               
               {/* View Resume Button */}
               <a
-                href="https://your-resume-url-here.com"
+                href="https://drive.google.com/file/d/14ldyTpDW_kMIjRM8fsTTCzhhIzyLAWk-/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-2 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] rounded-full text-white font-medium hover:shadow-lg hover:shadow-[#8847FD]/25 transform hover:scale-105 transition-all duration-300 flex items-center gap-2"

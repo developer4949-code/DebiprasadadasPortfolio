@@ -78,7 +78,7 @@ function App() {
               <img 
                 src={logo} 
                 alt="Debi Prasad Das Portfolio Logo" 
-                className="h-10 w-auto object-contain"
+                className="h-20 w-auto object-contain"
                 onError={(e) => {
                   // Fallback to text if logo fails to load
                   e.currentTarget.style.display = 'none';
@@ -186,10 +186,6 @@ function App() {
             <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
               Full-stack Developer & Cloud Enthusiast
             </p>
-            <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
-              Full-stack developer and cloud enthusiast with experience building real-world apps in logistics, citizen services, and education. Skilled in Java, JavaScript, React.js, Spring Boot, and Android with Firebase. Comfortable designing RESTful APIs and integrating cloud tools like GitHub Actions, Docker, and Kubernetes. Passionate about clean code, usability, and solving real-world problems through tech.
-            </p>
-
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
               <button
                 onClick={() => scrollToSection('projects')}
@@ -253,19 +249,8 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className="pt-6">
-                <h3 className="text-xl font-semibold text-cyan-400 mb-2">Education</h3>
-                <p className="text-gray-300 mb-1">
-                  <span className="font-semibold">International Institute of Information Technology, Bhubaneswar</span><br />
-                  B.Tech in Computer Science and Engineering (2024)
-                </p>
-                <h3 className="text-xl font-semibold text-cyan-400 mt-4 mb-2">Certifications & Courses</h3>
-                <ul className="list-disc list-inside text-gray-300">
-                  <li>Android Development: The Complete Android Oreo Developer Course – Udemy (2023)</li>
-                  <li>Spring Boot: Spring Framework Essentials, REST API Development – Spring Academy (2024)</li>
-                  <li>Cloud Computing: AWS Cloud Practitioner Essentials – AWS Skill Builder (2025)</li>
-                </ul>
-              </div>
+
+             
             </div>
 
             <div className="relative">
@@ -608,16 +593,12 @@ function App() {
                     <p className="text-lg text-gray-300 mb-2">
                       B.Tech in Computer Science and Engineering
                     </p>
-                    <p className="text-gray-400 mb-4">2020 - 2024</p>
+                    <p className="text-gray-400 mb-4">2023 - 2027</p>
                     
                     <div className="space-y-3">
                       <div className="flex items-center gap-2 text-[#8847FD]">
                         <span className="text-sm font-medium">CGPA:</span>
-                        <span className="text-gray-300">8.5/10</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-[#8847FD]">
-                        <span className="text-sm font-medium">Key Courses:</span>
-                        <span className="text-gray-300">Data Structures, Algorithms, Database Systems, Web Development, Cloud Computing</span>
+                        <span className="text-gray-300">9.13/10</span>
                       </div>
                     </div>
                   </div>
@@ -648,14 +629,8 @@ function App() {
                   platform: "AWS Skill Builder",
                   year: "2025",
                   icon: "☁️"
-                },
-                {
-                  title: "Full Stack Development",
-                  subtitle: "React.js & Node.js Complete Course",
-                  platform: "Udemy",
-                  year: "2024",
-                  icon: "⚛️"
                 }
+           
               ].map((cert, index) => (
                 <div
                   key={cert.title}

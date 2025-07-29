@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ChevronDown, Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Code, Database, Server, FileText, Menu, X } from 'lucide-react';
 import profileImage from './B123048_profile.png';
 // You can add your logo file here, for example:
-import logo from './logo.png';
+import logo from './logo-p.png';
  
 
 function App() {

@@ -199,97 +199,149 @@ function App() {
         </div>
       </nav>
 
-  <section id="hero" className="min-h-screen flex items-center justify-center relative pt-14 pb-8">
+  <section id="hero" className="min-h-screen flex items-center justify-center relative pt-14 pb-8 overflow-hidden">
   <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10 w-full relative z-10">
-    <div className={`transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-      {/* Wider + much more compact card */}
-      <div className="relative mx-auto p-5 sm:p-7 lg:p-8 bg-gradient-to-br from-[#4285F4]/7 via-[#34A853]/4 to-[#FBBC04]/7 
-        rounded-3xl border border-white/10 backdrop-blur-xl overflow-hidden group faang-card shadow-2xl">
-
-        <div className="absolute inset-0 opacity-12 pointer-events-none">
-          <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#4285F4] rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#EA4335] rounded-full blur-3xl animate-pulse" style={{animationDelay: '2.8s'}}></div>
+    <div className={`transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+      {/* Main card – entrance with subtle scale + blur */}
+      <div 
+        className={`
+          relative mx-auto p-5 sm:p-7 lg:p-8 
+          bg-gradient-to-br from-[#4285F4]/7 via-[#34A853]/4 to-[#FBBC04]/7
+          rounded-3xl border border-white/10 backdrop-blur-xl 
+          overflow-hidden shadow-2xl faang-card
+          transition-all duration-1000 ease-out
+          ${isLoaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-95 blur-sm'}
+        `}
+      >
+        {/* Softer, breathing background blobs */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-[#4285F4] rounded-full blur-3xl animate-[pulse_12s_ease-in-out_infinite]"></div>
+          <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-[#EA4335] rounded-full blur-3xl animate-[pulse_14s_ease-in-out_infinite_2s]"></div>
+          <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-[#34A853] rounded-full blur-3xl animate-[pulse_16s_ease-in-out_infinite_4s]"></div>
         </div>
 
-        <div className="relative z-10 grid md:grid-cols-5 gap-5 lg:gap-9 items-center">
-
-          {/* Text content – left side */}
-          <div className="md:col-span-3 space-y-4 text-center md:text-left">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2 text-white faang-title tracking-tight">
+        <div className="relative z-10 grid md:grid-cols-5 gap-6 lg:gap-10 items-center">
+          {/* Left content – staggered entrance */}
+          <div className="md:col-span-3 space-y-5 text-center md:text-left">
+            {/* Name – typewriter + glow finish */}
+            <h1 
+              className={`
+                text-4xl sm:text-5xl lg:text-6xl font-bold mb-3 text-white faang-title tracking-tight
+                transition-all duration-700
+                ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-4'}
+              `}
+              style={{ transitionDelay: '0.4s' }}
+            >
               {displayedName}
-              {displayedName.length > 0 && <span className="animate-blink-caret">|</span>}
+              {displayedName.length > 0 && displayedName.length === fullName.length && (
+                <span className="animate-[glow_2s_ease-in-out_infinite] text-[#4285F4]">|</span>
+              )}
             </h1>
 
-            <p className="text-lg sm:text-xl lg:text-2xl text-gray-200 mb-4 font-light">
+            {/* Subtitle – fade in after name */}
+            <p 
+              className={`
+                text-lg sm:text-xl lg:text-2xl text-gray-200 font-light
+                transition-all duration-700
+                ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-4'}
+              `}
+              style={{ transitionDelay: '1.0s' }}
+            >
               Full-stack Developer & Cloud Enthusiast
             </p>
 
-            {/* Shorter about text – inserted here */}
-            <div className="space-y-3 text-base lg:text-[17px] leading-relaxed font-mono text-gray-100">
-              <p>
+            {/* About text – staggered lines */}
+            <div className="space-y-4 text-base lg:text-lg leading-relaxed font-mono text-gray-100">
+              <p className={`transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`} style={{ transitionDelay: '1.3s' }}>
                 Full-stack developer & cloud enthusiast. Experienced in building real-world apps using Java, Spring Boot, React.js, Firebase, Android and RESTful APIs. Comfortable with Docker, GitHub Actions, AWS basics and Kubernetes fundamentals.
               </p>
-              <p>
+              <p className={`transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`} style={{ transitionDelay: '1.5s' }}>
                 Passionate about clean code and solving practical problems. I enjoy exploring new cloud/mobile tools and contributing to open-source.
               </p>
             </div>
 
-            <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 mt-4 text-sm lg:text-base">
-              <div className="flex items-center gap-2 text-[#a5d6ff]">
+            {/* Contact info – fade in */}
+            <div 
+              className={`flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 mt-5 text-sm lg:text-base transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-3'}`}
+              style={{ transitionDelay: '1.8s' }}
+            >
+              <div className="flex items-center gap-2 text-[#a5d6ff] hover:text-[#60a5fa] transition-colors">
                 <Mail className="w-4 h-4 lg:w-5 lg:h-5" />
                 dddebiprasaddas2004@gmail.com
               </div>
-              <div className="flex items-center gap-2 text-[#bbf7d0]">
+              <div className="flex items-center gap-2 text-[#bbf7d0] hover:text-[#86efac] transition-colors">
                 <Phone className="w-4 h-4 lg:w-5 lg:h-5" />
                 +91-8260057716
               </div>
-              <div className="flex items-center gap-2 text-[#fef08a]">
+              <div className="flex items-center gap-2 text-[#fef08a] hover:text-[#fde047] transition-colors">
                 <MapPin className="w-4 h-4 lg:w-5 lg:h-5" />
                 Bhubaneswar, India
               </div>
             </div>
 
-            <div className="flex justify-center md:justify-start gap-4 mt-4">
+            {/* Social icons – scale in */}
+            <div 
+              className={`flex justify-center md:justify-start gap-5 mt-5 transition-all duration-700 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+              style={{ transitionDelay: '2.0s' }}
+            >
               <a href="https://github.com/developer4949-code" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 lg:w-11 lg:h-11 bg-white/6 rounded-full flex items-center justify-center border border-white/12 hover:border-[#a5d6ff]/60 hover:bg-[#a5d6ff]/10 transition-all">
+                className="w-11 h-11 bg-white/6 rounded-full flex items-center justify-center border border-white/12 hover:border-[#a5d6ff]/60 hover:bg-[#a5d6ff]/10 hover:scale-110 transition-all duration-300">
                 <Github className="w-5 h-5 text-[#a5d6ff]" />
               </a>
               <a href="https://www.linkedin.com/in/debi-prasad-das-458878292/" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 lg:w-11 lg:h-11 bg-white/6 rounded-full flex items-center justify-center border border-white/12 hover:border-[#60a5fa]/60 hover:bg-[#60a5fa]/10 transition-all">
+                className="w-11 h-11 bg-white/6 rounded-full flex items-center justify-center border border-white/12 hover:border-[#60a5fa]/60 hover:bg-[#60a5fa]/10 hover:scale-110 transition-all duration-300">
                 <Linkedin className="w-5 h-5 text-[#60a5fa]" />
               </a>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mt-5">
-              <button onClick={() => scrollToSection('projects')}
-                className="px-7 py-2.5 bg-[#4285F4] rounded-lg font-medium hover:bg-[#1d4ed8] hover:shadow-[#4285F4]/40 transform hover:scale-[1.02] transition-all text-base">
-                View My Work
+            {/* Buttons – staggered entrance + ripple hover */}
+            <div 
+              className={`flex flex-col sm:flex-row gap-4 justify-center md:justify-start mt-7 transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              style={{ transitionDelay: '2.2s' }}
+            >
+              <button 
+                onClick={() => scrollToSection('projects')}
+                className="group relative px-8 py-3 bg-[#4285F4] rounded-lg font-medium text-white overflow-hidden hover:bg-[#1d4ed8] hover:shadow-xl hover:shadow-[#4285F4]/40 transform hover:scale-[1.03] transition-all duration-300"
+              >
+                <span className="relative z-10">View My Work</span>
+                <span className="absolute inset-0 bg-white/20 scale-0 rounded-full group-hover:scale-150 group-hover:opacity-0 transition-all duration-500"></span>
               </button>
-              <button onClick={() => scrollToSection('contact')}
-                className="px-7 py-2.5 border border-white/20 rounded-lg font-medium hover:bg-white/5 hover:border-white/35 transform hover:scale-[1.02] transition-all backdrop-blur-sm text-base">
-                Get In Touch
+              <button 
+                onClick={() => scrollToSection('contact')}
+                className="group relative px-8 py-3 border border-white/25 rounded-lg font-medium text-white overflow-hidden hover:bg-white/5 hover:border-white/40 transform hover:scale-[1.03] transition-all duration-300"
+              >
+                <span className="relative z-10">Get In Touch</span>
+                <span className="absolute inset-0 bg-white/10 scale-0 rounded-full group-hover:scale-150 group-hover:opacity-0 transition-all duration-500"></span>
               </button>
             </div>
           </div>
 
-          {/* Profile image – right side */}
-          <div className="md:col-span-2 flex justify-center md:justify-end mt-5 md:mt-0">
-            <div className="relative w-52 h-52 sm:w-60 sm:h-60 lg:w-72 lg:h-72">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#4285F4] to-[#34A853] rounded-full animate-pulse opacity-20"></div>
-              <div className="absolute inset-3 bg-[#0F1419] rounded-full flex items-center justify-center overflow-hidden border-4 border-white/12 shadow-xl">
-                <img src={profileImage} alt="Debi Prasad Das" className="w-full h-full object-cover" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-                <div className="text-7xl hidden">👨‍💻</div>
+          {/* Profile image – slide in from right + subtle glow */}
+          <div 
+            className={`md:col-span-2 flex justify-center md:justify-end mt-8 md:mt-0 transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'}`}
+            style={{ transitionDelay: '0.8s' }}
+          >
+            <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-80 lg:h-80 group/photo">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#4285F4] via-[#34A853] to-[#FBBC04] rounded-full opacity-20 animate-pulse-slow"></div>
+              <div className="absolute inset-2 bg-[#0F1419] rounded-full flex items-center justify-center overflow-hidden border-4 border-white/15 shadow-2xl transition-all duration-500 group-hover/photo:shadow-[#4285F4]/30 group-hover/photo:scale-[1.02]">
+                <img 
+                  src={profileImage} 
+                  alt="Debi Prasad Das" 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover/photo:scale-110"
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                />
+                <div className="text-8xl hidden">👨‍💻</div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
   </div>
 
-  <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
-    <ChevronDown className="w-6 h-6 text-[#4285F4]" />
+  {/* Scroll indicator – gentle bounce */}
+  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
+    <ChevronDown className="w-7 h-7 text-[#4285F4] opacity-80" />
   </div>
 </section>
       {/* Education Section - NEW PLACEMENT */}

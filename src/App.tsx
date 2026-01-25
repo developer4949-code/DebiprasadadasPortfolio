@@ -539,14 +539,15 @@ function App() {
     className="group relative bg-white/4 rounded-2xl overflow-hidden backdrop-blur-lg border border-white/8 hover:border-[#4285F4]/40 transition-all duration-500 hover:shadow-2xl hover:shadow-[#4285F4]/15 transform hover:-translate-y-1"
   >
     {/* Image with animation */}
-    <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden">
-      <img
-        src={project.image}
-        alt={project.title}
-        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419]/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
-    </div>
+    <div className="relative overflow-hidden max-h-80 sm:max-h-96 md:max-h-[28rem] bg-[#0F1419]/40">
+  <img
+    src={project.image}
+    alt={project.title}
+    className="w-full h-auto max-h-[28rem] sm:max-h-[32rem] md:max-h-[36rem] object-contain mx-auto transition-all duration-700 group-hover:scale-105 group-hover:brightness-105"
+  />
+  {/* Optional subtle overlay — keep if you like the effect */}
+  <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419]/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none" />
+</div>
 
     {/* Content */}
     <div className="p-6 sm:p-7 md:p-8">

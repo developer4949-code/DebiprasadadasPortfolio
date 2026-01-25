@@ -100,8 +100,11 @@ function App() {
       </div>
 
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${activeSection !== 'hero' ? 'bg-[#0F1419]/95 backdrop-blur-xl shadow-xl border-b border-white/5' : 'bg-transparent'
-        }`}>
+     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-xl border-b
+  ${activeSection !== 'hero' 
+    ? 'bg-[#0F1419]/95 shadow-xl border-white/10' 
+    : 'bg-[#0F1419]/85 border-white/5 shadow-md'}
+`}>
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <div className={`flex items-center gap-3 transition-all duration-500 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'

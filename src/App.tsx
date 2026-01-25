@@ -199,104 +199,113 @@ function App() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <div className={`transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-            }`}>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white faang-title">
+      {/* ─── HERO + ABOUT COMBINED CARD ───────────────────────────────── */}
+<section id="hero" className="min-h-screen flex items-center justify-center relative pt-20 pb-16">
+  <div className="max-w-5xl mx-auto px-6 w-full relative z-10">
+    <div className={`transition-all duration-1000 ${
+      isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+    }`}>
+      {/* Main Card – smaller size */}
+      <div className="relative mx-auto max-w-4xl p-6 md:p-10 bg-gradient-to-br from-[#4285F4]/10 via-[#34A853]/5 to-[#FBBC04]/10 
+        rounded-3xl border border-white/10 backdrop-blur-xl overflow-hidden group faang-card shadow-2xl">
+
+        {/* Subtle animated blobs – reduced size */}
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
+          <div className="absolute -top-16 -left-16 w-64 h-64 bg-[#4285F4] rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-[#EA4335] rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+        </div>
+
+        <div className="relative z-10 grid md:grid-cols-5 gap-8 md:gap-12 items-center">
+
+          {/* Left side – text content (3/5 width on desktop) */}
+          <div className="md:col-span-3 space-y-6 text-center md:text-left">
+            {/* Typewriter Name – slightly smaller */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-white faang-title">
               {displayedName}
               {displayedName.length > 0 && <span className="animate-blink-caret">|</span>}
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+
+            {/* Subtitle */}
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-6">
               Full-stack Developer & Cloud Enthusiast
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
-              <button
-                onClick={() => scrollToSection('projects')}
-                className="px-8 py-3.5 bg-[#4285F4] rounded-lg font-semibold hover:bg-[#3367D6] hover:shadow-lg hover:shadow-[#4285F4]/30 transform hover:scale-[1.02] transition-all duration-300 faang-button"
-              >
+
+            {/* About text – brighter colors */}
+            <div className="space-y-5 text-base md:text-lg leading-relaxed font-mono">
+              <p className="text-gray-100">
+                Full-stack developer and cloud enthusiast with experience building real-world apps in logistics, citizen services, and education. Skilled in Java, JavaScript, React.js, Spring Boot, and Android with Firebase. Comfortable designing RESTful APIs and integrating cloud tools like GitHub Actions, Docker, and Kubernetes. Passionate about clean code, usability, and solving real-world problems through tech.
+              </p>
+              <p className="text-gray-100">
+                When I'm not coding, you can find me exploring the latest in cloud and mobile development, contributing to open-source projects, or sharing knowledge with the developer community.
+              </p>
+            </div>
+
+            {/* Contact row + socials */}
+            <div className="flex flex-wrap justify-center md:justify-start gap-5 mt-8 text-sm md:text-base">
+              <div className="flex items-center gap-2 text-[#60A5FA]">
+                <Mail className="w-5 h-5" />
+                <span>dddebiprasaddas2004@gmail.com</span>
+              </div>
+              <div className="flex items-center gap-2 text-[#86EFAC]">
+                <Phone className="w-5 h-5" />
+                <span>+91-8260057716</span>
+              </div>
+              <div className="flex items-center gap-2 text-[#FDE047]">
+                <MapPin className="w-5 h-5" />
+                <span>Bhubaneswar, India</span>
+              </div>
+            </div>
+
+            <div className="flex justify-center md:justify-start gap-5 mt-6">
+              <a href="https://github.com/developer4949-code" target="_blank" rel="noopener noreferrer"
+                className="w-11 h-11 bg-white/5 rounded-full flex items-center justify-center border border-white/10 hover:border-[#60A5FA]/60 hover:bg-[#60A5FA]/10 transition-all faang-card">
+                <Github className="w-5 h-5 text-[#60A5FA]" />
+              </a>
+              <a href="https://www.linkedin.com/in/debi-prasad-das-458878292/" target="_blank" rel="noopener noreferrer"
+                className="w-11 h-11 bg-white/5 rounded-full flex items-center justify-center border border-white/10 hover:border-[#3B82F6]/60 hover:bg-[#3B82F6]/10 transition-all faang-card">
+                <Linkedin className="w-5 h-5 text-[#3B82F6]" />
+              </a>
+            </div>
+
+            {/* Action buttons – smaller */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mt-8">
+              <button onClick={() => scrollToSection('projects')}
+                className="px-7 py-3 bg-[#4285F4] rounded-lg font-semibold hover:bg-[#2563EB] hover:shadow-lg hover:shadow-[#4285F4]/30 transform hover:scale-[1.02] transition-all faang-button text-base">
                 View My Work
               </button>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="px-8 py-3.5 border border-white/20 rounded-lg font-semibold hover:bg-white/5 hover:border-white/40 transform hover:scale-[1.02] transition-all duration-300 backdrop-blur-sm"
-              >
+              <button onClick={() => scrollToSection('contact')}
+                className="px-7 py-3 border border-white/30 rounded-lg font-semibold hover:bg-white/5 hover:border-white/50 transform hover:scale-[1.02] transition-all backdrop-blur-sm text-base">
                 Get In Touch
               </button>
             </div>
           </div>
-        </div>
 
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown className="w-6 h-6 text-[#4285F4]" />
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-20 relative">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-white">
-              About Me
-            </h2>
-            <div className="w-24 h-1 bg-[#4285F4] mx-auto rounded-full"></div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <p className="text-lg text-gray-300 leading-relaxed font-mono">
-                Full-stack developer and cloud enthusiast with experience building real-world apps in logistics, citizen services, and education. Skilled in Java, JavaScript, React.js, Spring Boot, and Android with Firebase. Comfortable designing RESTful APIs and integrating cloud tools like GitHub Actions, Docker, and Kubernetes. Passionate about clean code, usability, and solving real-world problems through tech.
-              </p>
-              <p className="text-lg text-gray-300 leading-relaxed font-mono">
-                When I'm not coding, you can find me exploring the latest in cloud and mobile development, contributing to open-source projects, or sharing knowledge with the developer community.
-              </p>
-
-              <div className="flex flex-wrap gap-4 pt-4">
-                <div className="flex items-center gap-2 text-[#4285F4]">
-                  <Mail className="w-5 h-5" />
-                  <span className="text-gray-300">dddebiprasaddas2004@gmail.com</span>
-                </div>
-                <div className="flex items-center gap-2 text-[#4285F4]">
-                  <Phone className="w-5 h-5" />
-                  <span className="text-gray-300">+91-8260057716</span>
-                </div>
-                <div className="flex items-center gap-2 text-[#4285F4]">
-                  <MapPin className="w-5 h-5" />
-                  <span className="text-gray-300">Bhubaneswar, India</span>
-                  <div className="flex gap-3 ml-4">
-                    <a href="https://github.com/developer4949-code" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center border border-white/10 hover:border-[#4285F4]/50 hover:bg-[#4285F4]/10 transition-all duration-300 faang-card">
-                      <Github className="w-6 h-6 text-[#4285F4]" />
-                    </a>
-                    <a href="https://www.linkedin.com/in/debi-prasad-das-458878292/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center border border-white/10 hover:border-[#4285F4]/50 hover:bg-[#4285F4]/10 transition-all duration-300 faang-card">
-                      <Linkedin className="w-6 h-6 text-[#4285F4]" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="w-80 h-80 mx-auto relative">
-                <div className="absolute inset-0 bg-[#4285F4] rounded-full animate-spin-slow opacity-20"></div>
-                <div className="absolute inset-2 bg-[#0F1419] rounded-full flex items-center justify-center overflow-hidden border border-white/10">
-                  <img
-                    src={profileImage}
-                    alt="Debi Prasad Das"
-                    className="w-full h-full object-cover rounded-full"
-                    onError={(e) => {
-                      // Fallback to emoji if image fails to load
-                      e.currentTarget.style.display = 'none';
-                      e.currentTarget.nextElementSibling!.style.display = 'flex';
-                    }}
-                  />
-                  <div className="text-6xl hidden">👨‍💻</div>
-                </div>
+          {/* Right side – circular profile image (2/5 width on desktop) */}
+          <div className="md:col-span-2 flex justify-center md:justify-end">
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#4285F4] to-[#34A853] rounded-full animate-pulse-slow opacity-30"></div>
+              <div className="absolute inset-3 bg-[#0F1419] rounded-full flex items-center justify-center overflow-hidden border-4 border-white/20 shadow-2xl">
+                <img
+                  src={profileImage}
+                  alt="Debi Prasad Das"
+                  className="w-full h-full object-cover"
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                />
+                <div className="text-8xl hidden">👨‍💻</div>
               </div>
             </div>
           </div>
+
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+
+  {/* Scroll indicator */}
+  <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <ChevronDown className="w-7 h-7 text-[#4285F4]" />
+  </div>
+</section>
 
       {/* Education Section - NEW PLACEMENT */}
       <section id="education" className="py-20 bg-[#141920]">

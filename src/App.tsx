@@ -478,204 +478,112 @@ function App() {
     title: "News-Driven Stock Alert App – Cloud Financial Platform",
     description: "Real-time financial alert system with sentiment analysis and automated notifications using event-driven microservices.",
     tech: ["Kotlin", "Jetpack Compose", "Spring Boot", "AWS (SES, SNS, DynamoDB, Elastic Beanstalk, Pinpoint)", "Room DB", "WorkManager"],
-    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800", // stock market / fintech dashboard feel
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=1200",
     githubUrl: "https://github.com/developer4949-code/stock-alert-app",
-    highlights: [
-      "Event-driven microservices on AWS with SES/SNS for async notifications",
-      "Sentiment analysis + data triggers → 40% better alert accuracy"
-    ],
     impact: "Empowers traders with real-time insights and automated decision support."
   },
   {
     title: "Fill It – Ride-Sharing for Tanker Fulfillment",
     description: "Scalable backend for real-time tanker ride-matching and lifecycle management with geolocation logic.",
     tech: ["Java 8+", "Spring Boot", "Gradle", "Firebase", "Google Groups", "Docker"],
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800", // logistics / truck / delivery theme
+    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200",
     githubUrl: "https://github.com/developer4949-code/FILL-IT-App",
-    highlights: [
-      "Geolocation matching using Haversine formula + real-time status tracking",
-      "Secure Firebase auth + cloud-native Docker deployment"
-    ],
     impact: "Improves gig economy efficiency and reduces logistics delays."
   },
   {
     title: "Institution Student Management System (ISMS)",
     description: "Comprehensive academic management platform with 50+ REST APIs, document handling and role-based access.",
     tech: ["Java 21", "Spring Boot 3.4", "Firebase", "Gradle", "Google Drive API", "OpenCV"],
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800", // education / school / student dashboard
+    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1200",
     githubUrl: "https://github.com/developer4949-code/ISMS-Fullstack",
-    highlights: [
-      "50+ secure RESTful APIs with role-based Firebase authentication",
-      "Google Drive integration + OpenCV for image preprocessing"
-    ],
     impact: "Reduces manual admin work and improves data accuracy in institutions."
   },
   {
     title: "SuchnaSangam – Government Grievance & Alert Portal",
     description: "Real-time citizen grievance and district-level alert system with secure role-based access.",
     tech: ["Java 17", "Spring Boot 3.5.0", "Firebase", "Gradle", "Google Cloud APIs", "Docker", "Lombok"],
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800", // governance / public service / dashboard
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200",
     githubUrl: "https://github.com/developer4949-code/Suchna-Sangam-Fullstack",
-    highlights: [
-      "Real-time grievance tracking + district-wise alert broadcasting",
-      "Role-based access + secure document sharing via Firebase"
-    ],
     impact: "Promotes transparency and faster resolution of public complaints."
   },
   {
     title: "Quiz System – Android Quiz Application",
     description: "Interactive Android quiz app with admin/user modes and real-time content management.",
     tech: ["Java", "Android SDK", "Firebase", "Material Design", "ViewBinding", "Lottie"],
-    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800", // quiz / education / mobile learning
+    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1200",
     githubUrl: "https://github.com/developer4949-code/quizoo",
-    highlights: [
-      "Separate admin & user flows with Firebase authentication",
-      "Dynamic real-time quiz content + Lottie animations for UX"
-    ],
     impact: "Makes learning engaging and provides easy quiz management for educators."
   },
   {
     title: "Quote Generator & Sharing Android App",
     description: "Daily motivational quotes app with API integration, offline support and social sharing.",
     tech: ["Java", "Android SDK", "Firebase", "Retrofit", "Glide", "Material Design"],
-    image: "https://images.unsplash.com/photo-1506784365847-bbad939e11d5?auto=format&fit=crop&q=80&w=800", // motivational quotes / inspiration theme
+    image: "https://images.unsplash.com/photo-1506784365847-bbad939e11d5?auto=format&fit=crop&q=80&w=1200",
     githubUrl: "https://github.com/developer4949-code/refresh-quotation",
-    highlights: [
-      "ZenQuotes + Unsplash API integration with Retrofit & Glide",
-      "Firebase auth + offline caching → 500+ downloads achieved"
-    ],
     impact: "Boosts daily motivation and encourages positive content sharing."
   }
 ].map((project) => (
   <div
     key={project.title}
-    className="bg-white/5 rounded-xl overflow-hidden backdrop-blur-md border border-white/10 hover:border-[#4285F4]/50 transition-all duration-300 transform hover:scale-[1.01] hover:shadow-xl hover:shadow-[#4285F4]/20 group w-full project-card faang-card"
+    className="group relative bg-white/4 rounded-2xl overflow-hidden backdrop-blur-lg border border-white/8 hover:border-[#4285F4]/40 transition-all duration-500 hover:shadow-2xl hover:shadow-[#4285F4]/15 transform hover:-translate-y-1"
   >
-    {/* Project Image – now real instead of emoji */}
-    <div className="h-48 sm:h-56 md:h-64 bg-[#0F1419] relative overflow-hidden">
+    {/* Image with animation */}
+    <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden">
       <img
         src={project.image}
         alt={project.title}
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419]/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
     </div>
 
-    <div className="p-6 sm:p-8">
-      <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-gray-100 group-hover:text-[#60A5FA] transition-colors duration-300">
+    {/* Content */}
+    <div className="p-6 sm:p-7 md:p-8">
+      <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 group-hover:text-[#60A5FA] transition-colors duration-300">
         {project.title}
       </h3>
-      <p className="text-gray-200 mb-5 leading-relaxed text-base">{project.description}</p>
 
-      {/* Only two highlights – cleaner look */}
-      <div className="mb-6">
-        <h4 className="text-base font-semibold text-[#60A5FA] mb-2">Key Highlights</h4>
-        <ul className="space-y-2">
-          {project.highlights.map((highlight, idx) => (
-            <li key={idx} className="flex items-start gap-2 text-gray-200 text-sm">
-              <span className="text-[#60A5FA] mt-1">•</span>
-              <span>{highlight}</span>
-            </li>
-          ))}
-        </ul>
+      <p className="text-gray-300 mb-5 leading-relaxed text-base">
+        {project.description}
+      </p>
+
+      {/* Impact – kept as short summary */}
+      <div className="mb-6 p-4 bg-white/5 rounded-xl border border-white/10">
+        <p className="text-gray-200 text-sm leading-relaxed">
+          {project.impact}
+        </p>
       </div>
 
-      {/* Societal Impact – kept short */}
-      <div className="mb-6 p-4 bg-white/5 rounded-lg border border-[#4285F4]/20">
-        <h4 className="text-base font-semibold text-[#60A5FA] mb-2">Impact</h4>
-        <p className="text-gray-200 text-sm leading-relaxed">{project.impact}</p>
-      </div>
-
-      {/* Tech stack – unchanged as requested */}
-      <div className="flex flex-wrap gap-3 mb-6">
+      {/* Tech stack – unchanged */}
+      <div className="flex flex-wrap gap-2.5 mb-7">
         {project.tech.map((tech, techIndex) => (
           <span
             key={tech}
-            className="px-4 py-2 bg-[#4285F4]/20 text-[#4285F4] rounded-full text-sm font-medium tech-pill tech-pill-animate relative overflow-hidden"
-            style={{
-              animationDelay: `${techIndex * 100}ms`,
-              animation: `techPillFloat ${5 + techIndex * 0.3}s ease-in-out infinite`
-            }}
+            className="px-3.5 py-1.5 bg-[#4285F4]/10 text-[#60A5FA] rounded-full text-xs sm:text-sm font-medium border border-[#4285F4]/20 transition-all duration-300 hover:bg-[#4285F4]/20 hover:border-[#4285F4]/40"
           >
-            <span className="relative z-10">{tech}</span>
+            {tech}
           </span>
         ))}
       </div>
 
-      <div className="flex gap-4">
-        <a
-          href={project.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-[#60A5FA] hover:text-[#34A853] transition-colors duration-300 font-medium"
-        >
-          <Github className="w-5 h-5" />
-          View Code
-        </a>
-      </div>
+      {/* GitHub link */}
+      <a
+        href={project.githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 text-[#60A5FA] hover:text-[#34A853] font-medium transition-colors duration-300"
+      >
+        <Github className="w-5 h-5" />
+        View on GitHub
+      </a>
+    </div>
+
+    {/* Subtle entrance animation for content */}
+    <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#4285F4]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
     </div>
   </div>
-))}.map((project) => (
-              <div
-                key={project.title}
-                className="bg-white/5 rounded-xl overflow-hidden backdrop-blur-md border border-white/10 hover:border-[#4285F4]/50 transition-all duration-300 transform hover:scale-[1.01] hover:shadow-xl hover:shadow-[#4285F4]/20 group w-full project-card faang-card"
-              >
-                <div className="h-48 bg-[#4285F4]/10 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-300">
-                  {project.image}
-                </div>
-                <div className="p-8">
-                  <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-[#4285F4] transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-300 mb-6 leading-relaxed text-lg">{project.description}</p>
-
-                  {/* Key Highlights */}
-                  <div className="mb-6">
-                    <h4 className="text-lg font-semibold text-[#4285F4] mb-3">Key Highlights</h4>
-                    <ul className="space-y-2">
-                      {project.highlights.map((highlight, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-gray-300">
-                          <span className="text-[#8847FD] mt-1">•</span>
-                          <span className="text-sm">{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Societal Impact */}
-                  <div className="mb-6 p-4 bg-white/5 rounded-lg border border-[#4285F4]/20">
-                    <h4 className="text-lg font-semibold text-[#4285F4] mb-2">Societal Impact</h4>
-                    <p className="text-gray-300 text-sm leading-relaxed">{project.impact}</p>
-                  </div>
-
-                  <div className="flex flex-wrap gap-3 mb-6">
-                    {project.tech.map((tech, techIndex) => (
-                      <span
-                        key={tech}
-                        className="px-4 py-2 bg-[#4285F4]/20 text-[#4285F4] rounded-full text-sm font-medium tech-pill tech-pill-animate relative overflow-hidden"
-                        style={{ 
-                          animationDelay: `${techIndex * 100}ms`,
-                          animation: `techPillFloat ${5 + techIndex * 0.3}s ease-in-out infinite`
-                        }}
-                      >
-                        <span className="relative z-10">{tech}</span>
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex gap-4">
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-[#4285F4] hover:text-[#34A853] transition-colors duration-300 font-medium"
-                    >
-                      <Github className="w-5 h-5" />
-                      Code
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
+))}
           </div>
         </div>
       </section>

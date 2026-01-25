@@ -212,7 +212,7 @@ function App() {
         {/* Subtle animated blobs – slightly smaller */}
         <div className="absolute inset-0 opacity-15 pointer-events-none">
           <div className="absolute -top-20 -left-20 w-80 h-80 bg-[#4285F4] rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-[#EA4335] rounded-full blur-3xl animate-pulse" style={{animationDelay: '2.4s'}}></div>
+          <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-[#EA4335] rounded-full blur-3xl animate-pulse" style={{animationDelay: '1.5s'}}></div>
         </div>
 
         <div className="relative z-10 grid md:grid-cols-5 gap-6 lg:gap-10 items-center">

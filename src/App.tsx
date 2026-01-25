@@ -473,109 +473,149 @@ function App() {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-20 bg-[#141920]">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-white">
-              Featured Projects
-            </h2>
-            <div className="w-24 h-1 bg-[#4285F4] mx-auto rounded-full"></div>
-          </div>
+     {[
+  {
+    title: "News-Driven Stock Alert App – Cloud Financial Platform",
+    description: "Real-time financial alert system with sentiment analysis and automated notifications using event-driven microservices.",
+    tech: ["Kotlin", "Jetpack Compose", "Spring Boot", "AWS (SES, SNS, DynamoDB, Elastic Beanstalk, Pinpoint)", "Room DB", "WorkManager"],
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800", // stock market / fintech dashboard feel
+    githubUrl: "https://github.com/developer4949-code/stock-alert-app",
+    highlights: [
+      "Event-driven microservices on AWS with SES/SNS for async notifications",
+      "Sentiment analysis + data triggers → 40% better alert accuracy"
+    ],
+    impact: "Empowers traders with real-time insights and automated decision support."
+  },
+  {
+    title: "Fill It – Ride-Sharing for Tanker Fulfillment",
+    description: "Scalable backend for real-time tanker ride-matching and lifecycle management with geolocation logic.",
+    tech: ["Java 8+", "Spring Boot", "Gradle", "Firebase", "Google Groups", "Docker"],
+    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800", // logistics / truck / delivery theme
+    githubUrl: "https://github.com/developer4949-code/FILL-IT-App",
+    highlights: [
+      "Geolocation matching using Haversine formula + real-time status tracking",
+      "Secure Firebase auth + cloud-native Docker deployment"
+    ],
+    impact: "Improves gig economy efficiency and reduces logistics delays."
+  },
+  {
+    title: "Institution Student Management System (ISMS)",
+    description: "Comprehensive academic management platform with 50+ REST APIs, document handling and role-based access.",
+    tech: ["Java 21", "Spring Boot 3.4", "Firebase", "Gradle", "Google Drive API", "OpenCV"],
+    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800", // education / school / student dashboard
+    githubUrl: "https://github.com/developer4949-code/ISMS-Fullstack",
+    highlights: [
+      "50+ secure RESTful APIs with role-based Firebase authentication",
+      "Google Drive integration + OpenCV for image preprocessing"
+    ],
+    impact: "Reduces manual admin work and improves data accuracy in institutions."
+  },
+  {
+    title: "SuchnaSangam – Government Grievance & Alert Portal",
+    description: "Real-time citizen grievance and district-level alert system with secure role-based access.",
+    tech: ["Java 17", "Spring Boot 3.5.0", "Firebase", "Gradle", "Google Cloud APIs", "Docker", "Lombok"],
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800", // governance / public service / dashboard
+    githubUrl: "https://github.com/developer4949-code/Suchna-Sangam-Fullstack",
+    highlights: [
+      "Real-time grievance tracking + district-wise alert broadcasting",
+      "Role-based access + secure document sharing via Firebase"
+    ],
+    impact: "Promotes transparency and faster resolution of public complaints."
+  },
+  {
+    title: "Quiz System – Android Quiz Application",
+    description: "Interactive Android quiz app with admin/user modes and real-time content management.",
+    tech: ["Java", "Android SDK", "Firebase", "Material Design", "ViewBinding", "Lottie"],
+    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800", // quiz / education / mobile learning
+    githubUrl: "https://github.com/developer4949-code/quizoo",
+    highlights: [
+      "Separate admin & user flows with Firebase authentication",
+      "Dynamic real-time quiz content + Lottie animations for UX"
+    ],
+    impact: "Makes learning engaging and provides easy quiz management for educators."
+  },
+  {
+    title: "Quote Generator & Sharing Android App",
+    description: "Daily motivational quotes app with API integration, offline support and social sharing.",
+    tech: ["Java", "Android SDK", "Firebase", "Retrofit", "Glide", "Material Design"],
+    image: "https://images.unsplash.com/photo-1506784365847-bbad939e11d5?auto=format&fit=crop&q=80&w=800", // motivational quotes / inspiration theme
+    githubUrl: "https://github.com/developer4949-code/refresh-quotation",
+    highlights: [
+      "ZenQuotes + Unsplash API integration with Retrofit & Glide",
+      "Firebase auth + offline caching → 500+ downloads achieved"
+    ],
+    impact: "Boosts daily motivation and encourages positive content sharing."
+  }
+].map((project) => (
+  <div
+    key={project.title}
+    className="bg-white/5 rounded-xl overflow-hidden backdrop-blur-md border border-white/10 hover:border-[#4285F4]/50 transition-all duration-300 transform hover:scale-[1.01] hover:shadow-xl hover:shadow-[#4285F4]/20 group w-full project-card faang-card"
+  >
+    {/* Project Image – now real instead of emoji */}
+    <div className="h-48 sm:h-56 md:h-64 bg-[#0F1419] relative overflow-hidden">
+      <img
+        src={project.image}
+        alt={project.title}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    </div>
 
-          <div className="space-y-8">
-            {[
-              {
-                title: "News-Driven Stock Alert App – Cloud Financial Platform",
-                description: "Developed a real-time financial alert and sentiment monitoring app for traders and investors. Built event-driven microservices with AWS Elastic Beanstalk and integrated SES/SNS for asynchronous notifications. Implemented sentiment analysis and data-driven triggers to automate alert generation.",
-                tech: ["Kotlin", "Jetpack Compose", "Spring Boot", "AWS (SES, SNS, DynamoDB, Elastic Beanstalk, Pinpoint)", "Room DB", "WorkManager"],
-                image: "💹",
-                githubUrl: "https://github.com/developer4949-code/stock-alert-app",
-                highlights: [
-                  "Real-time financial alert and sentiment monitoring for traders and investors",
-                  "Event-driven microservices using AWS Elastic Beanstalk",
-                  "SES/SNS integration for asynchronous notifications",
-                  "Automated alert generation via sentiment analysis and data triggers",
-                  "Supports 1000+ concurrent alerts per day with 40% improved accuracy"
-                ],
-                impact: "Empowers investors with real-time insights, enhances financial decision-making, and supports automation in trading ecosystems."
-              },
-              {
-                title: "Fill It – Ride-Sharing for Tanker Fulfillment",
-                description: "Engineered a scalable backend for real-time trip lifecycle management using Spring Boot. Implemented geolocation-based trip matching with Haversine formula and real-time status tracking. Integrated Firebase Authentication for secure role-based access (customer and driver).",
-                tech: ["Java 8+", "Spring Boot", "Gradle", "Firebase", "Google Groups", "Docker"],
-                image: "🚚",
-                githubUrl: "https://github.com/developer4949-code/FILL-IT-App",
-                highlights: [
-                  "Real-time trip lifecycle: creation, matching, and completion",
-                  "Geolocation-based trip matching with Haversine formula",
-                  "Secure OAuth and Firebase-based authentication",
-                  "Cloud-native architecture with Docker deployment",
-                  "Scalable microservices with monitoring capabilities"
-                ],
-                impact: "Enables reliable ride-sharing infrastructure, protects user data, promotes economic flexibility for gig workers, and eases traffic congestion through shared mobility."
-              },
-              {
-                title: "Institution Student Management System (ISMS)",
-                description: "Built 50+ RESTful APIs to manage academics, attendance, and fee records with robust validation and async processing. Integrated Google Drive API for dynamic document upload and OpenCV for student image preprocessing. Secured platform with Firebase Authentication and custom access control mapped to user roles.",
-                tech: ["Java 21", "Spring Boot 3.4", "Firebase", "Gradle", "Google Drive API", "OpenCV"],
-                image: "🏫",
-                githubUrl: "https://github.com/developer4949-code/ISMS-Fullstack",
-                highlights: [
-                  "50+ RESTful APIs for comprehensive academic management",
-                  "Role-based access with secure Firebase authentication",
-                  "Async operations for grievance and policy workflows",
-                  "Email notifications and Google Drive integration",
-                  "Modular architecture: controllers, services, models, configs"
-                ],
-                impact: "Streamlined data management, secure handling of sensitive academic data, integration with cloud tools for better availability, and automation reduces manual errors and bottlenecks."
-              },
-              {
-                title: "SuchnaSangam – Government Grievance & Alert Portal",
-                description: "Built a real-time grievance and alert portal for citizens and officials using Firebase Realtime Database. Implemented district-wise alert broadcasting and grievance tracking with role-based access controls. Enabled secure document sharing and status updates for grievances across citizens, officials, and admins.",
-                tech: ["Java 17", "Spring Boot 3.5.0", "Firebase", "Gradle", "Google Cloud APIs", "Docker", "Lombok"],
-                image: "📢",
-                githubUrl: "https://github.com/developer4949-code/Suchna-Sangam-Fullstack",
-                highlights: [
-                  "Real-time grievance and alert portal for citizens and officials",
-                  "District-wise alert broadcasting and grievance tracking",
-                  "Role-based access controls and secure document sharing",
-                  "Highly modular and service-oriented backend",
-                  "Cloud-native with Docker deployment capabilities"
-                ],
-                impact: "Bridges digital gaps, enables real-time grievance redressal, promotes accountability and transparency, and drives community empowerment."
-              },
-              {
-                title: "Quiz System – Android Quiz Application",
-                description: "Built an Android quiz app with Firebase Authentication supporting separate admin and user experiences. Managed dynamic quiz content, scores, and subjects using Firebase Realtime Database. Designed interactive UI using Material Design, ViewBinding, and Lottie animations for smooth UX.",
-                tech: ["Java", "Android SDK", "Firebase", "Material Design", "ViewBinding", "Lottie"],
-                image: "📱",
-                githubUrl: "https://github.com/developer4949-code/quizoo",
-                highlights: [
-                  "Separate admin and user experiences with Firebase Authentication",
-                  "Dynamic quiz content management with real-time updates",
-                  "Interactive UI with Material Design and Lottie animations",
-                  "Score tracking and subject-based quiz organization",
-                  "Offline-capable with Firebase Realtime Database sync"
-                ],
-                impact: "Enhances learning experiences through interactive assessments, provides educators with powerful quiz management tools, and creates engaging educational content delivery."
-              },
-              {
-                title: "Quote Generator & Sharing Android App",
-                description: "Built a motivational quote-sharing mobile app with daily refresh and offline support. Integrated ZenQuotes and Unsplash APIs via Retrofit and Glide for smooth content loading. Added Firebase Authentication and media-sharing via Android MediaStore.",
-                tech: ["Java", "Android SDK", "Firebase", "Retrofit", "Glide", "Material Design"],
-                image: "💬",
-                githubUrl: "https://github.com/developer4949-code/refresh-quotation",
-                highlights: [
-                  "Motivational quote-sharing app with daily refresh and offline support",
-                  "ZenQuotes and Unsplash API integration via Retrofit and Glide",
-                  "Firebase Authentication and Android MediaStore integration",
-                  "Optimized UI with Material Design and efficient image caching",
-                  "Achieved 500+ downloads with 30% user retention boost"
-                ],
-                impact: "Promotes daily motivation, encourages sharing of positive content, and improves user engagement through thoughtful design and seamless performance."
-              }
-            ].map((project) => (
+    <div className="p-6 sm:p-8">
+      <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-gray-100 group-hover:text-[#60A5FA] transition-colors duration-300">
+        {project.title}
+      </h3>
+      <p className="text-gray-200 mb-5 leading-relaxed text-base">{project.description}</p>
+
+      {/* Only two highlights – cleaner look */}
+      <div className="mb-6">
+        <h4 className="text-base font-semibold text-[#60A5FA] mb-2">Key Highlights</h4>
+        <ul className="space-y-2">
+          {project.highlights.map((highlight, idx) => (
+            <li key={idx} className="flex items-start gap-2 text-gray-200 text-sm">
+              <span className="text-[#60A5FA] mt-1">•</span>
+              <span>{highlight}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Societal Impact – kept short */}
+      <div className="mb-6 p-4 bg-white/5 rounded-lg border border-[#4285F4]/20">
+        <h4 className="text-base font-semibold text-[#60A5FA] mb-2">Impact</h4>
+        <p className="text-gray-200 text-sm leading-relaxed">{project.impact}</p>
+      </div>
+
+      {/* Tech stack – unchanged as requested */}
+      <div className="flex flex-wrap gap-3 mb-6">
+        {project.tech.map((tech, techIndex) => (
+          <span
+            key={tech}
+            className="px-4 py-2 bg-[#4285F4]/20 text-[#4285F4] rounded-full text-sm font-medium tech-pill tech-pill-animate relative overflow-hidden"
+            style={{
+              animationDelay: `${techIndex * 100}ms`,
+              animation: `techPillFloat ${5 + techIndex * 0.3}s ease-in-out infinite`
+            }}
+          >
+            <span className="relative z-10">{tech}</span>
+          </span>
+        ))}
+      </div>
+
+      <div className="flex gap-4">
+        <a
+          href={project.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-[#60A5FA] hover:text-[#34A853] transition-colors duration-300 font-medium"
+        >
+          <Github className="w-5 h-5" />
+          View Code
+        </a>
+      </div>
+    </div>
+  </div>
+))}.map((project) => (
               <div
                 key={project.title}
                 className="bg-white/5 rounded-xl overflow-hidden backdrop-blur-md border border-white/10 hover:border-[#4285F4]/50 transition-all duration-300 transform hover:scale-[1.01] hover:shadow-xl hover:shadow-[#4285F4]/20 group w-full project-card faang-card"

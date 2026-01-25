@@ -130,7 +130,7 @@ function App() {
             {/* Desktop Navigation */}
             <div className={`hidden md:flex items-center space-x-8 transition-all duration-700 delay-300 ${isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-5 opacity-0'
               }`}>
-              {['About', 'Education', 'Skills', 'Projects', 'Certifications', 'Contact'].map((item, index) => (
+              {['Education', 'Skills', 'Projects', 'Certifications', 'Contact'].map((item, index) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -173,7 +173,7 @@ function App() {
           <div className={`md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
             }`}>
             <div className="py-4 space-y-4 border-t border-gray-700 mt-4">
-              {['About', 'Education', 'Skills', 'Projects', 'Certifications', 'Contact'].map((item, index) => (
+              {[ 'Education', 'Skills', 'Projects', 'Certifications', 'Contact'].map((item, index) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}

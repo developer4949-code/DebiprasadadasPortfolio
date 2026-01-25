@@ -249,8 +249,6 @@ function App() {
           <ChevronDown size={32} className="text-[#93C5FD]" />
         </div>
       </section>
-
-      </section>
       {/* Education Section - NEW PLACEMENT */}
       <section id="education" className="py-20 bg-[#141920]">
         <div className="max-w-6xl mx-auto px-6">

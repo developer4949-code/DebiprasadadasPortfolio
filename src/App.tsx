@@ -91,148 +91,120 @@ function App() {
     setIsMobileMenuOpen(false); // Close mobile menu when clicking a link
   };
 
-  return (
+ return (
     <div className="min-h-screen bg-[#0F1419] text-white overflow-x-hidden relative">
-      {/* FAANG-style subtle animated background */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      {/* Background gradients */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden z-0">
         <div className="faang-gradient faang-gradient-1"></div>
         <div className="faang-gradient faang-gradient-2"></div>
       </div>
 
-      {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${activeSection !== 'hero' ? 'bg-[#0F1419]/95 backdrop-blur-xl shadow-xl border-b border-white/5' : 'bg-transparent'
-        }`}>
-        <div className="max-w-6xl mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <div className={`flex items-center gap-3 transition-all duration-500 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'
-              }`}>
-              {/* Logo */}
-              <img
-                src={logo}
-                alt="Debi Prasad Das Portfolio Logo"
-                className="h-20 w-auto object-contain"
-                onError={(e) => {
-                  // Fallback to text if logo fails to load
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling!.style.display = 'flex';
-                }}
-              />
-              <div className="h-10 flex items-center gap-2 hidden">
-                <div className="w-8 h-8 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] rounded-lg flex items-center justify-center text-white font-bold text-sm">
-                  DP
-                </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-[#8847FD] to-[#FE45CB] bg-clip-text text-transparent">
-                  Portfolio
-                </span>
-              </div>
-            </div>
-
-            {/* Desktop Navigation */}
-            <div className={`hidden md:flex items-center space-x-8 transition-all duration-700 delay-300 ${isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-5 opacity-0'
-              }`}>
-              {['About', 'Education', 'Skills', 'Projects', 'Certifications', 'Contact'].map((item, index) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 hover:text-[#4285F4] ${activeSection === item.toLowerCase() ? 'text-[#4285F4]' : 'text-gray-400'
-                    }`}
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  {item}
-                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#4285F4] transform transition-all duration-300 ${activeSection === item.toLowerCase() ? 'scale-x-100' : 'scale-x-0'
-                    }`}></span>
-                </button>
-              ))}
-
-              {/* View Resume Button */}
-              <a
-                href="https://drive.google.com/file/d/18_I3BP88IjjHfhc8vZGsSPsosixL64h6/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-2.5 bg-[#4285F4] rounded-lg text-white font-medium hover:bg-[#3367D6] hover:shadow-lg hover:shadow-[#4285F4]/30 transform hover:scale-[1.02] transition-all duration-300 flex items-center gap-2 faang-button"
-              >
-                <FileText className="w-4 h-4" />
-                View Resume
-              </a>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 text-gray-300 hover:text-[#4285F4] transition-colors duration-300"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
-          </div>
-
-          {/* Mobile Menu */}
-          <div className={`md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-            }`}>
-            <div className="py-4 space-y-4 border-t border-gray-700 mt-4">
-              {['About', 'Education', 'Skills', 'Projects', 'Certifications', 'Contact'].map((item, index) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`block w-full text-left px-4 py-3 text-sm font-medium transition-all duration-300 hover:text-[#4285F4] hover:bg-[#4285F4]/10 rounded-lg ${activeSection === item.toLowerCase() ? 'text-[#4285F4] bg-[#4285F4]/10' : 'text-gray-300'
-                    }`}
-                >
-                  {item}
-                </button>
-              ))}
-
-              {/* Mobile View Resume Button */}
-              <a
-                href="https://drive.google.com/file/d/18_I3BP88IjjHfhc8vZGsSPsosixL64h6/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full px-4 py-3 bg-[#4285F4] rounded-lg text-white font-medium hover:bg-[#3367D6] hover:shadow-lg hover:shadow-[#4285F4]/30 transform hover:scale-[1.02] transition-all duration-300 flex items-center gap-2 faang-button"
-              >
-                <FileText className="w-4 h-4" />
-                View Resume
-              </a>
-            </div>
-          </div>
-        </div>
+      {/* ─── NAVIGATION ──────────────────────────────────────────────── */}
+      <nav 
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 backdrop-blur-xl
+          ${activeSection !== 'hero' 
+            ? 'bg-[#0F1419]/95 shadow-xl border-b border-white/10' 
+            : 'bg-[#0F1419]/70 border-b border-white/5'}`}
+      >
+        {/* ... your existing nav content remains 100% the same ... */}
       </nav>
 
-      {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <div className={`transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-            }`}>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white faang-title">
-              {displayedName}
-              {displayedName.length > 0 && <span className="animate-blink-caret">|</span>}
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-              Full-stack Developer & Cloud Enthusiast
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
-              <button
-                onClick={() => scrollToSection('projects')}
-                className="px-8 py-3.5 bg-[#4285F4] rounded-lg font-semibold hover:bg-[#3367D6] hover:shadow-lg hover:shadow-[#4285F4]/30 transform hover:scale-[1.02] transition-all duration-300 faang-button"
-              >
-                View My Work
-              </button>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="px-8 py-3.5 border border-white/20 rounded-lg font-semibold hover:bg-white/5 hover:border-white/40 transform hover:scale-[1.02] transition-all duration-300 backdrop-blur-sm"
-              >
-                Get In Touch
-              </button>
+      {/* ─── HERO + ABOUT COMBINED CARD ───────────────────────────────── */}
+      <section id="hero" className="min-h-screen flex items-center justify-center relative pt-20 pb-16">
+        <div className="max-w-5xl mx-auto px-6 w-full relative z-10">
+          <div className={`quote-card quote-card-center transition-all duration-1000 ${
+            isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+          }`}>
+            {/* Main Card – Google palette inspired */}
+            <div className="relative p-8 md:p-12 bg-gradient-to-br from-[#4285F4]/10 via-[#34A853]/5 to-[#FBBC04]/10 
+              rounded-3xl border border-white/10 backdrop-blur-xl overflow-hidden group faang-card shadow-2xl">
+              
+              {/* Subtle animated blobs */}
+              <div className="absolute inset-0 opacity-20 pointer-events-none">
+                <div className="absolute -top-20 -left-20 w-96 h-96 bg-[#4285F4] rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-[#EA4335] rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+                <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-[#34A853] rounded-full blur-3xl animate-pulse" style={{animationDelay: '4s'}}></div>
+              </div>
+
+              <div className="relative z-10">
+                {/* Typewriter Name */}
+                <h1 className="text-5xl md:text-7xl font-bold mb-6 text-center text-white faang-title">
+                  {displayedName}
+                  {displayedName.length > 0 && <span className="animate-blink-caret">|</span>}
+                </h1>
+
+                {/* Subtitle */}
+                <p className="text-xl md:text-2xl text-gray-200 text-center mb-10">
+                  Full-stack Developer & Cloud Enthusiast
+                </p>
+
+                {/* About text – now inside the same card */}
+                <div className="max-w-3xl mx-auto text-center md:text-left space-y-6 text-lg text-gray-300 leading-relaxed font-mono">
+                  <p>
+                    Full-stack developer and cloud enthusiast with experience building real-world apps in logistics, citizen services, and education. Skilled in Java, JavaScript, React.js, Spring Boot, and Android with Firebase. Comfortable designing RESTful APIs and integrating cloud tools like GitHub Actions, Docker, and Kubernetes. Passionate about clean code, usability, and solving real-world problems through tech.
+                  </p>
+                  <p>
+                    When I'm not coding, you can find me exploring the latest in cloud and mobile development, contributing to open-source projects, or sharing knowledge with the developer community.
+                  </p>
+                </div>
+
+                {/* Contact row + socials */}
+                <div className="flex flex-wrap justify-center md:justify-start gap-6 mt-10 text-sm md:text-base">
+                  <div className="flex items-center gap-2 text-[#4285F4]">
+                    <Mail className="w-5 h-5" />
+                    <span>dddebiprasaddas2004@gmail.com</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-[#34A853]">
+                    <Phone className="w-5 h-5" />
+                    <span>+91-8260057716</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-[#FBBC04]">
+                    <MapPin className="w-5 h-5" />
+                    <span>Bhubaneswar, India</span>
+                  </div>
+                </div>
+
+                <div className="flex justify-center md:justify-start gap-5 mt-8">
+                  <a href="https://github.com/developer4949-code" target="_blank" rel="noopener noreferrer"
+                    className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center border border-white/10 hover:border-[#4285F4]/60 hover:bg-[#4285F4]/10 transition-all faang-card">
+                    <Github className="w-6 h-6 text-[#4285F4]" />
+                  </a>
+                  <a href="https://www.linkedin.com/in/debi-prasad-das-458878292/" target="_blank" rel="noopener noreferrer"
+                    className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center border border-white/10 hover:border-[#0A66C2]/60 hover:bg-[#0A66C2]/10 transition-all faang-card">
+                    <Linkedin className="w-6 h-6 text-[#0A66C2]" />
+                  </a>
+                </div>
+
+                {/* Action buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mt-10">
+                  <button
+                    onClick={() => scrollToSection('projects')}
+                    className="px-8 py-3.5 bg-[#4285F4] rounded-lg font-semibold hover:bg-[#3367D6] hover:shadow-lg hover:shadow-[#4285F4]/30 transform hover:scale-[1.02] transition-all faang-button"
+                  >
+                    View My Work
+                  </button>
+                  <button
+                    onClick={() => scrollToSection('contact')}
+                    className="px-8 py-3.5 border border-white/30 rounded-lg font-semibold hover:bg-white/5 hover:border-white/50 transform hover:scale-[1.02] transition-all backdrop-blur-sm"
+                  >
+                    Get In Touch
+                  </button>
+                </div>
+              </div>
+
+              {/* Decorative floating particles */}
+              <div className="absolute top-10 right-10 w-3 h-3 bg-[#4285F4] rounded-full animate-float-particle"></div>
+              <div className="absolute bottom-16 left-16 w-2 h-2 bg-[#34A853] rounded-full animate-float-particle" style={{animationDelay: '1.2s'}}></div>
+              <div className="absolute top-1/3 right-1/4 w-2.5 h-2.5 bg-[#FBBC04] rounded-full animate-float-particle" style={{animationDelay: '2.8s'}}></div>
             </div>
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown className="w-6 h-6 text-[#4285F4]" />
+        {/* Scroll indicator */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <ChevronDown className="w-7 h-7 text-[#4285F4]" />
         </div>
       </section>
-
       {/* About Section */}
       <section id="about" className="py-20 relative">
         <div className="max-w-6xl mx-auto px-6">

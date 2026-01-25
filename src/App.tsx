@@ -485,115 +485,115 @@ function App() {
 
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {[
-        {
-          title: "News-Driven Stock Alert App – Cloud Financial Platform",
-          description: "Real-time financial alert system with sentiment analysis and automated notifications using event-driven microservices.",
-          tech: ["Kotlin", "Jetpack Compose", "Spring Boot", "AWS (SES, SNS, DynamoDB, Elastic Beanstalk, Pinpoint)", "Room DB", "WorkManager"],
-          image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=1200",
-          githubUrl: "https://github.com/developer4949-code/stock-alert-app",
-          impact: "Empowers traders with real-time insights and automated decision support."
-        },
-        {
-          title: "Fill It – Ride-Sharing for Tanker Fulfillment",
-          description: "Scalable backend for real-time tanker ride-matching and lifecycle management with geolocation logic.",
-          tech: ["Java 8+", "Spring Boot", "Gradle", "Firebase", "Google Groups", "Docker"],
-          image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1200",
-          githubUrl: "https://github.com/developer4949-code/FILL-IT-App",
-          impact: "Improves gig economy efficiency and reduces logistics delays."
-        },
-        {
-          title: "Institution Student Management System (ISMS)",
-          description: "Comprehensive academic management platform with 50+ REST APIs, document handling and role-based access.",
-          tech: ["Java 21", "Spring Boot 3.4", "Firebase", "Gradle", "Google Drive API", "OpenCV"],
-          image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1200",
-          githubUrl: "https://github.com/developer4949-code/ISMS-Fullstack",
-          impact: "Reduces manual admin work and improves data accuracy in institutions."
-        },
-        {
-          title: "SuchnaSangam – Government Grievance & Alert Portal",
-          description: "Real-time citizen grievance and district-level alert system with secure role-based access.",
-          tech: ["Java 17", "Spring Boot 3.5.0", "Firebase", "Gradle", "Google Cloud APIs", "Docker", "Lombok"],
-          image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200",
-          githubUrl: "https://github.com/developer4949-code/Suchna-Sangam-Fullstack",
-          impact: "Promotes transparency and faster resolution of public complaints."
-        },
-        {
-          title: "Quiz System – Android Quiz Application",
-          description: "Interactive Android quiz app with admin/user modes and real-time content management.",
-          tech: ["Java", "Android SDK", "Firebase", "Material Design", "ViewBinding", "Lottie"],
-          image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1200",
-          githubUrl: "https://github.com/developer4949-code/quizoo",
-          impact: "Makes learning engaging and provides easy quiz management for educators."
-        },
-        {
-          title: "Quote Generator & Sharing Android App",
-          description: "Daily motivational quotes app with API integration, offline support and social sharing.",
-          tech: ["Java", "Android SDK", "Firebase", "Retrofit", "Glide", "Material Design"],
-          image: "https://images.unsplash.com/photo-1506784365847-bbad939e11d5?auto=format&fit=crop&q=80&w=1200",
-          githubUrl: "https://github.com/developer4949-code/refresh-quotation",
-          impact: "Boosts daily motivation and encourages positive content sharing."
-        }
-      ].map((project) => (
-        <div
-          key={project.title}
-          className="group relative bg-white/4 rounded-2xl overflow-hidden backdrop-blur-lg border border-white/8 hover:border-[#4285F4]/40 transition-all duration-500 hover:shadow-2xl hover:shadow-[#4285F4]/15 transform hover:-translate-y-1"
-        >
-          {/* Image container with hover animation */}
-          <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419]/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
-          </div>
+  {
+    title: "News-Driven Stock Alert App – Cloud Financial Platform",
+    description: "Real-time financial alert system with sentiment analysis and automated notifications using event-driven microservices.",
+    tech: ["Kotlin", "Jetpack Compose", "Spring Boot", "AWS (SES, SNS, DynamoDB, Elastic Beanstalk, Pinpoint)", "Room DB", "WorkManager"],
+    image: "https://portfolio-gules-seven-wbw6ip079v.vercel.app/1.png",
+    githubUrl: "https://github.com/developer4949-code/stock-alert-app",
+    impact: "Empowers traders with real-time insights and automated decision support."
+  },
+  {
+    title: "Fill It – Ride-Sharing for Tanker Fulfillment",
+    description: "Scalable backend for real-time tanker ride-matching and lifecycle management with geolocation logic.",
+    tech: ["Java 8+", "Spring Boot", "Gradle", "Firebase", "Google Groups", "Docker"],
+    image: "https://portfolio-gules-seven-wbw6ip079v.vercel.app/3.png",
+    githubUrl: "https://github.com/developer4949-code/FILL-IT-App",
+    impact: "Improves gig economy efficiency and reduces logistics delays."
+  },
+  {
+    title: "Institution Student Management System (ISMS)",
+    description: "Comprehensive academic management platform with 50+ REST APIs, document handling and role-based access.",
+    tech: ["Java 21", "Spring Boot 3.4", "Firebase", "Gradle", "Google Drive API", "OpenCV"],
+    image: "https://portfolio-gules-seven-wbw6ip079v.vercel.app/2.png.jpg",
+    githubUrl: "https://github.com/developer4949-code/ISMS-Fullstack",
+    impact: "Reduces manual admin work and improves data accuracy in institutions."
+  },
+  {
+    title: "SuchnaSangam – Government Grievance & Alert Portal",
+    description: "Real-time citizen grievance and district-level alert system with secure role-based access.",
+    tech: ["Java 17", "Spring Boot 3.5.0", "Firebase", "Gradle", "Google Cloud APIs", "Docker", "Lombok"],
+    image: "https://portfolio-gules-seven-wbw6ip079v.vercel.app/1.png", // using same as stock alert for now – change if you have specific one
+    githubUrl: "https://github.com/developer4949-code/Suchna-Sangam-Fullstack",
+    impact: "Promotes transparency and faster resolution of public complaints."
+  },
+  {
+    title: "Quiz System – Android Quiz Application",
+    description: "Interactive Android quiz app with admin/user modes and real-time content management.",
+    tech: ["Java", "Android SDK", "Firebase", "Material Design", "ViewBinding", "Lottie"],
+    image: "https://raw.githubusercontent.com/developer4949-code/quizoo/refs/heads/master/Screenshot%202026-01-25%20102707.png",
+    githubUrl: "https://github.com/developer4949-code/quizoo",
+    impact: "Makes learning engaging and provides easy quiz management for educators."
+  },
+  {
+    title: "MindWeave – AI-Ready Journaling App",
+    description: "Modern Android journaling app built with Jetpack Compose — clean UI, secure auth, and future-ready architecture for AI-powered insights.",
+    tech: ["Kotlin", "Jetpack Compose", "Jetpack Navigation", "Gradle"],
+    image: "https://raw.githubusercontent.com/developer4949-code/MindWeave/refs/heads/main/mindweave-preview.png",
+    githubUrl: "https://github.com/developer4949-code/MindWeave",
+    impact: "Helps users build consistent self-reflection habits with a beautiful, privacy-focused experience — future AI features will deliver emotional insights and smart prompts."
+  }
+].map((project) => (
+  <div
+    key={project.title}
+    className="group relative bg-white/4 rounded-2xl overflow-hidden backdrop-blur-lg border border-white/8 hover:border-[#4285F4]/40 transition-all duration-500 hover:shadow-2xl hover:shadow-[#4285F4]/15 transform hover:-translate-y-1"
+  >
+    {/* Image with animation */}
+    <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden">
+      <img
+        src={project.image}
+        alt={project.title}
+        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419]/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+    </div>
 
-          {/* Content */}
-          <div className="p-6 sm:p-7 md:p-8">
-            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 group-hover:text-[#60A5FA] transition-colors duration-300">
-              {project.title}
-            </h3>
+    {/* Content */}
+    <div className="p-6 sm:p-7 md:p-8">
+      <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 group-hover:text-[#60A5FA] transition-colors duration-300">
+        {project.title}
+      </h3>
 
-            <p className="text-gray-300 mb-5 leading-relaxed text-base">
-              {project.description}
-            </p>
+      <p className="text-gray-300 mb-5 leading-relaxed text-base">
+        {project.description}
+      </p>
 
-            {/* Impact */}
-            <div className="mb-6 p-4 bg-white/5 rounded-xl border border-white/10">
-              <p className="text-gray-200 text-sm leading-relaxed">
-                {project.impact}
-              </p>
-            </div>
+      {/* Impact */}
+      <div className="mb-6 p-4 bg-white/5 rounded-xl border border-white/10">
+        <p className="text-gray-200 text-sm leading-relaxed">
+          {project.impact}
+        </p>
+      </div>
 
-            {/* Tech stack */}
-            <div className="flex flex-wrap gap-2.5 mb-7">
-              {project.tech.map((tech, techIndex) => (
-                <span
-                  key={tech}
-                  className="px-3.5 py-1.5 bg-[#4285F4]/10 text-[#60A5FA] rounded-full text-xs sm:text-sm font-medium border border-[#4285F4]/20 transition-all duration-300 hover:bg-[#4285F4]/20 hover:border-[#4285F4]/40"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
+      {/* Tech stack */}
+      <div className="flex flex-wrap gap-2.5 mb-7">
+        {project.tech.map((tech, techIndex) => (
+          <span
+            key={tech}
+            className="px-3.5 py-1.5 bg-[#4285F4]/10 text-[#60A5FA] rounded-full text-xs sm:text-sm font-medium border border-[#4285F4]/20 transition-all duration-300 hover:bg-[#4285F4]/20 hover:border-[#4285F4]/40"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
 
-            {/* GitHub link */}
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[#60A5FA] hover:text-[#34A853] font-medium transition-colors duration-300"
-            >
-              <Github className="w-5 h-5" />
-              View on GitHub
-            </a>
-          </div>
+      {/* GitHub link */}
+      <a
+        href={project.githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 text-[#60A5FA] hover:text-[#34A853] font-medium transition-colors duration-300"
+      >
+        <Github className="w-5 h-5" />
+        View on GitHub
+      </a>
+    </div>
 
-          {/* Subtle background glow on hover */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#4285F4]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-          </div>
-        </div>
+    {/* Subtle background glow */}
+    <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#4285F4]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+    </div>
+  </div>
       ))}
     </div>
   </div>

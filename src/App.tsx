@@ -541,7 +541,7 @@ function App() {
     title: "News-Driven Stock Alert App – Cloud Financial Platform",
     description: "Real-time financial alert system with sentiment analysis and automated notifications using event-driven microservices.",
     tech: ["Kotlin", "Jetpack Compose", "Spring Boot", "AWS (SES, SNS, DynamoDB, Elastic Beanstalk, Pinpoint)", "Room DB", "WorkManager"],
-    image: "https://portfolio-gules-seven-wbw6ip079v.vercel.app/1.png",
+    image: "https://raw.githubusercontent.com/developer4949-code/stock-alert-app/refs/heads/ss-backend/Screenshot%202026-01-25%20104420.png",
     githubUrl: "https://github.com/developer4949-code/stock-alert-app",
     impact: "Empowers traders with real-time insights and automated decision support."
   },
@@ -652,271 +652,362 @@ function App() {
   </div>
 </section>
 
-      {/* Certifications Section - NEW SEPARATE SECTION */}
-      <section id="certifications" className="py-20 bg-[#0F1419]">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-white">
-              Certifications
-            </h2>
-            <div className="w-24 h-1 bg-[#4285F4] mx-auto rounded-full"></div>
-          </div>
+{/* Certifications Section */}
+<section id="certifications" className="py-20 bg-[#0F1419]">
+  <div className="max-w-6xl mx-auto px-6">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl font-bold mb-4 text-white">
+        Certifications
+      </h2>
+      <div className="w-24 h-1 bg-[#4285F4] mx-auto rounded-full"></div>
+    </div>
 
-          {/* Certifications with Different Color Animations */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                title: "AWS Cloud Practitioner Essentials",
-                subtitle: "AWS Cloud Practitioner Essentials",
-                platform: "AWS Skill Builder",
-                year: "Dec 2025",
-                icon: "☁️",
-                gradient: "from-[#4285F4]/10 to-[#34A853]/10",
-                borderColor: "border-[#4285F4]/30",
-                bgColor1: "bg-[#4285F4]",
-                bgColor2: "bg-[#34A853]",
-                textColor: "text-[#4285F4]",
-                particleColor1: "bg-[#4285F4]",
-                particleColor2: "bg-[#34A853]"
-              },
-              {
-                title: "AWS Cloud Quest: Cloud Practitioner",
-                subtitle: "AWS Cloud Quest: Cloud Practitioner",
-                platform: "AWS Training and Certification",
-                year: "Dec 2025",
-                icon: "☁️",
-                gradient: "from-[#34A853]/10 to-[#FBBC04]/10",
-                borderColor: "border-[#34A853]/30",
-                bgColor1: "bg-[#34A853]",
-                bgColor2: "bg-[#FBBC04]",
-                textColor: "text-[#34A853]",
-                particleColor1: "bg-[#34A853]",
-                particleColor2: "bg-[#FBBC04]"
-              },
-              {
-                title: "Spring Boot REST API Development",
-                subtitle: "Spring Boot REST API Development",
-                platform: "Spring Academy",
-                year: "2024",
-                icon: "☕",
-                gradient: "from-[#FBBC04]/10 to-[#EA4335]/10",
-                borderColor: "border-[#FBBC04]/30",
-                bgColor1: "bg-[#FBBC04]",
-                bgColor2: "bg-[#EA4335]",
-                textColor: "text-[#FBBC04]",
-                particleColor1: "bg-[#FBBC04]",
-                particleColor2: "bg-[#EA4335]"
-              },
-              {
-                title: "Android Development",
-                subtitle: "The Complete Android Oreo Developer Course",
-                platform: "Udemy",
-                year: "2023",
-                icon: "📱",
-                gradient: "from-[#EA4335]/10 to-[#8847FD]/10",
-                borderColor: "border-[#EA4335]/30",
-                bgColor1: "bg-[#EA4335]",
-                bgColor2: "bg-[#8847FD]",
-                textColor: "text-[#EA4335]",
-                particleColor1: "bg-[#EA4335]",
-                particleColor2: "bg-[#8847FD]"
-              }
-            ].map((cert, index) => (
-              <div key={cert.title} className="quote-card">
-                <div className={`relative p-8 bg-gradient-to-br ${cert.gradient} rounded-2xl border ${cert.borderColor} backdrop-blur-sm overflow-hidden group faang-card`}>
-                  <div className="absolute inset-0 opacity-10">
-                    <div className={`absolute top-0 left-0 w-32 h-32 ${cert.bgColor1} rounded-full blur-3xl animate-pulse`}></div>
-                    <div className={`absolute bottom-0 right-0 w-40 h-40 ${cert.bgColor2} rounded-full blur-3xl animate-pulse`} style={{ animationDelay: '1.5s' }}></div>
-                  </div>
+    {/* Uniform grid – all cards same size */}
+    <div className="grid md:grid-cols-2 gap-8">
+      {[
+        {
+          title: "AWS Cloud Practitioner Essentials",
+          subtitle: "AWS Cloud Practitioner Essentials",
+          platform: "AWS Skill Builder",
+          year: "Dec 2025",
+          icon: "☁️",
+          gradient: "from-[#4285F4]/10 to-[#34A853]/10",
+          borderColor: "border-[#4285F4]/30",
+          bgColor1: "bg-[#4285F4]",
+          bgColor2: "bg-[#34A853]",
+          textColor: "text-[#4285F4]",
+          particleColor1: "bg-[#4285F4]",
+          particleColor2: "bg-[#34A853]"
+        },
+        {
+          title: "AWS Cloud Quest: Cloud Practitioner",
+          subtitle: "AWS Cloud Quest: Cloud Practitioner",
+          platform: "AWS Training and Certification",
+          year: "Dec 2025",
+          icon: "☁️",
+          gradient: "from-[#34A853]/10 to-[#FBBC04]/10",
+          borderColor: "border-[#34A853]/30",
+          bgColor1: "bg-[#34A853]",
+          bgColor2: "bg-[#FBBC04]",
+          textColor: "text-[#34A853]",
+          particleColor1: "bg-[#34A853]",
+          particleColor2: "bg-[#FBBC04]"
+        },
+        {
+          title: "Spring Boot REST API Development",
+          subtitle: "Spring Boot REST API Development",
+          platform: "Spring Academy",
+          year: "2024",
+          icon: "☕",
+          gradient: "from-[#FBBC04]/10 to-[#EA4335]/10",
+          borderColor: "border-[#FBBC04]/30",
+          bgColor1: "bg-[#FBBC04]",
+          bgColor2: "bg-[#EA4335]",
+          textColor: "text-[#FBBC04]",
+          particleColor1: "bg-[#FBBC04]",
+          particleColor2: "bg-[#EA4335]"
+        },
+        {
+          title: "Android Development",
+          subtitle: "The Complete Android Oreo Developer Course",
+          platform: "Udemy",
+          year: "2023",
+          icon: "📱",
+          gradient: "from-[#EA4335]/10 to-[#8847FD]/10",
+          borderColor: "border-[#EA4335]/30",
+          bgColor1: "bg-[#EA4335]",
+          bgColor2: "bg-[#8847FD]",
+          textColor: "text-[#EA4335]",
+          particleColor1: "bg-[#EA4335]",
+          particleColor2: "bg-[#8847FD]"
+        }
+      ].map((cert, index) => (
+        <div 
+          key={cert.title} 
+          className="quote-card h-full" // ensures same height in grid
+        >
+          <div 
+            className={`
+              relative h-full p-8 
+              bg-gradient-to-br ${cert.gradient} 
+              rounded-2xl border ${cert.borderColor} 
+              backdrop-blur-sm overflow-hidden group faang-card
+              flex flex-col justify-between
+              transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-${cert.textColor.replace('text-', '')}/20
+            `}
+          >
+            <div className="absolute inset-0 opacity-10">
+              <div className={`absolute top-0 left-0 w-32 h-32 ${cert.bgColor1} rounded-full blur-3xl animate-pulse`}></div>
+              <div className={`absolute bottom-0 right-0 w-40 h-40 ${cert.bgColor2} rounded-full blur-3xl animate-pulse`} style={{ animationDelay: '1.5s' }}></div>
+            </div>
 
-                  <div className="relative z-10">
-                    <div className="flex items-start gap-4">
-                      <div className={`w-16 h-16 ${cert.gradient} border ${cert.borderColor} rounded-xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
-                        {cert.icon}
-                      </div>
-                      <div className="flex-1">
-                        <h4 className={`text-xl font-semibold mb-2 text-white group-hover:${cert.textColor} transition-colors duration-300`}>
-                          {cert.title}
-                        </h4>
-                        <p className="text-gray-300 text-sm mb-3">{cert.subtitle}</p>
-                        <div className={`flex items-center justify-between pt-3 border-t ${cert.borderColor}`}>
-                          <span className={`${cert.textColor} text-sm font-medium`}>{cert.platform}</span>
-                          <span className="text-gray-400 text-sm">{cert.year}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Floating Particles */}
-                  <div className={`absolute top-6 right-6 w-2 h-2 ${cert.particleColor1} rounded-full animate-float-particle`} style={{ animationDelay: '0s' }}></div>
-                  <div className={`absolute top-12 left-12 w-1.5 h-1.5 ${cert.particleColor2} rounded-full animate-float-particle`} style={{ animationDelay: '1.5s' }}></div>
-                  <div className={`absolute bottom-8 right-12 w-1 h-1 ${cert.particleColor1} rounded-full animate-float-particle`} style={{ animationDelay: '3s' }}></div>
+            <div className="relative z-10 flex-grow flex flex-col">
+              <div className="flex items-start gap-4 mb-6">
+                <div className={`w-16 h-16 ${cert.gradient} border ${cert.borderColor} rounded-xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
+                  {cert.icon}
+                </div>
+                <div className="flex-1">
+                  <h4 className={`text-xl font-semibold mb-2 text-white group-hover:${cert.textColor} transition-colors duration-300`}>
+                    {cert.title}
+                  </h4>
+                  <p className="text-gray-300 text-sm mb-3">{cert.subtitle}</p>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Quotes Section */}
-      <section id="quotes" className="py-20 bg-[#141920] relative">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-white">
-              Inspirational Tech Wisdom
-            </h2>
-            <div className="w-24 h-1 bg-[#4285F4] mx-auto rounded-full"></div>
-          </div>
+              {/* Spacer to push footer to bottom */}
+              <div className="flex-grow"></div>
 
-          <div className="grid md:grid-cols-2 gap-8 mt-12">
-            {/* Left Quote Card - Tech Focus */}
-            <div className="quote-card quote-card-left">
-              <div className="relative p-8 bg-gradient-to-br from-[#4285F4]/10 to-[#34A853]/10 rounded-2xl border border-[#4285F4]/30 backdrop-blur-sm overflow-hidden group faang-card">
-                <div className="absolute inset-0 opacity-10">
-                  <div className="absolute top-0 left-0 w-32 h-32 bg-[#4285F4] rounded-full blur-3xl animate-pulse"></div>
-                  <div className="absolute bottom-0 right-0 w-40 h-40 bg-[#34A853] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-                </div>
-                <div className="absolute top-4 right-4 text-[#4285F4]/20">
-                  <Quote className="w-16 h-16" />
-                </div>
-
-                <div className="relative z-10">
-                  <p className="text-xl md:text-2xl font-medium text-white leading-relaxed mb-6 italic">
-                    "The only way to do great work is to love what you do."
-                  </p>
-                  <div className="flex items-center gap-3 pt-4 border-t border-[#4285F4]/20">
-                    <div className="w-12 h-12 rounded-full bg-[#4285F4]/20 flex items-center justify-center border border-[#4285F4]/30">
-                      <span className="text-[#4285F4] font-bold text-lg">SJ</span>
-                    </div>
-                    <div>
-                      <p className="text-[#4285F4] font-semibold">Steve Jobs</p>
-                      <p className="text-gray-400 text-sm">Co-founder of Apple</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute top-6 left-6 w-2 h-2 bg-[#4285F4] rounded-full animate-float-particle" style={{ animationDelay: '0s' }}></div>
-                <div className="absolute top-12 right-12 w-1.5 h-1.5 bg-[#34A853] rounded-full animate-float-particle" style={{ animationDelay: '1.5s' }}></div>
-                <div className="absolute bottom-8 left-12 w-1 h-1 bg-[#4285F4] rounded-full animate-float-particle" style={{ animationDelay: '3s' }}></div>
+              <div className={`flex items-center justify-between pt-4 border-t ${cert.borderColor}`}>
+                <span className={`${cert.textColor} text-sm font-medium`}>{cert.platform}</span>
+                <span className="text-gray-400 text-sm">{cert.year}</span>
               </div>
             </div>
 
-            {/* Right Quote Card - Peace/Innovation */}
-            <div className="quote-card quote-card-right">
-              <div className="relative p-8 bg-gradient-to-br from-[#FBBC04]/10 to-[#EA4335]/10 rounded-2xl border border-[#FBBC04]/30 backdrop-blur-sm overflow-hidden group faang-card">
-                <div className="absolute inset-0 opacity-10">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#FBBC04] rounded-full blur-3xl animate-pulse"></div>
-                  <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#EA4335] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-                </div>
-                <div className="absolute top-4 left-4 text-[#FBBC04]/20">
-                  <Quote className="w-16 h-16" />
-                </div>
-
-                <div className="relative z-10">
-                  <p className="text-xl md:text-2xl font-medium text-white leading-relaxed mb-6 italic">
-                    "Measuring programming progress by lines of code is like measuring aircraft building progress by weight."
-                  </p>
-                  <div className="flex items-center gap-3 pt-4 border-t border-[#FBBC04]/20">
-                    <div className="w-12 h-12 rounded-full bg-[#FBBC04]/20 flex items-center justify-center border border-[#FBBC04]/30">
-                      <span className="text-[#FBBC04] font-bold text-lg">BG</span>
-                    </div>
-                    <div>
-                      <p className="text-[#FBBC04] font-semibold">Bill Gates</p>
-                      <p className="text-gray-400 text-sm">Co-founder of Microsoft</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute top-8 right-8 w-2 h-2 bg-[#FBBC04] rounded-full animate-float-particle" style={{ animationDelay: '0.5s' }}></div>
-                <div className="absolute top-16 left-16 w-1.5 h-1.5 bg-[#EA4335] rounded-full animate-float-particle" style={{ animationDelay: '2s' }}></div>
-                <div className="absolute bottom-10 right-16 w-1 h-1 bg-[#FBBC04] rounded-full animate-float-particle" style={{ animationDelay: '3.5s' }}></div>
-              </div>
-            </div>
+            {/* Floating particles */}
+            <div className={`absolute top-6 right-6 w-2 h-2 ${cert.particleColor1} rounded-full animate-float-particle`} style={{ animationDelay: '0s' }}></div>
+            <div className={`absolute top-12 left-12 w-1.5 h-1.5 ${cert.particleColor2} rounded-full animate-float-particle`} style={{ animationDelay: '1.5s' }}></div>
+            <div className={`absolute bottom-8 right-12 w-1 h-1 ${cert.particleColor1} rounded-full animate-float-particle`} style={{ animationDelay: '3s' }}></div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-[#0F1419]">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-white">
-              Let's Work Together
-            </h2>
-            <div className="w-24 h-1 bg-[#4285F4] mx-auto rounded-full"></div>
-            <p className="text-lg text-gray-300 mt-6">
-              I'm always interested in new opportunities and exciting projects.
+     {/* Quotes Section */}
+<section id="quotes" className="py-20 bg-[#141920] relative">
+  <div className="max-w-6xl mx-auto px-6">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl font-bold mb-4 text-white">
+        Inspirational Tech Wisdom
+      </h2>
+      <div className="w-24 h-1 bg-[#4285F4] mx-auto rounded-full"></div>
+    </div>
+
+    {/* Uniform quote cards */}
+    <div className="grid md:grid-cols-2 gap-8">
+      {/* Left Quote – Steve Jobs */}
+      <div className="quote-card h-full">
+        <div className="relative h-full p-8 bg-gradient-to-br from-[#4285F4]/10 to-[#34A853]/10 rounded-2xl border border-[#4285F4]/30 backdrop-blur-sm overflow-hidden group faang-card flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-[#4285F4]/20">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-0 w-32 h-32 bg-[#4285F4] rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-0 right-0 w-40 h-40 bg-[#34A853] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          </div>
+
+          <div className="absolute top-4 right-4 text-[#4285F4]/20">
+            <Quote className="w-16 h-16" />
+          </div>
+
+          <div className="relative z-10 flex-grow flex flex-col">
+            <p className="text-xl md:text-2xl font-medium text-white leading-relaxed mb-8 italic flex-grow">
+              "The only way to do great work is to love what you do."
             </p>
-          </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="space-y-8">
-              <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/10 hover:border-[#4285F4]/50 transition-all duration-300 faang-card">
-                <div className="w-12 h-12 bg-[#4285F4] rounded-full flex items-center justify-center">
-                  <Mail className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-white">Email</h3>
-                  <p className="text-gray-300">dddebiprasaddas2004@gmail.com</p>
-                </div>
+            <div className="flex items-center gap-3 pt-4 border-t border-[#4285F4]/20">
+              <div className="w-12 h-12 rounded-full bg-[#4285F4]/20 flex items-center justify-center border border-[#4285F4]/30">
+                <span className="text-[#4285F4] font-bold text-lg">SJ</span>
               </div>
-
-              <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/10 hover:border-[#4285F4]/50 transition-all duration-300 faang-card">
-                <div className="w-12 h-12 bg-[#4285F4] rounded-full flex items-center justify-center">
-                  <Phone className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-white">Phone</h3>
-                  <p className="text-gray-300">+91-8260057716</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4 pt-4">
-                <a href="https://github.com/developer4949-code" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center border border-white/10 hover:border-[#4285F4]/50 hover:bg-[#4285F4]/10 transition-all duration-300 faang-card">
-                  <Github className="w-6 h-6 text-[#4285F4]" />
-                </a>
-                <a href="https://www.linkedin.com/in/debi-prasad-das-458878292/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center border border-white/10 hover:border-[#4285F4]/50 hover:bg-[#4285F4]/10 transition-all duration-300 faang-card">
-                  <Linkedin className="w-6 h-6 text-[#4285F4]" />
-                </a>
+              <div>
+                <p className="text-[#4285F4] font-semibold">Steve Jobs</p>
+                <p className="text-gray-400 text-sm">Co-founder of Apple</p>
               </div>
             </div>
+          </div>
 
-            <form
-              action="https://formspree.io/f/xovlwakw"
-              method="POST"
-              className="space-y-6"
-            >
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-[#4285F4]/50 focus:outline-none transition-all duration-300 text-white placeholder-gray-400"
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-[#4285F4]/50 focus:outline-none transition-all duration-300 text-white placeholder-gray-400"
-                required
-              />
-              <textarea
-                name="message"
-                rows={5}
-                placeholder="Your Message"
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-[#4285F4]/50 focus:outline-none transition-all duration-300 resize-none text-white placeholder-gray-400"
-                required
-              ></textarea>
-              <input type="hidden" name="_subject" value="New message from portfolio site" />
-              <button
-                type="submit"
-                className="w-full px-8 py-3.5 bg-[#4285F4] rounded-lg font-semibold hover:bg-[#3367D6] hover:shadow-lg hover:shadow-[#4285F4]/30 transform hover:scale-[1.02] transition-all duration-300 faang-button"
-              >
-                Send Message
-              </button>
-            </form>
+          <div className="absolute top-6 left-6 w-2 h-2 bg-[#4285F4] rounded-full animate-float-particle" style={{ animationDelay: '0s' }}></div>
+          <div className="absolute top-12 right-12 w-1.5 h-1.5 bg-[#34A853] rounded-full animate-float-particle" style={{ animationDelay: '1.5s' }}></div>
+          <div className="absolute bottom-8 left-12 w-1 h-1 bg-[#4285F4] rounded-full animate-float-particle" style={{ animationDelay: '3s' }}></div>
+        </div>
+      </div>
+
+      {/* Right Quote – Bill Gates */}
+      <div className="quote-card h-full">
+        <div className="relative h-full p-8 bg-gradient-to-br from-[#FBBC04]/10 to-[#EA4335]/10 rounded-2xl border border-[#FBBC04]/30 backdrop-blur-sm overflow-hidden group faang-card flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-[#FBBC04]/20">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-[#FBBC04] rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#EA4335] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+          </div>
+
+          <div className="absolute top-4 left-4 text-[#FBBC04]/20">
+            <Quote className="w-16 h-16" />
+          </div>
+
+          <div className="relative z-10 flex-grow flex flex-col">
+            <p className="text-xl md:text-2xl font-medium text-white leading-relaxed mb-8 italic flex-grow">
+              "Measuring programming progress by lines of code is like measuring aircraft building progress by weight."
+            </p>
+
+            <div className="flex items-center gap-3 pt-4 border-t border-[#FBBC04]/20">
+              <div className="w-12 h-12 rounded-full bg-[#FBBC04]/20 flex items-center justify-center border border-[#FBBC04]/30">
+                <span className="text-[#FBBC04] font-bold text-lg">BG</span>
+              </div>
+              <div>
+                <p className="text-[#FBBC04] font-semibold">Bill Gates</p>
+                <p className="text-gray-400 text-sm">Co-founder of Microsoft</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute top-8 right-8 w-2 h-2 bg-[#FBBC04] rounded-full animate-float-particle" style={{ animationDelay: '0.5s' }}></div>
+          <div className="absolute top-16 left-16 w-1.5 h-1.5 bg-[#EA4335] rounded-full animate-float-particle" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute bottom-10 right-16 w-1 h-1 bg-[#FBBC04] rounded-full animate-float-particle" style={{ animationDelay: '3.5s' }}></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+     {/* Contact Section – Modern & Animated */}
+<section id="contact" className="py-24 md:py-32 bg-gradient-to-b from-[#0F1419] to-[#141920] relative overflow-hidden">
+  {/* Subtle animated background */}
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#4285F4]/5 via-transparent to-[#34A853]/5 animate-gradient-slow"></div>
+    <div className="absolute top-20 left-20 w-64 h-64 bg-[#4285F4]/10 rounded-full blur-3xl animate-float-particle" style={{ animationDelay: '0s' }}></div>
+    <div className="absolute bottom-32 right-32 w-80 h-80 bg-[#34A853]/10 rounded-full blur-3xl animate-float-particle" style={{ animationDelay: '3s' }}></div>
+  </div>
+
+  <div className="max-w-5xl mx-auto px-6 relative z-10">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white tracking-tight animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+        Let's Work Together
+      </h2>
+      <div className="w-24 h-1 bg-gradient-to-r from-[#4285F4] to-[#34A853] mx-auto rounded-full mb-6"></div>
+      <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+        I'm always excited about new opportunities, challenging projects, and meaningful collaborations.
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
+      {/* Left – Contact Info + Socials */}
+      <div className="space-y-10 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+        <div className="space-y-6">
+          {/* Email */}
+          <div className="group flex items-center gap-5 p-5 bg-white/5 rounded-2xl border border-white/10 hover:border-[#4285F4]/50 hover:bg-white/8 transition-all duration-300 hover:shadow-lg hover:shadow-[#4285F4]/10">
+            <div className="w-14 h-14 bg-gradient-to-br from-[#4285F4] to-[#3367D6] rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+              <Mail className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-white text-lg">Email</h3>
+              <p className="text-gray-300 group-hover:text-[#60A5FA] transition-colors">
+                dddebiprasaddas2004@gmail.com
+              </p>
+            </div>
+          </div>
+
+          {/* Phone */}
+          <div className="group flex items-center gap-5 p-5 bg-white/5 rounded-2xl border border-white/10 hover:border-[#34A853]/50 hover:bg-white/8 transition-all duration-300 hover:shadow-lg hover:shadow-[#34A853]/10">
+            <div className="w-14 h-14 bg-gradient-to-br from-[#34A853] to-[#2E8B57] rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+              <Phone className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-white text-lg">Phone</h3>
+              <p className="text-gray-300 group-hover:text-[#86EFAC] transition-colors">
+                +91-8260057716
+              </p>
+            </div>
           </div>
         </div>
-      </section>
 
+        {/* Social Links */}
+        <div className="flex gap-6 justify-center md:justify-start">
+          <a
+            href="https://github.com/developer4949-code"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative w-14 h-14 bg-white/5 rounded-full flex items-center justify-center border border-white/10 hover:border-[#4285F4]/60 hover:bg-[#4285F4]/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#4285F4]/20"
+          >
+            <Github className="w-7 h-7 text-[#4285F4] group-hover:text-[#60A5FA] transition-colors" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/debi-prasad-das-458878292/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative w-14 h-14 bg-white/5 rounded-full flex items-center justify-center border border-white/10 hover:border-[#0A66C2]/60 hover:bg-[#0A66C2]/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#0A66C2]/20"
+          >
+            <Linkedin className="w-7 h-7 text-[#4285F4] group-hover:text-[#3B82F6] transition-colors" />
+          </a>
+        </div>
+      </div>
+
+      {/* Right – Contact Form */}
+      <form
+        action="https://formspree.io/f/xovlwakw"
+        method="POST"
+        className="space-y-6 animate-fade-in-up" style={{ animationDelay: '0.8s' }}
+      >
+        {/* Name */}
+        <div className="relative">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder=" "
+            className="peer w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl focus:border-[#4285F4]/60 focus:ring-2 focus:ring-[#4285F4]/20 focus:outline-none transition-all duration-300 text-white placeholder-transparent"
+            required
+          />
+          <label
+            htmlFor="name"
+            className="absolute left-5 top-4 text-gray-400 pointer-events-none transition-all duration-300 peer-focus:-translate-y-9 peer-focus:text-sm peer-focus:text-[#4285F4] peer-placeholder-shown:text-base peer-placeholder-shown:translate-y-0"
+          >
+            Your Name
+          </label>
+        </div>
+
+        {/* Email */}
+        <div className="relative">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder=" "
+            className="peer w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl focus:border-[#4285F4]/60 focus:ring-2 focus:ring-[#4285F4]/20 focus:outline-none transition-all duration-300 text-white placeholder-transparent"
+            required
+          />
+          <label
+            htmlFor="email"
+            className="absolute left-5 top-4 text-gray-400 pointer-events-none transition-all duration-300 peer-focus:-translate-y-9 peer-focus:text-sm peer-focus:text-[#4285F4] peer-placeholder-shown:text-base peer-placeholder-shown:translate-y-0"
+          >
+            Your Email
+          </label>
+        </div>
+
+        {/* Message */}
+        <div className="relative">
+          <textarea
+            name="message"
+            id="message"
+            rows={5}
+            placeholder=" "
+            className="peer w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl focus:border-[#4285F4]/60 focus:ring-2 focus:ring-[#4285F4]/20 focus:outline-none transition-all duration-300 text-white placeholder-transparent resize-none"
+            required
+          ></textarea>
+          <label
+            htmlFor="message"
+            className="absolute left-5 top-4 text-gray-400 pointer-events-none transition-all duration-300 peer-focus:-translate-y-9 peer-focus:text-sm peer-focus:text-[#4285F4] peer-placeholder-shown:text-base peer-placeholder-shown:translate-y-0"
+          >
+            Your Message
+          </label>
+        </div>
+
+        {/* Hidden subject */}
+        <input type="hidden" name="_subject" value="New message from portfolio site" />
+
+        {/* Submit Button – with ripple effect */}
+        <button
+          type="submit"
+          className="group relative w-full px-8 py-4 bg-gradient-to-r from-[#4285F4] to-[#3367D6] rounded-xl font-semibold text-white overflow-hidden hover:shadow-2xl hover:shadow-[#4285F4]/40 transform hover:scale-[1.02] transition-all duration-300"
+        >
+          <span className="relative z-10 flex items-center justify-center gap-2">
+            Send Message
+            <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </span>
+          <span className="absolute inset-0 bg-white/20 scale-0 rounded-full group-active:scale-150 group-active:opacity-0 transition-all duration-500"></span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
       {/* Footer */}
       <footer className="py-8 border-t border-white/10 bg-[#0F1419]">
         <div className="max-w-6xl mx-auto px-6 text-center">

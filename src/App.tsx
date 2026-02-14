@@ -541,24 +541,6 @@ function App() {
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {[
   {
-  title: "CloudNest – Scalable Personal Cloud Storage Platform",
-  description: "Full-stack cloud storage system with secure file upload, sharing, JWT-based authentication, and AWS S3 object storage integration.",
-  tech: [
-    "React (Vite)",
-    "Spring Boot 3",
-    "PostgreSQL",
-    "AWS S3",
-    "JWT Authentication",
-    "Flyway",
-    "REST APIs",
-    "Vercel"
-  ],
-  image: "https://github.com/developer4949-code/CloudNest49/raw/main/cloudnest-full-preview.png",
-  githubUrl: "https://github.com/developer4949-code/CloudNest49",
-  liveUrl: "https://cloud-nest-frontend.vercel.app/",
-  impact: "Demonstrates production-ready cloud architecture with secure file management, scalable storage, and full-stack deployment."
-},
-  {
     title: "News-Driven Stock Alert App – Cloud Financial Platform",
     description: "Real-time financial alert system with sentiment analysis and automated notifications using event-driven microservices.",
     tech: ["Kotlin", "Jetpack Compose", "Spring Boot", "AWS (SES, SNS, DynamoDB, Elastic Beanstalk, Pinpoint)", "Room DB", "WorkManager"],

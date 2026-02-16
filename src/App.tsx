@@ -552,7 +552,7 @@ function App() {
     title: "Fill It – Ride-Sharing for Tanker Fulfillment",
     description: "Scalable backend for real-time tanker ride-matching and lifecycle management with geolocation logic.",
     tech: ["Java 8+", "Spring Boot", "Gradle", "Firebase", "Google Groups", "Docker"],
-    image: "https://portfolio-gules-seven-wbw6ip079v.vercel.app/3.png",
+    image: "https://raw.githubusercontent.com/developer4949-code/FILL-IT-App/refs/heads/main/4.png",
     githubUrl: "https://github.com/developer4949-code/FILL-IT-App",
     impact: "Improves gig economy efficiency and reduces logistics delays."
   },

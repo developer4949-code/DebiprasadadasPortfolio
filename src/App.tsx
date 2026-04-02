@@ -1,10 +1,272 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronDown, Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Code, Database, Server, FileText, Menu, X, Quote } from 'lucide-react';
+import {
+  ChevronDown,
+  Code,
+  Database,
+  ExternalLink,
+  FileText,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  Menu,
+  Phone,
+  Quote,
+  Server,
+  X,
+} from 'lucide-react';
 import profileImage from './B123048_profile.png';
-import logo from './logo-p.png';
 import iiitLogo from './iiit_logo_fevicon.png';
+import logo from './logo-p.png';
 import SkillIcon from './components/SkillIcon';
 import { useScrollAnimation } from './hooks/useScrollAnimation';
+
+const resumeUrl =
+  'https://drive.google.com/file/d/18_I3BP88IjjHfhc8vZGsSPsosixL64h6/view?usp=sharing';
+
+const navItems = [
+  { label: 'Education', id: 'education' },
+  { label: 'Skills', id: 'skills' },
+  { label: 'Projects', id: 'projects' },
+  { label: 'Certifications', id: 'certifications' },
+  { label: 'Contact', id: 'contact' },
+] as const;
+
+const sectionIds = ['hero', 'education', 'skills', 'projects', 'certifications', 'contact'] as const;
+
+const skillGroups = [
+  {
+    title: 'Frontend Development',
+    icon: Code,
+    accentClass: 'text-[#8db7ff]',
+    borderClass: 'border-[#8db7ff]/20',
+    chipClass:
+      'border-[#8db7ff]/25 bg-[#0e1730]/70 hover:border-[#8db7ff]/55 hover:bg-[#132044]/80',
+    items: ['React.js', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Material UI (Basics)'],
+    reverse: false,
+  },
+  {
+    title: 'Backend Development',
+    icon: Server,
+    accentClass: 'text-[#7fe0c9]',
+    borderClass: 'border-[#7fe0c9]/20',
+    chipClass:
+      'border-[#7fe0c9]/25 bg-[#081d1c]/70 hover:border-[#7fe0c9]/55 hover:bg-[#0c2927]/80',
+    items: ['Java (Spring Boot)', 'Node.js (Learning)', 'RESTful APIs', 'JWT', 'MVC Architecture'],
+    reverse: true,
+  },
+  {
+    title: 'Cloud and Database',
+    icon: Database,
+    accentClass: 'text-[#d5b172]',
+    borderClass: 'border-[#d5b172]/20',
+    chipClass:
+      'border-[#d5b172]/25 bg-[#24190e]/70 hover:border-[#d5b172]/55 hover:bg-[#332415]/80',
+    items: [
+      'Firebase Firestore',
+      'Realtime Database',
+      'MySQL',
+      'MongoDB (Learning)',
+      'AWS (EC2, S3, Lambda, IAM)',
+      'GitHub Actions',
+      'Docker',
+      'Kubernetes (Basics)',
+      'Firebase Hosting',
+    ],
+    reverse: false,
+  },
+] as const;
+
+const projects = [
+  {
+    title: 'News-Driven Stock Alert App - Cloud Financial Platform',
+    description:
+      'Real-time financial alert system with sentiment analysis and automated notifications using event-driven microservices.',
+    tech: [
+      'Kotlin',
+      'Jetpack Compose',
+      'Spring Boot',
+      'AWS (SES, SNS, DynamoDB, Elastic Beanstalk, Pinpoint)',
+      'Room DB',
+      'WorkManager',
+    ],
+    image:
+      'https://raw.githubusercontent.com/developer4949-code/stock-alert-app/refs/heads/ss-backend/Screenshot%202026-01-25%20104420.png',
+    githubUrl: 'https://github.com/developer4949-code/stock-alert-app',
+    impact: 'Empowers traders with real-time insights and automated decision support.',
+  },
+  {
+    title: 'Fill It - Ride-Sharing for Tanker Fulfillment',
+    description:
+      'Scalable backend for real-time tanker ride-matching and lifecycle management with geolocation logic.',
+    tech: ['Java 8+', 'Spring Boot', 'Gradle', 'Firebase', 'Google Groups', 'Docker'],
+    image: 'https://raw.githubusercontent.com/developer4949-code/FILL-IT-App/refs/heads/main/4.png',
+    githubUrl: 'https://github.com/developer4949-code/FILL-IT-App',
+    impact: 'Improves gig economy efficiency and reduces logistics delays.',
+  },
+  {
+    title: 'Institution Student Management System (ISMS)',
+    description:
+      'Comprehensive academic management platform with 50+ REST APIs, document handling and role-based access.',
+    tech: ['Java 21', 'Spring Boot 3.4', 'Firebase', 'Gradle', 'Google Drive API', 'OpenCV'],
+    image: 'https://portfolio-gules-seven-wbw6ip079v.vercel.app/2.png.jpg',
+    githubUrl: 'https://github.com/developer4949-code/ISMS-Fullstack',
+    impact: 'Reduces manual admin work and improves data accuracy in institutions.',
+  },
+  {
+    title: 'SuchnaSangam - Government Grievance and Alert Portal',
+    description:
+      'Real-time citizen grievance and district-level alert system with secure role-based access.',
+    tech: ['Java 17', 'Spring Boot 3.5.0', 'Firebase', 'Gradle', 'Google Cloud APIs', 'Docker', 'Lombok'],
+    image: 'https://portfolio-gules-seven-wbw6ip079v.vercel.app/1.png',
+    githubUrl: 'https://github.com/developer4949-code/Suchna-Sangam-Fullstack',
+    impact: 'Promotes transparency and faster resolution of public complaints.',
+  },
+  {
+    title: 'Quiz System - Android Quiz Application',
+    description:
+      'Interactive Android quiz app with admin/user modes and real-time content management.',
+    tech: ['Java', 'Android SDK', 'Firebase', 'Material Design', 'ViewBinding', 'Lottie'],
+    image:
+      'https://raw.githubusercontent.com/developer4949-code/quizoo/refs/heads/master/Screenshot%202026-01-25%20102707.png',
+    githubUrl: 'https://github.com/developer4949-code/quizoo',
+    impact: 'Makes learning engaging and provides easy quiz management for educators.',
+  },
+  {
+    title: 'MindWeave - AI-Ready Journaling App',
+    description:
+      'Modern Android journaling app built with Jetpack Compose, clean UI, secure auth, and future-ready architecture for AI-powered insights.',
+    tech: ['Kotlin', 'Jetpack Compose', 'Jetpack Navigation', 'Gradle'],
+    image:
+      'https://raw.githubusercontent.com/developer4949-code/MindWeave/refs/heads/main/mindweave-preview.png',
+    githubUrl: 'https://github.com/developer4949-code/MindWeave',
+    impact:
+      'Helps users build consistent self-reflection habits with a beautiful, privacy-focused experience, future AI features will deliver emotional insights and smart prompts.',
+  },
+] as const;
+
+const certifications = [
+  {
+    title: 'AWS Cloud Practitioner Essentials',
+    subtitle: 'AWS Cloud Practitioner Essentials',
+    platform: 'AWS Skill Builder',
+    year: 'Dec 2025',
+    mark: 'AWS',
+    accentClass: 'text-[#8db7ff]',
+    borderClass: 'border-[#8db7ff]/25',
+    panelClass: 'from-[#0b1631] to-[#11192b]',
+  },
+  {
+    title: 'AWS Cloud Quest: Cloud Practitioner',
+    subtitle: 'AWS Cloud Quest: Cloud Practitioner',
+    platform: 'AWS Training and Certification',
+    year: 'Dec 2025',
+    mark: 'AC',
+    accentClass: 'text-[#7fe0c9]',
+    borderClass: 'border-[#7fe0c9]/25',
+    panelClass: 'from-[#081c1a] to-[#11192b]',
+  },
+  {
+    title: 'Spring Boot REST API Development',
+    subtitle: 'Spring Boot REST API Development',
+    platform: 'Spring Academy',
+    year: '2024',
+    mark: 'SB',
+    accentClass: 'text-[#d5b172]',
+    borderClass: 'border-[#d5b172]/25',
+    panelClass: 'from-[#24190e] to-[#11192b]',
+  },
+  {
+    title: 'Android Development',
+    subtitle: 'The Complete Android Oreo Developer Course',
+    platform: 'Udemy',
+    year: '2023',
+    mark: 'AD',
+    accentClass: 'text-[#f08d8d]',
+    borderClass: 'border-[#f08d8d]/25',
+    panelClass: 'from-[#261316] to-[#11192b]',
+  },
+] as const;
+
+const quotes = [
+  {
+    body: '"The only way to do great work is to love what you do."',
+    author: 'Steve Jobs',
+    role: 'Co-founder of Apple',
+    accentClass: 'text-[#d5b172]',
+    borderClass: 'border-[#d5b172]/20',
+  },
+  {
+    body:
+      '"Measuring programming progress by lines of code is like measuring aircraft building progress by weight."',
+    author: 'Bill Gates',
+    role: 'Co-founder of Microsoft',
+    accentClass: 'text-[#8db7ff]',
+    borderClass: 'border-[#8db7ff]/20',
+  },
+] as const;
+
+type RevealProps = {
+  children: React.ReactNode;
+  className?: string;
+  threshold?: number;
+};
+
+function Reveal({ children, className = '', threshold = 0.14 }: RevealProps) {
+  const [ref, isVisible] = useScrollAnimation({
+    threshold,
+    rootMargin: '0px 0px -12% 0px',
+    triggerOnce: true,
+  });
+
+  return (
+    <div ref={ref} className={`reveal ${isVisible ? 'reveal-visible' : ''} ${className}`.trim()}>
+      {children}
+    </div>
+  );
+}
+
+type SectionIntroProps = {
+  eyebrow: string;
+  title: string;
+  description?: string;
+};
+
+function SectionIntro({ eyebrow, title, description }: SectionIntroProps) {
+  return (
+    <Reveal className="mx-auto mb-14 max-w-3xl text-center">
+      <p className="section-kicker">{eyebrow}</p>
+      <h2 className="section-title mt-4">{title}</h2>
+      {description ? <p className="mt-5 text-base leading-8 text-[#a5afc4] md:text-lg">{description}</p> : null}
+    </Reveal>
+  );
+}
+
+type SkillRibbonProps = {
+  items: readonly string[];
+  chipClass: string;
+  reverse?: boolean;
+};
+
+function SkillRibbon({ items, chipClass, reverse = false }: SkillRibbonProps) {
+  const duplicated = [...items, ...items];
+
+  return (
+    <div className="marquee-shell">
+      <div className={`marquee-track ${reverse ? 'marquee-track-reverse' : ''}`}>
+        {duplicated.map((skill, index) => (
+          <div
+            key={`${skill}-${index}`}
+            className={`inline-flex items-center gap-3 rounded-full border px-5 py-3 text-sm font-medium text-[#f4efe4] transition-all duration-300 ${chipClass}`}
+          >
+            <SkillIcon skill={skill} size="md" />
+            <span className="whitespace-nowrap">{skill}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -17,1007 +279,569 @@ function App() {
     setIsLoaded(true);
 
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'education', 'skills', 'projects', 'certifications', 'contact'];
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + window.innerHeight * 0.28;
 
-      for (const section of sections) {
+      for (const section of sectionIds) {
         const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
-          }
+        if (!element) {
+          continue;
+        }
+
+        const { offsetTop, offsetHeight } = element;
+        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          setActiveSection(section);
         }
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Continuous typewriter effect for name
   useEffect(() => {
-    let currentIndex = 0;
-    let isDeleting = false;
-    let timeoutId: NodeJS.Timeout;
-    
-    const type = () => {
-      if (!isDeleting) {
-        // Typing forward
-        if (currentIndex < fullName.length) {
-          setDisplayedName(fullName.substring(0, currentIndex + 1));
-          currentIndex++;
-          timeoutId = setTimeout(type, 100);
-        } else {
-          // Wait 2 seconds before starting to delete
-          timeoutId = setTimeout(() => {
-            isDeleting = true;
-            type();
-          }, 2000);
-        }
-      } else {
-        // Deleting backward
-        if (currentIndex > 0) {
-          currentIndex--;
-          setDisplayedName(fullName.substring(0, currentIndex));
-          timeoutId = setTimeout(type, 50); // Faster when deleting
-        } else {
-          // Start typing again after a short pause
-          isDeleting = false;
-          timeoutId = setTimeout(() => {
-            type();
-          }, 500);
-        }
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      setDisplayedName(fullName);
+      return;
+    }
+
+    let index = 0;
+    let timeoutId: number | undefined;
+
+    const typeNext = () => {
+      setDisplayedName(fullName.slice(0, index + 1));
+      index += 1;
+
+      if (index < fullName.length) {
+        timeoutId = window.setTimeout(typeNext, 90);
       }
     };
 
-    // Start typing
-    type();
+    timeoutId = window.setTimeout(typeNext, 240);
 
     return () => {
-      if (timeoutId) clearTimeout(timeoutId);
+      if (timeoutId) {
+        window.clearTimeout(timeoutId);
+      }
     };
   }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    setIsMobileMenuOpen(false); // Close mobile menu when clicking a link
+    setIsMobileMenuOpen(false);
   };
 
   return (
-    <div className="min-h-screen bg-[#0F1419] text-white overflow-x-hidden relative">
-      {/* FAANG-style subtle animated background */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="faang-gradient faang-gradient-1"></div>
-        <div className="faang-gradient faang-gradient-2"></div>
+    <div className="page-shell min-h-screen overflow-x-hidden text-[#f6f0e5]">
+      <div className="page-background">
+        <div className="ambient-grid" />
+        <div className="ambient-orb ambient-orb-left" />
+        <div className="ambient-orb ambient-orb-right" />
+        <div className="ambient-orb ambient-orb-center" />
       </div>
 
-      {/* Navigation */}
-     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-xl border-b
-  ${activeSection !== 'hero' 
-    ? 'bg-[#0F1419]/95 shadow-xl border-white/10' 
-    : 'bg-[#0F1419]/85 border-white/5 shadow-md'}
-`}>
-        <div className="max-w-6xl mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <div className={`flex items-center gap-3 transition-all duration-500 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'
-              }`}>
-              {/* Logo */}
-              <img
-                src={logo}
-                alt="Debi Prasad Das Portfolio Logo"
-                className="h-20 w-auto object-contain"
-                onError={(e) => {
-                  // Fallback to text if logo fails to load
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling!.style.display = 'flex';
-                }}
-              />
-              <div className="h-10 flex items-center gap-2 hidden">
-                <div className="w-8 h-8 bg-gradient-to-r from-[#8847FD] to-[#FE45CB] rounded-lg flex items-center justify-center text-white font-bold text-sm">
-                  DP
-                </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-[#8847FD] to-[#FE45CB] bg-clip-text text-transparent">
-                  Portfolio
-                </span>
-              </div>
-            </div>
+      <nav
+        className={`fixed left-0 right-0 top-0 z-50 border-b transition-all duration-500 ${
+          activeSection === 'hero'
+            ? 'border-white/8 bg-[#07111f]/55'
+            : 'border-white/10 bg-[#07111f]/82 shadow-[0_22px_60px_rgba(0,0,0,0.28)]'
+        }`}
+      >
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 backdrop-blur-2xl sm:px-6 lg:px-8">
+          <button
+            type="button"
+            onClick={() => scrollToSection('hero')}
+            className={`flex items-center gap-3 transition-all duration-700 ${
+              isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-3 opacity-0'
+            }`}
+          >
+            <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+              <img src={logo} alt="Debi Prasad Das Portfolio Logo" className="h-9 w-auto object-contain" />
+            </span>
+            <span className="text-left">
+              <span className="block text-[0.68rem] uppercase tracking-[0.35em] text-[#9da7bb]">
+                Portfolio
+              </span>
+              <span className="block text-sm font-semibold text-[#f8f3ea] sm:text-base">Debi Prasad Das</span>
+            </span>
+          </button>
 
-            {/* Desktop Navigation */}
-            <div className={`hidden md:flex items-center space-x-8 transition-all duration-700 delay-300 ${isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-5 opacity-0'
-              }`}>
-              {['Education', 'Skills', 'Projects', 'Certifications', 'Contact'].map((item, index) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 hover:text-[#4285F4] ${activeSection === item.toLowerCase() ? 'text-[#4285F4]' : 'text-gray-400'
-                    }`}
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  {item}
-                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#4285F4] transform transition-all duration-300 ${activeSection === item.toLowerCase() ? 'scale-x-100' : 'scale-x-0'
-                    }`}></span>
-                </button>
-              ))}
-
-              {/* View Resume Button */}
-              <a
-                href="https://drive.google.com/file/d/18_I3BP88IjjHfhc8vZGsSPsosixL64h6/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-2.5 bg-[#4285F4] rounded-lg text-white font-medium hover:bg-[#3367D6] hover:shadow-lg hover:shadow-[#4285F4]/30 transform hover:scale-[1.02] transition-all duration-300 flex items-center gap-2 faang-button"
+          <div
+            className={`hidden items-center gap-2 md:flex ${
+              isLoaded ? 'translate-y-0 opacity-100' : '-translate-y-3 opacity-0'
+            } transition-all duration-700 delay-100`}
+          >
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => scrollToSection(item.id)}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                  activeSection === item.id
+                    ? 'bg-white/10 text-[#f6f0e5] shadow-[0_0_0_1px_rgba(255,255,255,0.08)]'
+                    : 'text-[#99a4bb] hover:bg-white/6 hover:text-[#f6f0e5]'
+                }`}
               >
-                <FileText className="w-4 h-4" />
-                View Resume
-              </a>
-            </div>
+                {item.label}
+              </button>
+            ))}
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 text-gray-300 hover:text-[#4285F4] transition-colors duration-300"
+            <a
+              href={resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-3 inline-flex items-center gap-2 rounded-full border border-[#d5b172]/35 bg-[#d5b172]/12 px-5 py-2.5 text-sm font-semibold text-[#f9f3e7] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#d5b172]/60 hover:bg-[#d5b172]/20 hover:shadow-[0_14px_36px_rgba(213,177,114,0.18)]"
             >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
+              <FileText className="h-4 w-4" />
+              View Resume
+            </a>
           </div>
 
-          {/* Mobile Menu */}
-          <div className={`md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-            }`}>
-            <div className="py-4 space-y-4 border-t border-gray-700 mt-4">
-              {[ 'Education', 'Skills', 'Projects', 'Certifications', 'Contact'].map((item, index) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`block w-full text-left px-4 py-3 text-sm font-medium transition-all duration-300 hover:text-[#4285F4] hover:bg-[#4285F4]/10 rounded-lg ${activeSection === item.toLowerCase() ? 'text-[#4285F4] bg-[#4285F4]/10' : 'text-gray-300'
-                    }`}
-                >
-                  {item}
-                </button>
-              ))}
+          <button
+            type="button"
+            onClick={() => setIsMobileMenuOpen((value) => !value)}
+            className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 p-2 text-[#f6f0e5] transition-all duration-300 hover:bg-white/10 md:hidden"
+            aria-label="Toggle navigation menu"
+          >
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
 
-              {/* Mobile View Resume Button */}
-              <a
-                href="https://drive.google.com/file/d/18_I3BP88IjjHfhc8vZGsSPsosixL64h6/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full px-4 py-3 bg-[#4285F4] rounded-lg text-white font-medium hover:bg-[#3367D6] hover:shadow-lg hover:shadow-[#4285F4]/30 transform hover:scale-[1.02] transition-all duration-300 flex items-center gap-2 faang-button"
+        <div
+          className={`mx-4 overflow-hidden rounded-[1.7rem] border border-white/8 bg-[#0b1527]/88 backdrop-blur-xl transition-all duration-300 md:hidden ${
+            isMobileMenuOpen ? 'max-h-[24rem] opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="space-y-2 p-4">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => scrollToSection(item.id)}
+                className={`block w-full rounded-2xl px-4 py-3 text-left text-sm font-medium transition-all duration-300 ${
+                  activeSection === item.id
+                    ? 'bg-white/10 text-[#f6f0e5]'
+                    : 'text-[#a5afc4] hover:bg-white/6 hover:text-[#f6f0e5]'
+                }`}
               >
-                <FileText className="w-4 h-4" />
-                View Resume
-              </a>
-            </div>
+                {item.label}
+              </button>
+            ))}
+            <a
+              href={resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-[#d5b172]/35 bg-[#d5b172]/12 px-5 py-3 text-sm font-semibold text-[#f9f3e7] transition-all duration-300 hover:bg-[#d5b172]/18"
+            >
+              <FileText className="h-4 w-4" />
+              View Resume
+            </a>
           </div>
         </div>
       </nav>
 
-  <section id="hero" className="min-h-screen flex items-center justify-center relative pt-14 pb-8 overflow-hidden">
-  <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10 w-full relative z-10">
-    <div className={`transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-      {/* Main card – entrance with subtle scale + blur */}
-      <div 
-        className={`
-          relative mx-auto p-5 sm:p-7 lg:p-8 
-          bg-gradient-to-br from-[#4285F4]/7 via-[#34A853]/4 to-[#FBBC04]/7
-          rounded-3xl border border-white/10 backdrop-blur-xl 
-          overflow-hidden shadow-2xl faang-card
-          transition-all duration-1000 ease-out
-          ${isLoaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-95 blur-sm'}
-        `}
-      >
-        {/* Softer, breathing background blobs */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-[#4285F4] rounded-full blur-3xl animate-[pulse_12s_ease-in-out_infinite]"></div>
-          <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-[#EA4335] rounded-full blur-3xl animate-[pulse_14s_ease-in-out_infinite_2s]"></div>
-          <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-[#34A853] rounded-full blur-3xl animate-[pulse_16s_ease-in-out_infinite_4s]"></div>
-        </div>
-
-        <div className="relative z-10 grid md:grid-cols-5 gap-6 lg:gap-10 items-center">
-          {/* Left content – staggered entrance */}
-          <div className="md:col-span-3 space-y-5 text-center md:text-left">
-            {/* Name – typewriter + glow finish */}
-            <h1 
-              className={`
-                text-4xl sm:text-5xl lg:text-6xl font-bold mb-3 text-white faang-title tracking-tight
-                transition-all duration-700
-                ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-4'}
-              `}
-              style={{ transitionDelay: '0.4s' }}
+      <main className="relative z-10">
+        <section id="hero" className="relative px-5 pb-4 pt-16 sm:px-6 lg:px-8 lg:pb-6 lg:pt-20">
+          <div className="mx-auto grid max-w-7xl gap-6 lg:items-stretch lg:grid-cols-[1.08fr_0.82fr] lg:gap-8 lg:pt-2">
+            <div
+              className={`lg:h-full transition-all duration-1000 ${
+                isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+              }`}
             >
-              {displayedName}
-              {displayedName.length > 0 && displayedName.length === fullName.length && (
-                <span className="animate-[glow_2s_ease-in-out_infinite] text-[#4285F4]">|</span>
-              )}
-            </h1>
+              <div className="hero-panel flex h-full flex-col rounded-[2rem] border border-white/10 px-5 py-4 shadow-[0_26px_90px_rgba(0,0,0,0.28)] sm:px-6 sm:py-5 lg:px-7 lg:py-5">
+                <div className="hero-shimmer" />
+                <p className="section-kicker relative z-10">Full-stack Developer and Cloud Enthusiast</p>
+                <h1 className="title-serif relative z-10 mt-3 text-3xl leading-none text-[#f8f2e7] sm:text-4xl lg:text-5xl xl:text-[3.6rem]">
+                  {displayedName}
+                  <span className="ml-2 inline-block h-[0.9em] w-[2px] translate-y-1 bg-[#d5b172] align-middle animate-[blink_1.1s_steps(2,end)_infinite]" />
+                </h1>
+                <div className="mt-4 h-px w-24 bg-gradient-to-r from-[#d5b172] via-[#8db7ff] to-transparent" />
 
-            {/* Subtitle – fade in after name */}
-            <p 
-              className={`
-                text-lg sm:text-xl lg:text-2xl text-gray-200 font-light
-                transition-all duration-700
-                ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-4'}
-              `}
-              style={{ transitionDelay: '1.0s' }}
-            >
-              Full-stack Developer & Cloud Enthusiast
-            </p>
-
-            {/* About text – staggered lines */}
-            <div className="space-y-4 text-base lg:text-lg leading-relaxed font-mono text-gray-100">
-              <p className={`transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`} style={{ transitionDelay: '1.3s' }}>
-                Full-stack developer & cloud enthusiast. Experienced in building real-world apps using Java, Spring Boot, React.js, Firebase, Android and RESTful APIs. Comfortable with Docker, GitHub Actions, AWS basics and Kubernetes fundamentals.
-              </p>
-              <p className={`transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`} style={{ transitionDelay: '1.5s' }}>
-                Passionate about clean code and solving practical problems. I enjoy exploring new cloud/mobile tools and contributing to open-source.
-              </p>
-            </div>
-
-            {/* Contact info – fade in */}
-            <div 
-              className={`flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 mt-5 text-sm lg:text-base transition-all duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-3'}`}
-              style={{ transitionDelay: '1.8s' }}
-            >
-              <div className="flex items-center gap-2 text-[#a5d6ff] hover:text-[#60a5fa] transition-colors">
-                <Mail className="w-4 h-4 lg:w-5 lg:h-5" />
-                dddebiprasaddas2004@gmail.com
-              </div>
-              <div className="flex items-center gap-2 text-[#bbf7d0] hover:text-[#86efac] transition-colors">
-                <Phone className="w-4 h-4 lg:w-5 lg:h-5" />
-                +91-8260057716
-              </div>
-              <div className="flex items-center gap-2 text-[#fef08a] hover:text-[#fde047] transition-colors">
-                <MapPin className="w-4 h-4 lg:w-5 lg:h-5" />
-                Bhubaneswar, India
-              </div>
-            </div>
-
-            {/* Social icons – scale in */}
-            <div 
-              className={`flex justify-center md:justify-start gap-5 mt-5 transition-all duration-700 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
-              style={{ transitionDelay: '2.0s' }}
-            >
-              <a href="https://github.com/developer4949-code" target="_blank" rel="noopener noreferrer"
-                className="w-11 h-11 bg-white/6 rounded-full flex items-center justify-center border border-white/12 hover:border-[#a5d6ff]/60 hover:bg-[#a5d6ff]/10 hover:scale-110 transition-all duration-300">
-                <Github className="w-5 h-5 text-[#a5d6ff]" />
-              </a>
-              <a href="https://www.linkedin.com/in/debi-prasad-das-458878292/" target="_blank" rel="noopener noreferrer"
-                className="w-11 h-11 bg-white/6 rounded-full flex items-center justify-center border border-white/12 hover:border-[#60a5fa]/60 hover:bg-[#60a5fa]/10 hover:scale-110 transition-all duration-300">
-                <Linkedin className="w-5 h-5 text-[#60a5fa]" />
-              </a>
-            </div>
-
-            {/* Buttons – staggered entrance + ripple hover */}
-            <div 
-              className={`flex flex-col sm:flex-row gap-4 justify-center md:justify-start mt-7 transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-              style={{ transitionDelay: '2.2s' }}
-            >
-              <button 
-                onClick={() => scrollToSection('projects')}
-                className="group relative px-8 py-3 bg-[#4285F4] rounded-lg font-medium text-white overflow-hidden hover:bg-[#1d4ed8] hover:shadow-xl hover:shadow-[#4285F4]/40 transform hover:scale-[1.03] transition-all duration-300"
-              >
-                <span className="relative z-10">View My Work</span>
-                <span className="absolute inset-0 bg-white/20 scale-0 rounded-full group-hover:scale-150 group-hover:opacity-0 transition-all duration-500"></span>
-              </button>
-              <button 
-                onClick={() => scrollToSection('contact')}
-                className="group relative px-8 py-3 border border-white/25 rounded-lg font-medium text-white overflow-hidden hover:bg-white/5 hover:border-white/40 transform hover:scale-[1.03] transition-all duration-300"
-              >
-                <span className="relative z-10">Get In Touch</span>
-                <span className="absolute inset-0 bg-white/10 scale-0 rounded-full group-hover:scale-150 group-hover:opacity-0 transition-all duration-500"></span>
-              </button>
-            </div>
-          </div>
-
-          {/* Profile image – slide in from right + subtle glow */}
-          <div 
-            className={`md:col-span-2 flex justify-center md:justify-end mt-8 md:mt-0 transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'}`}
-            style={{ transitionDelay: '0.8s' }}
-          >
-            <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-80 lg:h-80 group/photo">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#4285F4] via-[#34A853] to-[#FBBC04] rounded-full opacity-20 animate-pulse-slow"></div>
-              <div className="absolute inset-2 bg-[#0F1419] rounded-full flex items-center justify-center overflow-hidden border-4 border-white/15 shadow-2xl transition-all duration-500 group-hover/photo:shadow-[#4285F4]/30 group-hover/photo:scale-[1.02]">
-                <img 
-                  src={profileImage} 
-                  alt="Debi Prasad Das" 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover/photo:scale-110"
-                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                />
-                <div className="text-8xl hidden">👨‍💻</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  {/* Scroll indicator – gentle bounce */}
-  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
-    <ChevronDown className="w-7 h-7 text-[#4285F4] opacity-80" />
-  </div>
-</section>
-      {/* Education Section - NEW PLACEMENT */}
-      <section id="education" className="py-20 bg-[#141920]">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-white">
-              Education
-            </h2>
-            <div className="w-24 h-1 bg-[#4285F4] mx-auto rounded-full"></div>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            {/* Education Card with Quote-style Animation */}
-            <div className="quote-card quote-card-right">
-              <div className="relative p-8 bg-gradient-to-br from-[#FBBC04]/10 to-[#EA4335]/10 rounded-2xl border border-[#FBBC04]/30 backdrop-blur-sm overflow-hidden group faang-card">
-                <div className="absolute inset-0 opacity-10">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#FBBC04] rounded-full blur-3xl animate-pulse"></div>
-                  <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#EA4335] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+                <div className="mt-5 space-y-4 text-base leading-7 text-[#b4bed1] sm:text-base">
+                  <p>
+                    Full-stack developer & cloud enthusiast. Experienced in building real-world apps using Java,
+                    Spring Boot, React.js, Firebase, Android and RESTful APIs. Comfortable with Docker, GitHub
+                    Actions, AWS basics and Kubernetes fundamentals.
+                  </p>
+                  <p>
+                    Passionate about clean code and solving practical problems. I enjoy exploring new cloud/mobile
+                    tools and contributing to open-source.
+                  </p>
                 </div>
 
-                <div className="relative z-10">
-                  <div className="flex items-start gap-6">
-                    {/* IIIT Bhubaneswar Logo */}
-                    <div className="w-20 h-20 bg-black rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0 border-2 border-[#FF8C00] p-1 shadow-lg shadow-[#FF8C00]/20">
-                      <img 
-                        src={iiitLogo} 
-                        alt="IIIT Bhubaneswar Logo"
-                        className="w-full h-full object-contain"
-                      />
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <a href="mailto:dddebiprasaddas2004@gmail.com" className="hero-chip">
+                    <Mail className="h-4 w-4" />
+                    dddebiprasaddas2004@gmail.com
+                  </a>
+                  <a href="tel:+918260057716" className="hero-chip">
+                    <Phone className="h-4 w-4" />
+                    +91-8260057716
+                  </a>
+                  <div className="hero-chip">
+                    <MapPin className="h-4 w-4" />
+                    Bhubaneswar, India
+                  </div>
+                </div>
+
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                  <button type="button" onClick={() => scrollToSection('projects')} className="primary-cta">
+                    Explore Projects
+                  </button>
+                  <button type="button" onClick={() => scrollToSection('contact')} className="secondary-cta">
+                    Get In Touch
+                  </button>
+                </div>
+
+                <div className="mt-6 flex items-center gap-4">
+                  <a
+                    href="https://github.com/developer4949-code"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-orb"
+                    aria-label="GitHub profile"
+                  >
+                    <Github className="h-5 w-5" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/debi-prasad-das-458878292/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-orb"
+                    aria-label="LinkedIn profile"
+                  >
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className={`lg:h-full transition-all duration-1000 delay-150 ${
+                isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+              }`}
+            >
+              <div className="portrait-shell h-full">
+                <div className="portrait-glow" />
+                <div className="portrait-frame">
+                  <img
+                    src={profileImage}
+                    alt="Debi Prasad Das"
+                    className="h-full w-full rounded-[2rem] object-cover"
+                  />
+                </div>
+
+                <div className="floating-note floating-note-right hidden sm:block">
+                  <span className="floating-note-label">Location</span>
+                  <p className="floating-note-value">Bhubaneswar, India</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => scrollToSection('education')}
+            className="mx-auto mt-5 flex items-center gap-2 text-sm uppercase tracking-[0.28em] text-[#93a0ba] transition-colors duration-300 hover:text-[#f6f0e5]"
+          >
+            Scroll
+            <ChevronDown className="h-4 w-4 animate-bounce" />
+          </button>
+        </section>
+
+        <section id="education" className="section-space px-5 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <SectionIntro
+              eyebrow="Academic Foundation"
+              title="Education"
+            />
+
+            <Reveal className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+              <div className="frost-card relative overflow-hidden rounded-[2rem] border border-[#d5b172]/18 p-7 sm:p-9">
+                <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-[#d5b172]/55 to-transparent" />
+                <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+                  <div className="flex h-20 w-20 items-center justify-center rounded-[1.4rem] border border-[#d5b172]/22 bg-[#0e1116] p-3 shadow-[0_18px_40px_rgba(0,0,0,0.24)]">
+                    <img src={iiitLogo} alt="IIIT Bhubaneswar Logo" className="h-full w-full object-contain" />
+                  </div>
+
+                  <div className="flex-1">
+                    <p className="section-kicker">International Institute of Information Technology, Bhubaneswar</p>
+                    <h3 className="mt-3 text-2xl font-semibold text-[#f7f2e7] sm:text-3xl">
+                      B.Tech in Computer Science and Engineering
+                    </h3>
+                    <p className="mt-3 text-base text-[#aab5c9]">2023 - 2027</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid gap-6">
+                <div className="frost-card rounded-[2rem] border border-white/10 p-7">
+                  <p className="section-kicker">Performance</p>
+                  <p className="mt-4 text-4xl font-semibold text-[#f7f2e7]">8.86</p>
+                  <p className="mt-2 text-sm uppercase tracking-[0.28em] text-[#96a3bb]">CGPA out of 10</p>
+                </div>
+                <div className="frost-card rounded-[2rem] border border-white/10 p-7">
+                  <p className="section-kicker">Trajectory</p>
+                  <p className="mt-4 text-lg leading-8 text-[#b7c1d2]">B.Tech in Computer Science and Engineering</p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        <section id="skills" className="section-space px-5 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <SectionIntro
+              eyebrow="Capability Map"
+              title="Skills and Technologies"
+            />
+
+            <div className="space-y-6">
+              {skillGroups.map((group) => {
+                const Icon = group.icon;
+
+                return (
+                  <Reveal key={group.title}>
+                    <div className={`frost-card rounded-[2rem] border p-6 sm:p-8 ${group.borderClass}`}>
+                      <div className="mb-6 flex items-center gap-4">
+                        <div className={`rounded-2xl border border-white/10 bg-white/5 p-3 ${group.accentClass}`}>
+                          <Icon className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-semibold text-[#f6f0e5]">{group.title}</h3>
+                        </div>
+                      </div>
+                      <SkillRibbon items={group.items} chipClass={group.chipClass} reverse={group.reverse} />
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section id="projects" className="section-space px-5 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <SectionIntro
+              eyebrow="Selected Work"
+              title="Featured Projects"
+            />
+
+            <div className="grid gap-7 md:grid-cols-2 xl:grid-cols-3">
+              {projects.map((project) => (
+                <Reveal key={project.title}>
+                  <article className="project-card h-full">
+                    <div className="flex h-full flex-col p-6 sm:p-7">
+                      <h3 className="text-2xl font-semibold leading-snug text-[#f7f2e7]">{project.title}</h3>
+                      <p className="mt-4 text-base leading-8 text-[#aeb8cb]">{project.description}</p>
+
+                      <div className="impact-panel mt-6">
+                        <p className="text-sm uppercase tracking-[0.28em] text-[#d5b172]">Impact</p>
+                        <p className="mt-3 text-sm leading-7 text-[#d9e1f0]">{project.impact}</p>
+                      </div>
+
+                      <div className="mt-6 flex flex-wrap gap-2.5">
+                        {project.tech.map((tech) => (
+                          <span key={tech} className="tag-pill">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="mt-7 pt-1">
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#f6f0e5] transition-all duration-300 hover:text-[#d5b172]"
+                        >
+                          <Github className="h-4 w-4" />
+                          View on GitHub
+                          <ExternalLink className="h-4 w-4" />
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="certifications" className="section-space px-5 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <SectionIntro
+              eyebrow="Proof of Practice"
+              title="Certifications"
+            />
+
+            <div className="grid gap-7 md:grid-cols-2">
+              {certifications.map((cert) => (
+                <Reveal key={cert.title}>
+                  <article
+                    className={`cert-card rounded-[2rem] border bg-gradient-to-br p-7 sm:p-8 ${cert.borderClass} ${cert.panelClass}`}
+                  >
+                    <div className="flex items-start gap-5">
+                      <div
+                        className={`flex h-16 w-16 items-center justify-center rounded-[1.25rem] border border-white/10 bg-white/5 text-lg font-semibold ${cert.accentClass}`}
+                      >
+                        {cert.mark}
+                      </div>
+                      <div className="flex-1">
+                        <p className="section-kicker">Certification</p>
+                        <h3 className="mt-2 text-2xl font-semibold text-[#f7f2e7]">{cert.title}</h3>
+                        <p className="mt-3 text-base leading-7 text-[#adb7c9]">{cert.subtitle}</p>
+                      </div>
                     </div>
 
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-semibold mb-2 text-white group-hover:text-[#FBBC04] transition-colors duration-300">
-                        International Institute of Information Technology, Bhubaneswar
-                      </h3>
-                      <p className="text-lg text-gray-300 mb-2">
-                        B.Tech in Computer Science and Engineering
-                      </p>
-                      <p className="text-gray-400 mb-4">2023 - 2027</p>
+                    <div className={`mt-8 flex items-center justify-between border-t pt-5 text-sm ${cert.borderClass}`}>
+                      <span className={`${cert.accentClass} font-semibold`}>{cert.platform}</span>
+                      <span className="uppercase tracking-[0.22em] text-[#97a4bc]">{cert.year}</span>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
 
-                      <div className="space-y-3 pt-4 border-t border-[#FBBC04]/20">
-                        <div className="flex items-center gap-2 text-[#FBBC04]">
-                          <span className="text-sm font-medium">CGPA:</span>
-                          <span className="text-gray-300">8.86/10</span>
-                        </div>
-                      </div>
+        <section id="quotes" className="section-space px-5 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <SectionIntro
+              eyebrow="Design Pause"
+              title="Inspirational Tech Wisdom"
+            />
+
+            <div className="grid gap-7 lg:grid-cols-2">
+              {quotes.map((quote) => (
+                <Reveal key={quote.author}>
+                  <article className={`quote-card rounded-[2rem] border p-8 sm:p-10 ${quote.borderClass}`}>
+                    <Quote className={`h-12 w-12 ${quote.accentClass}`} />
+                    <p className="mt-8 text-2xl leading-[1.6] text-[#f5efe2] md:text-[1.9rem]">{quote.body}</p>
+                    <div className="mt-10 border-t border-white/10 pt-5">
+                      <p className={`text-lg font-semibold ${quote.accentClass}`}>{quote.author}</p>
+                      <p className="mt-1 text-sm uppercase tracking-[0.22em] text-[#98a5bd]">{quote.role}</p>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" className="section-space px-5 pb-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <SectionIntro
+              eyebrow="Open for Collaboration"
+              title="Let's Work Together"
+            />
+
+            <div className="grid gap-7 lg:grid-cols-[0.88fr_1.12fr]">
+              <Reveal>
+                <div className="contact-panel h-full rounded-[2rem] border border-white/10 p-7 sm:p-8">
+                  <p className="section-kicker">Reach Out</p>
+                  <h3 className="mt-3 text-3xl font-semibold text-[#f7f2e7]">Let's Work Together</h3>
+                  <p className="mt-5 max-w-lg text-base leading-8 text-[#aab5c8]">
+                    I'm always excited about new opportunities, challenging projects, and meaningful collaborations.
+                  </p>
+
+                  <div className="mt-8 space-y-4">
+                    <a href="mailto:dddebiprasaddas2004@gmail.com" className="contact-item">
+                      <span className="contact-icon">
+                        <Mail className="h-5 w-5" />
+                      </span>
+                      <span>
+                        <span className="contact-label">Email</span>
+                        <span className="contact-value">dddebiprasaddas2004@gmail.com</span>
+                      </span>
+                    </a>
+
+                    <a href="tel:+918260057716" className="contact-item">
+                      <span className="contact-icon">
+                        <Phone className="h-5 w-5" />
+                      </span>
+                      <span>
+                        <span className="contact-label">Phone</span>
+                        <span className="contact-value">+91-8260057716</span>
+                      </span>
+                    </a>
+
+                    <div className="contact-item">
+                      <span className="contact-icon">
+                        <MapPin className="h-5 w-5" />
+                      </span>
+                      <span>
+                        <span className="contact-label">Location</span>
+                        <span className="contact-value">Bhubaneswar, India</span>
+                      </span>
                     </div>
                   </div>
-                </div>
 
-                {/* Floating Particles */}
-                <div className="absolute top-8 right-8 w-2 h-2 bg-[#FBBC04] rounded-full animate-float-particle" style={{ animationDelay: '0.5s' }}></div>
-                <div className="absolute top-16 left-16 w-1.5 h-1.5 bg-[#EA4335] rounded-full animate-float-particle" style={{ animationDelay: '2s' }}></div>
-                <div className="absolute bottom-10 right-16 w-1 h-1 bg-[#FBBC04] rounded-full animate-float-particle" style={{ animationDelay: '3.5s' }}></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section id="skills" className="py-20 bg-[#0F1419] relative overflow-hidden skills-section">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-white">
-              Skills & Technologies
-            </h2>
-            <div className="w-24 h-1 bg-[#4285F4] mx-auto rounded-full"></div>
-          </div>
-
-          {/* Three Category Rollers */}
-          <div className="space-y-12">
-            {/* Frontend Skills Roller */}
-            <div>
-              <h3 className="text-2xl font-semibold mb-6 text-[#4285F4] flex items-center gap-3">
-                <Code className="w-6 h-6" />
-                Frontend Development
-              </h3>
-              <div className="relative overflow-hidden py-4">
-                <div className="skills-roller">
-                  <div className="skills-track skills-track-frontend">
-                    {[
-                      "React.js", "JavaScript (ES6+)", "HTML5", "CSS3", "Material UI (Basics)"
-                    ].map((skill, index) => (
-                      <div key={`frontend-${skill}-${index}`} className="skill-roller-item">
-                        <div className="flex items-center gap-3 px-6 py-4 bg-white/5 rounded-full border border-[#4285F4]/30 hover:border-[#4285F4]/60 transition-all duration-300 hover:scale-105 faang-card">
-                          <SkillIcon skill={skill} size="md" />
-                          <span className="text-gray-300 font-medium whitespace-nowrap">{skill}</span>
-                        </div>
-                      </div>
-                    ))}
-                    {/* Duplicate for seamless loop */}
-                    {[
-                      "React.js", "JavaScript (ES6+)", "HTML5", "CSS3", "Material UI (Basics)"
-                    ].map((skill, index) => (
-                      <div key={`frontend-dup-${skill}-${index}`} className="skill-roller-item">
-                        <div className="flex items-center gap-3 px-6 py-4 bg-white/5 rounded-full border border-[#4285F4]/30 hover:border-[#4285F4]/60 transition-all duration-300 hover:scale-105 faang-card">
-                          <SkillIcon skill={skill} size="md" />
-                          <span className="text-gray-300 font-medium whitespace-nowrap">{skill}</span>
-                        </div>
-                      </div>
-                    ))}
+                  <div className="mt-8 flex items-center gap-4">
+                    <a
+                      href="https://github.com/developer4949-code"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="social-orb"
+                      aria-label="GitHub profile"
+                    >
+                      <Github className="h-5 w-5" />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/debi-prasad-das-458878292/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="social-orb"
+                      aria-label="LinkedIn profile"
+                    >
+                      <Linkedin className="h-5 w-5" />
+                    </a>
                   </div>
                 </div>
-              </div>
-            </div>
+              </Reveal>
 
-            {/* Backend Skills Roller */}
-            <div>
-              <h3 className="text-2xl font-semibold mb-6 text-[#34A853] flex items-center gap-3">
-                <Server className="w-6 h-6" />
-                Backend Development
-              </h3>
-              <div className="relative overflow-hidden py-4">
-                <div className="skills-roller">
-                  <div className="skills-track skills-track-backend">
-                    {[
-                      "Java (Spring Boot)", "Node.js (Learning)", "RESTful APIs", "JWT", "MVC Architecture"
-                    ].map((skill, index) => (
-                      <div key={`backend-${skill}-${index}`} className="skill-roller-item">
-                        <div className="flex items-center gap-3 px-6 py-4 bg-white/5 rounded-full border border-[#34A853]/30 hover:border-[#34A853]/60 transition-all duration-300 hover:scale-105 faang-card">
-                          <SkillIcon skill={skill} size="md" />
-                          <span className="text-gray-300 font-medium whitespace-nowrap">{skill}</span>
-                        </div>
-                      </div>
-                    ))}
-                    {/* Duplicate for seamless loop */}
-                    {[
-                      "Java (Spring Boot)", "Node.js (Learning)", "RESTful APIs", "JWT", "MVC Architecture"
-                    ].map((skill, index) => (
-                      <div key={`backend-dup-${skill}-${index}`} className="skill-roller-item">
-                        <div className="flex items-center gap-3 px-6 py-4 bg-white/5 rounded-full border border-[#34A853]/30 hover:border-[#34A853]/60 transition-all duration-300 hover:scale-105 faang-card">
-                          <SkillIcon skill={skill} size="md" />
-                          <span className="text-gray-300 font-medium whitespace-nowrap">{skill}</span>
-                        </div>
-                      </div>
-                    ))}
+              <Reveal>
+                <form
+                  action="https://formspree.io/f/xovlwakw"
+                  method="POST"
+                  className="contact-panel rounded-[2rem] border border-white/10 p-7 sm:p-8"
+                >
+                  <div className="grid gap-5">
+                    <label className="field-shell">
+                      <span className="field-label">Your Name</span>
+                      <input type="text" name="name" className="field-input" required />
+                    </label>
+
+                    <label className="field-shell">
+                      <span className="field-label">Your Email</span>
+                      <input type="email" name="email" className="field-input" required />
+                    </label>
+
+                    <label className="field-shell">
+                      <span className="field-label">Your Message</span>
+                      <textarea name="message" rows={6} className="field-input field-textarea" required />
+                    </label>
                   </div>
-                </div>
-              </div>
-            </div>
 
-            {/* Cloud & Database Skills Roller */}
-            <div>
-              <h3 className="text-2xl font-semibold mb-6 text-[#FBBC04] flex items-center gap-3">
-                <Database className="w-6 h-6" />
-                Cloud & Database
-              </h3>
-              <div className="relative overflow-hidden py-4">
-                <div className="skills-roller">
-                  <div className="skills-track skills-track-cloud">
-                    {[
-                      "Firebase Firestore", "Realtime Database", "MySQL", "MongoDB (Learning)", 
-                      "AWS (EC2, S3, Lambda, IAM)", "GitHub Actions", "Docker", "Kubernetes (Basics)", "Firebase Hosting"
-                    ].map((skill, index) => (
-                      <div key={`cloud-${skill}-${index}`} className="skill-roller-item">
-                        <div className="flex items-center gap-3 px-6 py-4 bg-white/5 rounded-full border border-[#FBBC04]/30 hover:border-[#FBBC04]/60 transition-all duration-300 hover:scale-105 faang-card">
-                          <SkillIcon skill={skill} size="md" />
-                          <span className="text-gray-300 font-medium whitespace-nowrap">{skill}</span>
-                        </div>
-                      </div>
-                    ))}
-                    {/* Duplicate for seamless loop */}
-                    {[
-                      "Firebase Firestore", "Realtime Database", "MySQL", "MongoDB (Learning)", 
-                      "AWS (EC2, S3, Lambda, IAM)", "GitHub Actions", "Docker", "Kubernetes (Basics)", "Firebase Hosting"
-                    ].map((skill, index) => (
-                      <div key={`cloud-dup-${skill}-${index}`} className="skill-roller-item">
-                        <div className="flex items-center gap-3 px-6 py-4 bg-white/5 rounded-full border border-[#FBBC04]/30 hover:border-[#FBBC04]/60 transition-all duration-300 hover:scale-105 faang-card">
-                          <SkillIcon skill={skill} size="md" />
-                          <span className="text-gray-300 font-medium whitespace-nowrap">{skill}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+                  <input type="hidden" name="_subject" value="New message from portfolio site" />
+
+                  <button type="submit" className="primary-cta mt-7 w-full justify-center">
+                    Send Message
+                  </button>
+                </form>
+              </Reveal>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-{/* Projects Section */}
-<section id="projects" className="py-20 bg-[#141920]">
-  <div className="max-w-6xl mx-auto px-6">
-    <div className="text-center mb-16">
-      <h2 className="text-4xl font-bold mb-4 text-white">
-        Featured Projects
-      </h2>
-      <div className="w-24 h-1 bg-[#4285F4] mx-auto rounded-full"></div>
-    </div>
-
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {[
-  {
-    title: "News-Driven Stock Alert App – Cloud Financial Platform",
-    description: "Real-time financial alert system with sentiment analysis and automated notifications using event-driven microservices.",
-    tech: ["Kotlin", "Jetpack Compose", "Spring Boot", "AWS (SES, SNS, DynamoDB, Elastic Beanstalk, Pinpoint)", "Room DB", "WorkManager"],
-    image: "https://raw.githubusercontent.com/developer4949-code/stock-alert-app/refs/heads/ss-backend/Screenshot%202026-01-25%20104420.png",
-    githubUrl: "https://github.com/developer4949-code/stock-alert-app",
-    impact: "Empowers traders with real-time insights and automated decision support."
-  },
-  {
-    title: "Fill It – Ride-Sharing for Tanker Fulfillment",
-    description: "Scalable backend for real-time tanker ride-matching and lifecycle management with geolocation logic.",
-    tech: ["Java 8+", "Spring Boot", "Gradle", "Firebase", "Google Groups", "Docker"],
-    image: "https://raw.githubusercontent.com/developer4949-code/FILL-IT-App/refs/heads/main/4.png",
-    githubUrl: "https://github.com/developer4949-code/FILL-IT-App",
-    impact: "Improves gig economy efficiency and reduces logistics delays."
-  },
-  {
-    title: "Institution Student Management System (ISMS)",
-    description: "Comprehensive academic management platform with 50+ REST APIs, document handling and role-based access.",
-    tech: ["Java 21", "Spring Boot 3.4", "Firebase", "Gradle", "Google Drive API", "OpenCV"],
-    image: "https://portfolio-gules-seven-wbw6ip079v.vercel.app/2.png.jpg",
-    githubUrl: "https://github.com/developer4949-code/ISMS-Fullstack",
-    impact: "Reduces manual admin work and improves data accuracy in institutions."
-  },
-  {
-    title: "SuchnaSangam – Government Grievance & Alert Portal",
-    description: "Real-time citizen grievance and district-level alert system with secure role-based access.",
-    tech: ["Java 17", "Spring Boot 3.5.0", "Firebase", "Gradle", "Google Cloud APIs", "Docker", "Lombok"],
-    image: "https://portfolio-gules-seven-wbw6ip079v.vercel.app/1.png", // using same as stock alert for now – change if you have specific one
-    githubUrl: "https://github.com/developer4949-code/Suchna-Sangam-Fullstack",
-    impact: "Promotes transparency and faster resolution of public complaints."
-  },
-  {
-    title: "Quiz System – Android Quiz Application",
-    description: "Interactive Android quiz app with admin/user modes and real-time content management.",
-    tech: ["Java", "Android SDK", "Firebase", "Material Design", "ViewBinding", "Lottie"],
-    image: "https://raw.githubusercontent.com/developer4949-code/quizoo/refs/heads/master/Screenshot%202026-01-25%20102707.png",
-    githubUrl: "https://github.com/developer4949-code/quizoo",
-    impact: "Makes learning engaging and provides easy quiz management for educators."
-  },
-  {
-    title: "MindWeave – AI-Ready Journaling App",
-    description: "Modern Android journaling app built with Jetpack Compose — clean UI, secure auth, and future-ready architecture for AI-powered insights.",
-    tech: ["Kotlin", "Jetpack Compose", "Jetpack Navigation", "Gradle"],
-    image: "https://raw.githubusercontent.com/developer4949-code/MindWeave/refs/heads/main/mindweave-preview.png",
-    githubUrl: "https://github.com/developer4949-code/MindWeave",
-    impact: "Helps users build consistent self-reflection habits with a beautiful, privacy-focused experience — future AI features will deliver emotional insights and smart prompts."
-  }
-].map((project) => (
-  <div
-    key={project.title}
-    className="group relative bg-white/4 rounded-2xl overflow-hidden backdrop-blur-lg border border-white/8 hover:border-[#4285F4]/40 transition-all duration-500 hover:shadow-2xl hover:shadow-[#4285F4]/15 transform hover:-translate-y-1"
-  >
-    {/* Image with animation */}
-    <div className="relative overflow-hidden max-h-80 sm:max-h-96 md:max-h-[28rem] bg-[#0F1419]/40">
-  <img
-    src={project.image}
-    alt={project.title}
-    className="w-full h-auto max-h-[28rem] sm:max-h-[32rem] md:max-h-[36rem] object-contain mx-auto transition-all duration-700 group-hover:scale-105 group-hover:brightness-105"
-  />
-  {/* Optional subtle overlay — keep if you like the effect */}
-  <div className="absolute inset-0 bg-gradient-to-t from-[#0F1419]/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none" />
-</div>
-
-    {/* Content */}
-    <div className="p-6 sm:p-7 md:p-8">
-      <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 group-hover:text-[#60A5FA] transition-colors duration-300">
-        {project.title}
-      </h3>
-
-      <p className="text-gray-300 mb-5 leading-relaxed text-base">
-        {project.description}
-      </p>
-
-      {/* Impact */}
-      <div className="mb-6 p-4 bg-white/5 rounded-xl border border-white/10">
-        <p className="text-gray-200 text-sm leading-relaxed">
-          {project.impact}
-        </p>
-      </div>
-
-      {/* Tech stack */}
-      <div className="flex flex-wrap gap-2.5 mb-7">
-        {project.tech.map((tech, techIndex) => (
-          <span
-            key={tech}
-            className="px-3.5 py-1.5 bg-[#4285F4]/10 text-[#60A5FA] rounded-full text-xs sm:text-sm font-medium border border-[#4285F4]/20 transition-all duration-300 hover:bg-[#4285F4]/20 hover:border-[#4285F4]/40"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-
-      {/* GitHub link */}
-      <a
-        href={project.githubUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 text-[#60A5FA] hover:text-[#34A853] font-medium transition-colors duration-300"
-      >
-        <Github className="w-5 h-5" />
-        View on GitHub
-      </a>
-    </div>
-
-    {/* Subtle background glow */}
-    <div className="absolute inset-0 pointer-events-none">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#4285F4]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-    </div>
-  </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-{/* Certifications Section */}
-<section id="certifications" className="py-20 bg-[#0F1419]">
-  <div className="max-w-6xl mx-auto px-6">
-    <div className="text-center mb-16">
-      <h2 className="text-4xl font-bold mb-4 text-white">
-        Certifications
-      </h2>
-      <div className="w-24 h-1 bg-[#4285F4] mx-auto rounded-full"></div>
-    </div>
-
-    {/* Uniform grid – all cards same size */}
-    <div className="grid md:grid-cols-2 gap-8">
-      {[
-        {
-          title: "AWS Cloud Practitioner Essentials",
-          subtitle: "AWS Cloud Practitioner Essentials",
-          platform: "AWS Skill Builder",
-          year: "Dec 2025",
-          icon: "☁️",
-          gradient: "from-[#4285F4]/10 to-[#34A853]/10",
-          borderColor: "border-[#4285F4]/30",
-          bgColor1: "bg-[#4285F4]",
-          bgColor2: "bg-[#34A853]",
-          textColor: "text-[#4285F4]",
-          particleColor1: "bg-[#4285F4]",
-          particleColor2: "bg-[#34A853]"
-        },
-        {
-          title: "AWS Cloud Quest: Cloud Practitioner",
-          subtitle: "AWS Cloud Quest: Cloud Practitioner",
-          platform: "AWS Training and Certification",
-          year: "Dec 2025",
-          icon: "☁️",
-          gradient: "from-[#34A853]/10 to-[#FBBC04]/10",
-          borderColor: "border-[#34A853]/30",
-          bgColor1: "bg-[#34A853]",
-          bgColor2: "bg-[#FBBC04]",
-          textColor: "text-[#34A853]",
-          particleColor1: "bg-[#34A853]",
-          particleColor2: "bg-[#FBBC04]"
-        },
-        {
-          title: "Spring Boot REST API Development",
-          subtitle: "Spring Boot REST API Development",
-          platform: "Spring Academy",
-          year: "2024",
-          icon: "☕",
-          gradient: "from-[#FBBC04]/10 to-[#EA4335]/10",
-          borderColor: "border-[#FBBC04]/30",
-          bgColor1: "bg-[#FBBC04]",
-          bgColor2: "bg-[#EA4335]",
-          textColor: "text-[#FBBC04]",
-          particleColor1: "bg-[#FBBC04]",
-          particleColor2: "bg-[#EA4335]"
-        },
-        {
-          title: "Android Development",
-          subtitle: "The Complete Android Oreo Developer Course",
-          platform: "Udemy",
-          year: "2023",
-          icon: "📱",
-          gradient: "from-[#EA4335]/10 to-[#8847FD]/10",
-          borderColor: "border-[#EA4335]/30",
-          bgColor1: "bg-[#EA4335]",
-          bgColor2: "bg-[#8847FD]",
-          textColor: "text-[#EA4335]",
-          particleColor1: "bg-[#EA4335]",
-          particleColor2: "bg-[#8847FD]"
-        }
-      ].map((cert, index) => (
-        <div 
-          key={cert.title} 
-          className="quote-card h-full" // ensures same height in grid
-        >
-          <div 
-            className={`
-              relative h-full p-8 
-              bg-gradient-to-br ${cert.gradient} 
-              rounded-2xl border ${cert.borderColor} 
-              backdrop-blur-sm overflow-hidden group faang-card
-              flex flex-col justify-between
-              transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-${cert.textColor.replace('text-', '')}/20
-            `}
-          >
-            <div className="absolute inset-0 opacity-10">
-              <div className={`absolute top-0 left-0 w-32 h-32 ${cert.bgColor1} rounded-full blur-3xl animate-pulse`}></div>
-              <div className={`absolute bottom-0 right-0 w-40 h-40 ${cert.bgColor2} rounded-full blur-3xl animate-pulse`} style={{ animationDelay: '1.5s' }}></div>
-            </div>
-
-            <div className="relative z-10 flex-grow flex flex-col">
-              <div className="flex items-start gap-4 mb-6">
-                <div className={`w-16 h-16 ${cert.gradient} border ${cert.borderColor} rounded-xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
-                  {cert.icon}
-                </div>
-                <div className="flex-1">
-                  <h4 className={`text-xl font-semibold mb-2 text-white group-hover:${cert.textColor} transition-colors duration-300`}>
-                    {cert.title}
-                  </h4>
-                  <p className="text-gray-300 text-sm mb-3">{cert.subtitle}</p>
-                </div>
-              </div>
-
-              {/* Spacer to push footer to bottom */}
-              <div className="flex-grow"></div>
-
-              <div className={`flex items-center justify-between pt-4 border-t ${cert.borderColor}`}>
-                <span className={`${cert.textColor} text-sm font-medium`}>{cert.platform}</span>
-                <span className="text-gray-400 text-sm">{cert.year}</span>
-              </div>
-            </div>
-
-            {/* Floating particles */}
-            <div className={`absolute top-6 right-6 w-2 h-2 ${cert.particleColor1} rounded-full animate-float-particle`} style={{ animationDelay: '0s' }}></div>
-            <div className={`absolute top-12 left-12 w-1.5 h-1.5 ${cert.particleColor2} rounded-full animate-float-particle`} style={{ animationDelay: '1.5s' }}></div>
-            <div className={`absolute bottom-8 right-12 w-1 h-1 ${cert.particleColor1} rounded-full animate-float-particle`} style={{ animationDelay: '3s' }}></div>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-     {/* Quotes Section */}
-<section id="quotes" className="py-20 bg-[#141920] relative">
-  <div className="max-w-6xl mx-auto px-6">
-    <div className="text-center mb-16">
-      <h2 className="text-4xl font-bold mb-4 text-white">
-        Inspirational Tech Wisdom
-      </h2>
-      <div className="w-24 h-1 bg-[#4285F4] mx-auto rounded-full"></div>
-    </div>
-
-    {/* Uniform quote cards */}
-    <div className="grid md:grid-cols-2 gap-8">
-      {/* Left Quote – Steve Jobs */}
-      <div className="quote-card h-full">
-        <div className="relative h-full p-8 bg-gradient-to-br from-[#4285F4]/10 to-[#34A853]/10 rounded-2xl border border-[#4285F4]/30 backdrop-blur-sm overflow-hidden group faang-card flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-[#4285F4]/20">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-32 h-32 bg-[#4285F4] rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-0 right-0 w-40 h-40 bg-[#34A853] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-          </div>
-
-          <div className="absolute top-4 right-4 text-[#4285F4]/20">
-            <Quote className="w-16 h-16" />
-          </div>
-
-          <div className="relative z-10 flex-grow flex flex-col">
-            <p className="text-xl md:text-2xl font-medium text-white leading-relaxed mb-8 italic flex-grow">
-              "The only way to do great work is to love what you do."
-            </p>
-
-            <div className="flex items-center gap-3 pt-4 border-t border-[#4285F4]/20">
-              <div className="w-12 h-12 rounded-full bg-[#4285F4]/20 flex items-center justify-center border border-[#4285F4]/30">
-                <span className="text-[#4285F4] font-bold text-lg">SJ</span>
-              </div>
-              <div>
-                <p className="text-[#4285F4] font-semibold">Steve Jobs</p>
-                <p className="text-gray-400 text-sm">Co-founder of Apple</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="absolute top-6 left-6 w-2 h-2 bg-[#4285F4] rounded-full animate-float-particle" style={{ animationDelay: '0s' }}></div>
-          <div className="absolute top-12 right-12 w-1.5 h-1.5 bg-[#34A853] rounded-full animate-float-particle" style={{ animationDelay: '1.5s' }}></div>
-          <div className="absolute bottom-8 left-12 w-1 h-1 bg-[#4285F4] rounded-full animate-float-particle" style={{ animationDelay: '3s' }}></div>
-        </div>
-      </div>
-
-      {/* Right Quote – Bill Gates */}
-      <div className="quote-card h-full">
-        <div className="relative h-full p-8 bg-gradient-to-br from-[#FBBC04]/10 to-[#EA4335]/10 rounded-2xl border border-[#FBBC04]/30 backdrop-blur-sm overflow-hidden group faang-card flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-[#FBBC04]/20">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#FBBC04] rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#EA4335] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-          </div>
-
-          <div className="absolute top-4 left-4 text-[#FBBC04]/20">
-            <Quote className="w-16 h-16" />
-          </div>
-
-          <div className="relative z-10 flex-grow flex flex-col">
-            <p className="text-xl md:text-2xl font-medium text-white leading-relaxed mb-8 italic flex-grow">
-              "Measuring programming progress by lines of code is like measuring aircraft building progress by weight."
-            </p>
-
-            <div className="flex items-center gap-3 pt-4 border-t border-[#FBBC04]/20">
-              <div className="w-12 h-12 rounded-full bg-[#FBBC04]/20 flex items-center justify-center border border-[#FBBC04]/30">
-                <span className="text-[#FBBC04] font-bold text-lg">BG</span>
-              </div>
-              <div>
-                <p className="text-[#FBBC04] font-semibold">Bill Gates</p>
-                <p className="text-gray-400 text-sm">Co-founder of Microsoft</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="absolute top-8 right-8 w-2 h-2 bg-[#FBBC04] rounded-full animate-float-particle" style={{ animationDelay: '0.5s' }}></div>
-          <div className="absolute top-16 left-16 w-1.5 h-1.5 bg-[#EA4335] rounded-full animate-float-particle" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute bottom-10 right-16 w-1 h-1 bg-[#FBBC04] rounded-full animate-float-particle" style={{ animationDelay: '3.5s' }}></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-     {/* Contact Section – Modern & Animated */}
-<section id="contact" className="py-24 md:py-32 bg-gradient-to-b from-[#0F1419] to-[#141920] relative overflow-hidden">
-  {/* Subtle animated background */}
-  <div className="absolute inset-0 pointer-events-none">
-    <div className="absolute inset-0 bg-gradient-to-br from-[#4285F4]/5 via-transparent to-[#34A853]/5 animate-gradient-slow"></div>
-    <div className="absolute top-20 left-20 w-64 h-64 bg-[#4285F4]/10 rounded-full blur-3xl animate-float-particle" style={{ animationDelay: '0s' }}></div>
-    <div className="absolute bottom-32 right-32 w-80 h-80 bg-[#34A853]/10 rounded-full blur-3xl animate-float-particle" style={{ animationDelay: '3s' }}></div>
-  </div>
-
-  <div className="max-w-5xl mx-auto px-6 relative z-10">
-    <div className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white tracking-tight animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-        Let's Work Together
-      </h2>
-      <div className="w-24 h-1 bg-gradient-to-r from-[#4285F4] to-[#34A853] mx-auto rounded-full mb-6"></div>
-      <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-        I'm always excited about new opportunities, challenging projects, and meaningful collaborations.
-      </p>
-    </div>
-
-    <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-      {/* Left – Contact Info + Socials */}
-      <div className="space-y-10 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-        <div className="space-y-6">
-          {/* Email */}
-          <div className="group flex items-center gap-5 p-5 bg-white/5 rounded-2xl border border-white/10 hover:border-[#4285F4]/50 hover:bg-white/8 transition-all duration-300 hover:shadow-lg hover:shadow-[#4285F4]/10">
-            <div className="w-14 h-14 bg-gradient-to-br from-[#4285F4] to-[#3367D6] rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-              <Mail className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h3 className="font-semibold text-white text-lg">Email</h3>
-              <p className="text-gray-300 group-hover:text-[#60A5FA] transition-colors">
-                dddebiprasaddas2004@gmail.com
-              </p>
-            </div>
-          </div>
-
-          {/* Phone */}
-          <div className="group flex items-center gap-5 p-5 bg-white/5 rounded-2xl border border-white/10 hover:border-[#34A853]/50 hover:bg-white/8 transition-all duration-300 hover:shadow-lg hover:shadow-[#34A853]/10">
-            <div className="w-14 h-14 bg-gradient-to-br from-[#34A853] to-[#2E8B57] rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-              <Phone className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h3 className="font-semibold text-white text-lg">Phone</h3>
-              <p className="text-gray-300 group-hover:text-[#86EFAC] transition-colors">
-                +91-8260057716
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Social Links */}
-        <div className="flex gap-6 justify-center md:justify-start">
-          <a
-            href="https://github.com/developer4949-code"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative w-14 h-14 bg-white/5 rounded-full flex items-center justify-center border border-white/10 hover:border-[#4285F4]/60 hover:bg-[#4285F4]/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#4285F4]/20"
-          >
-            <Github className="w-7 h-7 text-[#4285F4] group-hover:text-[#60A5FA] transition-colors" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/debi-prasad-das-458878292/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative w-14 h-14 bg-white/5 rounded-full flex items-center justify-center border border-white/10 hover:border-[#0A66C2]/60 hover:bg-[#0A66C2]/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#0A66C2]/20"
-          >
-            <Linkedin className="w-7 h-7 text-[#4285F4] group-hover:text-[#3B82F6] transition-colors" />
-          </a>
-        </div>
-      </div>
-
-      {/* Right – Contact Form */}
-      <form
-        action="https://formspree.io/f/xovlwakw"
-        method="POST"
-        className="space-y-6 animate-fade-in-up" style={{ animationDelay: '0.8s' }}
-      >
-        {/* Name */}
-        <div className="relative">
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder=" "
-            className="peer w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl focus:border-[#4285F4]/60 focus:ring-2 focus:ring-[#4285F4]/20 focus:outline-none transition-all duration-300 text-white placeholder-transparent"
-            required
-          />
-          <label
-            htmlFor="name"
-            className="absolute left-5 top-4 text-gray-400 pointer-events-none transition-all duration-300 peer-focus:-translate-y-9 peer-focus:text-sm peer-focus:text-[#4285F4] peer-placeholder-shown:text-base peer-placeholder-shown:translate-y-0"
-          >
-            Your Name
-          </label>
-        </div>
-
-        {/* Email */}
-        <div className="relative">
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder=" "
-            className="peer w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl focus:border-[#4285F4]/60 focus:ring-2 focus:ring-[#4285F4]/20 focus:outline-none transition-all duration-300 text-white placeholder-transparent"
-            required
-          />
-          <label
-            htmlFor="email"
-            className="absolute left-5 top-4 text-gray-400 pointer-events-none transition-all duration-300 peer-focus:-translate-y-9 peer-focus:text-sm peer-focus:text-[#4285F4] peer-placeholder-shown:text-base peer-placeholder-shown:translate-y-0"
-          >
-            Your Email
-          </label>
-        </div>
-
-        {/* Message */}
-        <div className="relative">
-          <textarea
-            name="message"
-            id="message"
-            rows={5}
-            placeholder=" "
-            className="peer w-full px-5 py-4 bg-white/5 border border-white/10 rounded-xl focus:border-[#4285F4]/60 focus:ring-2 focus:ring-[#4285F4]/20 focus:outline-none transition-all duration-300 text-white placeholder-transparent resize-none"
-            required
-          ></textarea>
-          <label
-            htmlFor="message"
-            className="absolute left-5 top-4 text-gray-400 pointer-events-none transition-all duration-300 peer-focus:-translate-y-9 peer-focus:text-sm peer-focus:text-[#4285F4] peer-placeholder-shown:text-base peer-placeholder-shown:translate-y-0"
-          >
-            Your Message
-          </label>
-        </div>
-
-        {/* Hidden subject */}
-        <input type="hidden" name="_subject" value="New message from portfolio site" />
-
-        {/* Submit Button – with ripple effect */}
-        <button
-          type="submit"
-          className="group relative w-full px-8 py-4 bg-gradient-to-r from-[#4285F4] to-[#3367D6] rounded-xl font-semibold text-white overflow-hidden hover:shadow-2xl hover:shadow-[#4285F4]/40 transform hover:scale-[1.02] transition-all duration-300"
-        >
-          <span className="relative z-10 flex items-center justify-center gap-2">
-            Send Message
-            <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </span>
-          <span className="absolute inset-0 bg-white/20 scale-0 rounded-full group-active:scale-150 group-active:opacity-0 transition-all duration-500"></span>
-        </button>
-      </form>
-    </div>
-  </div>
-</section>
-      {/* Footer */}
-      <footer className="py-8 border-t border-white/10 bg-[#0F1419]">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <p className="text-gray-400">
-            © 2026 Debi Prasad Das. All Rights Reserved.
-          </p>
-        </div>
+      <footer className="relative z-10 border-t border-white/8 px-5 py-8 text-center text-sm text-[#8f9ab1] sm:px-6 lg:px-8">
+        <p>Copyright 2026 Debi Prasad Das. All Rights Reserved.</p>
       </footer>
     </div>
   );

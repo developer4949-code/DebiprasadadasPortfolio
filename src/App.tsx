@@ -123,14 +123,14 @@ const projects = [
     impact: 'Promotes transparency and faster resolution of public complaints.',
   },
   {
-    title: 'Quiz System - Android Quiz Application',
+    title: 'ExpensePilot - Personal Finance Companion App',
     description:
-      'Interactive Android quiz app with admin/user modes and real-time content management.',
-    tech: ['Java', 'Android SDK', 'Firebase', 'Material Design', 'ViewBinding', 'Lottie'],
-    image:
-      'https://raw.githubusercontent.com/developer4949-code/quizoo/refs/heads/master/Screenshot%202026-01-25%20102707.png',
-    githubUrl: 'https://github.com/developer4949-code/quizoo',
-    impact: 'Makes learning engaging and provides easy quiz management for educators.',
+      'Native Android personal finance app built in Java and XML with local-first transaction tracking, savings goals, smart reminders, AI recommendations, and polished mobile flows.',
+    tech: ['Java', 'XML', 'Room', 'Firebase Auth', 'WorkManager', 'BiometricPrompt'],
+    image: '',
+    githubUrl: 'https://github.com/developer4949-code/ExpensePilot',
+    impact:
+      'Helps users track spending, monitor savings progress, and stay engaged through privacy-friendly on-device finance insights.',
   },
   {
     title: 'MindWeave - AI-Ready Journaling App',

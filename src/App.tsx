@@ -54,7 +54,7 @@ const skillGroups = [
     borderClass: 'border-[#7fe0c9]/20',
     chipClass:
       'border-[#7fe0c9]/25 bg-[#081d1c]/70 hover:border-[#7fe0c9]/55 hover:bg-[#0c2927]/80',
-    items: ['Java (Spring Boot)', 'Node.js (Learning)', 'RESTful APIs', 'JWT', 'MVC Architecture'],
+    items: ['Java', 'Node.js (Learning)', 'RESTful APIs', 'JWT', 'MVC Architecture'],
     reverse: true,
   },
   {
@@ -110,7 +110,7 @@ const projects = [
     title: 'Fill It - Ride-Sharing for Tanker Fulfillment',
     description:
       'Scalable backend for real-time tanker ride-matching and lifecycle management with geolocation logic.',
-    tech: ['Java 8+', 'Spring Boot', 'Gradle', 'Firebase', 'Google Groups', 'Docker'],
+    tech: ['Java', 'Spring Boot', 'Gradle', 'Firebase', 'Google Groups', 'Docker'],
     image: 'https://raw.githubusercontent.com/developer4949-code/FILL-IT-App/refs/heads/main/4.png',
     githubUrl: 'https://github.com/developer4949-code/FILL-IT-App',
     impact: 'Improves gig economy efficiency and reduces logistics delays.',
@@ -119,7 +119,7 @@ const projects = [
     title: 'Institution Student Management System (ISMS)',
     description:
       'Comprehensive academic management platform with 50+ REST APIs, document handling and role-based access.',
-    tech: ['Java 21', 'Spring Boot 3.4', 'Firebase', 'Gradle', 'Google Drive API', 'OpenCV'],
+    tech: ['Java', 'Spring Boot 3.4', 'Firebase', 'Gradle', 'Google Drive API', 'OpenCV'],
     image: 'https://portfolio-gules-seven-wbw6ip079v.vercel.app/2.png.jpg',
     githubUrl: 'https://github.com/developer4949-code/ISMS-Fullstack',
     impact: 'Reduces manual admin work and improves data accuracy in institutions.',
@@ -128,7 +128,7 @@ const projects = [
     title: 'SuchnaSangam - Government Grievance and Alert Portal',
     description:
       'Real-time citizen grievance and district-level alert system with secure role-based access.',
-    tech: ['Java 17', 'Spring Boot 3.5.0', 'Firebase', 'Gradle', 'Google Cloud APIs', 'Docker', 'Lombok'],
+    tech: ['Java', 'Spring Boot 3.5.0', 'Firebase', 'Gradle', 'Google Cloud APIs', 'Docker', 'Lombok'],
     image: 'https://portfolio-gules-seven-wbw6ip079v.vercel.app/1.png',
     githubUrl: 'https://github.com/developer4949-code/Suchna-Sangam-Fullstack',
     impact: 'Promotes transparency and faster resolution of public complaints.',
